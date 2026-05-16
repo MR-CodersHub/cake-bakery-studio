@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing | Cakeology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+            border: 2px solid var(--primary-pink);
+            box-shadow: var(--shadow-premium);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--accent-gold);
+            color: var(--white);
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .price-val {
+            font-size: 3.5rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            margin: 20px 0;
+            color: var(--text-chocolate);
+        }
+
+        .price-val span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .pricing-features {
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features i {
+            color: var(--accent-gold);
+        }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+<body>
+    <header id="main-header">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Cakeology</a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="home2.html">Studio</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="user-account">
+                        <div class="account-trigger">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="account-dropdown">
+                            <div class="dropdown-header">
+                                <h5>Sarah Jenkins</h5>
+                                <span>Sarah@example.com</span>
+                            </div>
+                            <a href="login.html" class="dropdown-item"><i class="fas fa-sign-in-alt"></i> Sign Up / Login</a>
+                            <a href="admin-dashboard.html" class="dropdown-item"><i class="fas fa-user-shield"></i> Admin Dashboard</a>
+                            <a href="dashboard.html" class="dropdown-item"><i class="fas fa-th-large"></i> User Dashboard</a>
+                            <a href="dashboard.html" class="dropdown-item"><i class="fas fa-user-circle"></i> Profile</a>
+                            <a href="dashboard.html" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a>
+                            <a href="#" class="dropdown-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section-padding" style="background: var(--gradient-sweet); padding-top: 150px;">
+        <div class="container">
+            <div style="text-align: center;">
+                <h1 style="font-size: 3.5rem;">Sweet Packages</h1>
+                <p style="color: var(--text-muted);">Simple and transparent pricing for your celebrations.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Basic -->
+                <div class="pricing-card reveal">
+                    <h3>Classic Party</h3>
+                    <p>Perfect for small gatherings</p>
+                    <div class="price-val">$85<span> / Starting</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Single Tier Design</li>
+                        <li><i class="fas fa-check"></i> 10-15 Servings</li>
+                        <li><i class="fas fa-check"></i> Custom Inscription</li>
+                        <li><i class="fas fa-check"></i> Signature Flavor</li>
+                        <li style="color: var(--text-muted);"><i class="fas fa-times"></i> Complex Sculpting</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline" style="width: 100%;">Choose Classic</a>
+                </div>
+
+                <!-- Featured -->
+                <div class="pricing-card featured reveal" style="transition-delay: 0.1s;">
+                    <div class="badge">POPULAR</div>
+                    <h3>Luxury Event</h3>
+                    <p>Our most popular choice</p>
+                    <div class="price-val">$240<span> / Starting</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Two Tier Design</li>
+                        <li><i class="fas fa-check"></i> 30-40 Servings</li>
+                        <li><i class="fas fa-check"></i> Detailed Decorations</li>
+                        <li><i class="fas fa-check"></i> Multi-Flavor Options</li>
+                        <li><i class="fas fa-check"></i> Delivery Included</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary" style="width: 100%;">Choose Luxury</a>
+                </div>
+
+                <!-- Wedding -->
+                <div class="pricing-card reveal" style="transition-delay: 0.2s;">
+                    <h3>Grand Wedding</h3>
+                    <p>The ultimate masterpiece</p>
+                    <div class="price-val">$450<span> / Starting</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 3+ Tier Design</li>
+                        <li><i class="fas fa-check"></i> 80+ Servings</li>
+                        <li><i class="fas fa-check"></i> Custom Sketching</li>
+                        <li><i class="fas fa-check"></i> Tasting Session</li>
+                        <li><i class="fas fa-check"></i> Full On-site Setup</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline" style="width: 100%;">Request Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: var(--primary-pink); padding: 80px 0 20px;">
+        <div class="container">
+            <div class="footer-bottom" style="border: none;">
+                <p>&copy; 2026 Cakeology. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

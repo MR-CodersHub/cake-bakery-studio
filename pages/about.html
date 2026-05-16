@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Cakeology</title>
+    <meta name="description" content="Discover the legacy of Cakeology. From a passion for French patisserie to becoming a premier luxury cake design studio.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .about-hero {
+            height: 70vh;
+            background: linear-gradient(rgba(30, 22, 20, 0.4), rgba(30, 22, 20, 0.4)), url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+            position: relative;
+        }
+
+        .about-hero h1 {
+            font-size: 5rem;
+            max-width: 900px;
+            line-height: 1.1;
+            color: #FFFFFF; /* Ensure it stays white */
+        }
+
+        /* Narrative Section */
+        .narrative-row {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            margin-bottom: 120px;
+            flex-wrap: wrap;
+        }
+
+        .narrative-content {
+            flex: 1;
+            min-width: 350px;
+        }
+
+        .narrative-image {
+            flex: 1;
+            min-width: 350px;
+            position: relative;
+        }
+
+        .narrative-image img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-premium);
+        }
+
+        .image-accent {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 250px;
+            height: 250px;
+            background: var(--bg-accent);
+            border-radius: var(--radius-md);
+            z-index: -1;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Standards Section */
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .standard-card {
+            background: var(--bg-surface);
+            padding: 40px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            transition: var(--transition-smooth);
+        }
+
+        .standard-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+
+        .standard-card i {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        /* Timeline */
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 40px 0;
+        }
+
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--border-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-event {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            margin-bottom: 50px;
+        }
+
+        .timeline-event.left { left: 0; text-align: right; }
+        .timeline-event.right { left: 50%; text-align: left; }
+
+        .timeline-event::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background: var(--bg-surface);
+            border: 4px solid var(--accent-gold);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-event.right::after { left: -10px; }
+
+        .event-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Vision Quote */
+        .vision-section {
+            background: var(--bg-surface);
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .vision-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .vision-content blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 40px;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 768px) {
+            .about-hero h1 { font-size: 3rem; }
+            .timeline-container::after { left: 31px; }
+            .timeline-event { width: 100%; padding-left: 70px; padding-right: 25px; text-align: left !important; }
+            .timeline-event::after { left: 21px !important; }
+            .timeline-event.right { left: 0; }
+        }
+
+        /* Dark Mode Specific Overrides for About Page */
+        .dark-mode .about-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .dark-mode .standard-card {
+            background: var(--bg-surface);
+            border-color: var(--border-color);
+        }
+
+        .dark-mode .vision-section {
+            background: var(--bg-accent);
+        }
+
+        .dark-mode .timeline-event::after {
+            background: var(--bg-surface);
+        }
+            @media (max-width: 768px) {
+            .about-hero h1 { font-size: 3rem !important; }
+            .narrative-row { gap: 40px !important; margin-bottom: 60px !important; text-align: center; }
+            .narrative-content, .narrative-image { min-width: 100% !important; }
+            .image-accent { display: none; }
+            .timeline-container::after { left: 20px; }
+            .timeline-event { width: 100% !important; padding-left: 50px !important; text-align: left !important; }
+            .timeline-event.left, .timeline-event.right { left: 0 !important; }
+            .timeline-event::after { left: 10px !important; }
+            .section-padding h2 { font-size: 2.2rem !important; }
+        }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+<body>
+
+    <!-- Header (JS Injected) -->
+    <header id="main-header"></header>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <span style="text-transform: uppercase; letter-spacing: 5px; font-weight: 600; margin-bottom: 20px; display: block;">Est. 2015</span>
+            <h1 class="reveal">Handcrafting the Art of <span style="color: var(--accent-gold);">Sweet Celebration</span></h1>
+        </div>
+    </section>
+
+    <!-- The Brand Narrative -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="narrative-row">
+                <div class="narrative-content reveal">
+                    <span style="color: var(--accent-gold); font-weight: 600; text-transform: uppercase;">Our Story</span>
+                    <h2 style="font-size: 3rem; margin: 20px 0;">Born from Passion, <br>Refined by Artistry</h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 25px;">What began in a small boutique kitchen with a single rolling pin and a vision for French patisserie has evolved into the city's premier destination for luxury cake design.</p>
+                    <p style="margin-bottom: 25px;">Cakeology was founded on the belief that a cake should be more than just a dessert—it should be a sculpture that captures the essence of a moment. Our journey has been one of continuous refinement, sourcing the world's most exquisite ingredients to ensure that every bite matches the visual splendor of our creations.</p>
+                    <p>Today, our studio is a playground for innovation, where traditional techniques meet contemporary aesthetics to serve a clientele that appreciates the finer details of celebration.</p>
+                </div>
+                <div class="narrative-image reveal" style="transition-delay: 0.2s;">
+                    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1000&auto=format&fit=crop" alt="Studio Artistry">
+                    <div class="image-accent"></div>
+                </div>
+            </div>
+
+            <!-- Founders Vision -->
+            <div class="narrative-row" style="flex-direction: row-reverse;">
+                <div class="narrative-content reveal">
+                    <span style="color: var(--accent-gold); font-weight: 600; text-transform: uppercase;">The Founder</span>
+                    <h2 style="font-size: 3rem; margin: 20px 0;">Isabella Rose</h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 25px;">"My philosophy is simple: perfection is found in the intersection of flavor and form. I don't just bake cakes; I design experiences that linger in the memory long after the last crumb is gone."</p>
+                    <p>With a background in fine arts and professional training at the Le Cordon Bleu, Isabella brings a unique perspective to the world of pastry. Her signature style—a blend of ethereal botanical details and modern structural minimalism—has redefined luxury baking for a new generation of celebrants.</p>
+                </div>
+                <div class="narrative-image reveal" style="transition-delay: 0.2s;">
+                    <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?q=80&w=1000&auto=format&fit=crop" alt="Founder Isabella Rose">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Standards & Values -->
+    <section class="section-padding" style="background: var(--bg-main);">
+        <div class="container">
+            <div style="text-align: center; max-width: 700px; margin: 0 auto 60px;">
+                <h2 style="font-size: 3rem;">The Studio Standards</h2>
+                <p style="color: var(--text-secondary); margin-top: 20px;">We never compromise on the elements that define a Cakeology creation.</p>
+            </div>
+
+            <div class="standards-grid">
+                <div class="standard-card reveal">
+                    <i class="fas fa-gem"></i>
+                    <h3>Exquisite Ingredients</h3>
+                    <p>From Valrhona chocolate to Madagascar bourbon vanilla, we source only the absolute best for our recipes.</p>
+                </div>
+                <div class="standard-card reveal" style="transition-delay: 0.1s;">
+                    <i class="fas fa-fingerprint"></i>
+                    <h3>Bespoke Artistry</h3>
+                    <p>No two cakes are identical. Every creation is tailored to the individual story and aesthetic of our clients.</p>
+                </div>
+                <div class="standard-card reveal" style="transition-delay: 0.2s;">
+                    <i class="fas fa-award"></i>
+                    <h3>Meticulous Detail</h3>
+                    <p>Every sugar petal is hand-veined, and every tier is perfectly leveled to ensure architectural perfection.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Journey -->
+    <section class="section-padding">
+        <div class="container">
+            <div style="text-align: center;">
+                <h2 style="font-size: 3rem;">Our Evolution</h2>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-event left reveal">
+                    <span class="event-year">2015</span>
+                    <h3>The Boutique Kitchen</h3>
+                    <p>Founded by Isabella Rose as a custom wedding cake service out of a shared studio space.</p>
+                </div>
+                <div class="timeline-event right reveal">
+                    <span class="event-year">2017</span>
+                    <h3>First Studio Award</h3>
+                    <p>Voted 'Best Wedding Cake Designer' by City Luxury Magazine, cementing our place in the industry.</p>
+                </div>
+                <div class="timeline-event left reveal">
+                    <span class="event-year">2019</span>
+                    <h3>Expansion to High-End Studio</h3>
+                    <p>Moved to our flagship design studio and tasting suite in the heart of the Sugar District.</p>
+                </div>
+                <div class="timeline-event right reveal">
+                    <span class="event-year">2023</span>
+                    <h3>Global Recognition</h3>
+                    <p>Featured in International Bridal Weekly for our pioneering work in sculptural cake design.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="vision-section">
+        <div class="container">
+            <div class="vision-content reveal">
+                <i class="fas fa-quote-left" style="font-size: 3rem; color: var(--accent-gold); margin-bottom: 30px; opacity: 0.3;"></i>
+                <blockquote>"Our mission is to elevate life's milestones into unforgettable works of art, one handcrafted layer at a time."</blockquote>
+                <p style="text-transform: uppercase; letter-spacing: 3px; font-weight: 600; color: var(--text-secondary);">The Cakeology Vision</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (JS Injected) -->
+    <footer id="main-footer"></footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

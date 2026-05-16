@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Reviews | Cakeology</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+<body>
+    <div class="dash-container"><div class="sidebar-overlay" id="dash-overlay"></div>
+        <aside class="dash-sidebar" id="dash-sidebar">
+            <div class="dash-sidebar-header">
+                <a href="../index.html" class="logo" style="font-size: 1.4rem;">Cakeology</a>
+            </div>
+            <div class="dash-sidebar-content">
+                <div class="dash-nav-label">Management</div>
+                <a href="admin-dashboard.html" class="dash-nav-link"><i class="fas fa-chart-pie"></i> Overview</a>
+                <a href="admin-products.html" class="dash-nav-link"><i class="fas fa-birthday-cake"></i> Products</a>
+                <a href="admin-orders.html" class="dash-nav-link"><i class="fas fa-shopping-bag"></i> Orders</a>
+                <a href="admin-custom-orders.html" class="dash-nav-link"><i class="fas fa-magic"></i> Custom Orders</a>
+                <a href="admin-customers.html" class="dash-nav-link"><i class="fas fa-users"></i> Customers</a>
+                <a href="admin-offers.html" class="dash-nav-link"><i class="fas fa-ticket-alt"></i> Offers & Coupons</a>
+                <a href="admin-reviews.html" class="dash-nav-link active"><i class="fas fa-star"></i> Reviews</a>
+                <div class="dash-nav-label">Insights</div>
+                <a href="admin-analytics.html" class="dash-nav-link"><i class="fas fa-chart-line"></i> Analytics</a>
+                <a href="admin-notifications.html" class="dash-nav-link"><i class="fas fa-bell"></i> Notifications</a>
+                <div class="dash-nav-label">Account</div>
+                <a href="admin-profile.html" class="dash-nav-link"><i class="fas fa-user-circle"></i> Profile</a>
+                <a href="admin-settings.html" class="dash-nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="login.html" class="dash-nav-link" style="color: var(--dash-danger);"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+        <main class="dash-main">
+            <header class="dash-header"><div style="display: flex; align-items: center; gap: 20px;"><div id="dash-hamburger" style="cursor: pointer; font-size: 1.2rem; display: none;"><i class="fas fa-bars"></i></div><h2>Customer Feedback</h2></div></header>
+            <div class="dash-content">
+                <h1 style="font-family: 'Playfair Display', serif; margin-bottom: 30px;">Reviews Management</h1>
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div class="dash-card">
+                        <div style="display: flex; gap: 20px;">
+                            <img src="https://i.pravatar.cc/150?u=10" class="avatar" style="width: 50px; height: 50px;">
+                            <div style="flex: 1;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                    <div>
+                                        <h4 style="margin-bottom: 5px;">Emma Watson</h4>
+                                        <div style="color: var(--dash-primary); font-size: 0.8rem; margin-bottom: 10px;">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                            <span style="color: var(--dash-text-muted); margin-left: 10px;">on <strong>Velvet Dream Cake</strong></span>
+                                        </div>
+                                    </div>
+                                    <span style="font-size: 0.75rem; color: var(--dash-text-muted);">Yesterday</span>
+                                </div>
+                                <p style="font-size: 0.9rem; line-height: 1.6;">The cake was absolutely stunning and tasted even better than it looked! The delivery was right on time and the packaging was very secure. Highly recommend for any special occasion.</p>
+                                <div style="margin-top: 15px; display: flex; gap: 10px;">
+                                    <button class="btn btn-outline" style="padding: 5px 15px; font-size: 0.8rem;">Reply</button>
+                                    <button class="btn btn-outline" style="padding: 5px 15px; font-size: 0.8rem; color: var(--dash-danger); border-color: var(--dash-danger);">Hide</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dash-card">
+                        <div style="display: flex; gap: 20px;">
+                            <img src="https://i.pravatar.cc/150?u=11" class="avatar" style="width: 50px; height: 50px;">
+                            <div style="flex: 1;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                    <div>
+                                        <h4 style="margin-bottom: 5px;">John Doe</h4>
+                                        <div style="color: var(--dash-primary); font-size: 0.8rem; margin-bottom: 10px;">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                            <span style="color: var(--dash-text-muted); margin-left: 10px;">on <strong>Golden Macarons</strong></span>
+                                        </div>
+                                    </div>
+                                    <span style="font-size: 0.75rem; color: var(--dash-text-muted);">2 days ago</span>
+                                </div>
+                                <p style="font-size: 0.9rem; line-height: 1.6;">Delicious macarons, but the salted caramel ones were slightly over-salted for my taste. Still, the texture was perfect.</p>
+                                <div style="margin-top: 15px; display: flex; gap: 10px;">
+                                    <button class="btn btn-outline" style="padding: 5px 15px; font-size: 0.8rem;">Reply</button>
+                                    <button class="btn btn-outline" style="padding: 5px 15px; font-size: 0.8rem; color: var(--dash-danger); border-color: var(--dash-danger);">Hide</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/main.js"></script>
+</body>
+</html>

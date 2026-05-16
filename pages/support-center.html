@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Center | Cakeology</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+<body>
+    <div class="dash-container">
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="dash-overlay"></div>
+
+        <aside class="dash-sidebar" id="dash-sidebar">
+            <div class="dash-sidebar-header"><a href="../index.html" class="logo" style="font-size: 1.4rem;">Cakeology</a></div>
+            <div class="dash-sidebar-content">
+                <div class="dash-nav-label">Shopping</div>
+                <a href="dashboard.html" class="dash-nav-link"><i class="fas fa-th-large"></i> Overview</a>
+                <a href="my-orders.html" class="dash-nav-link"><i class="fas fa-box"></i> My Orders</a>
+                <a href="order-tracking.html" class="dash-nav-link"><i class="fas fa-truck-loading"></i> Track Orders</a>
+                <a href="wishlist.html" class="dash-nav-link"><i class="fas fa-heart"></i> Wishlist</a>
+                <div class="dash-nav-label">Preferences</div>
+                <a href="saved-addresses.html" class="dash-nav-link"><i class="fas fa-map-marker-alt"></i> Saved Addresses</a>
+                <a href="payment-methods.html" class="dash-nav-link"><i class="fas fa-credit-card"></i> Payment Methods</a>
+                <a href="user-reviews.html" class="dash-nav-link"><i class="fas fa-star"></i> My Reviews</a>
+                <div class="dash-nav-label">Personal</div>
+                <a href="user-notifications.html" class="dash-nav-link"><i class="fas fa-bell"></i> Notifications</a>
+                <a href="user-profile.html" class="dash-nav-link"><i class="fas fa-user-circle"></i> Profile</a>
+                <a href="user-settings.html" class="dash-nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="support-center.html" class="dash-nav-link active"><i class="fas fa-headset"></i> Support Center</a>
+                <a href="login.html" class="dash-nav-link" style="color: var(--dash-danger); margin-top: 20px;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+        <main class="dash-main">
+            <header class="dash-header">
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div id="dash-hamburger" style="cursor: pointer; font-size: 1.2rem; display: none;">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <h2 style="font-size: 1.25rem; font-weight: 700;">How can we help?</h2>
+                </div>
+            </header>
+            <div class="dash-content">
+                <h1 style="font-family: 'Playfair Display', serif; margin-bottom: 30px;">Support Center</h1>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px;">
+                    <div class="dash-card" style="text-align: center;">
+                        <i class="fas fa-comment-dots" style="font-size: 2.5rem; color: var(--dash-primary); margin-bottom: 20px;"></i>
+                        <h4 style="margin-bottom: 10px;">Live Chat</h4>
+                        <p style="font-size: 0.85rem; color: var(--dash-text-muted); margin-bottom: 20px;">Average wait time: 2 minutes</p>
+                        <button class="btn btn-primary" style="width: 100%; border-radius: 10px;">Start Chat</button>
+                    </div>
+                    <div class="dash-card" style="text-align: center;">
+                        <i class="fas fa-envelope-open-text" style="font-size: 2.5rem; color: var(--dash-info); margin-bottom: 20px;"></i>
+                        <h4 style="margin-bottom: 10px;">Email Support</h4>
+                        <p style="font-size: 0.85rem; color: var(--dash-text-muted); margin-bottom: 20px;">Response within 24 hours</p>
+                        <button class="btn btn-outline" style="width: 100%; border-radius: 10px;">Send Email</button>
+                    </div>
+                    <div class="dash-card" style="text-align: center;">
+                        <i class="fas fa-question-circle" style="font-size: 2.5rem; color: var(--dash-success); margin-bottom: 20px;"></i>
+                        <h4 style="margin-bottom: 10px;">FAQ Database</h4>
+                        <p style="font-size: 0.85rem; color: var(--dash-text-muted); margin-bottom: 20px;">Find quick answers instantly</p>
+                        <button class="btn btn-outline" style="width: 100%; border-radius: 10px;">Browse FAQs</button>
+                    </div>
+                </div>
+                <div class="dash-card">
+                    <h3 style="margin-bottom: 25px;">My Support Tickets</h3>
+                    <div style="text-align: center; padding: 40px;">
+                        <i class="fas fa-ticket-alt" style="font-size: 3rem; color: var(--dash-border); margin-bottom: 20px;"></i>
+                        <p style="color: var(--dash-text-muted);">You have no active support tickets.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/main.js"></script>
+</body>
+</html>

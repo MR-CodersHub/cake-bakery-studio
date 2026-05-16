@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | Cakeology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            background: var(--gradient-sweet);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .error-content {
+            max-width: 600px;
+            padding: 40px;
+        }
+
+        .error-code {
+            font-size: 10rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-gold);
+            line-height: 1;
+            margin-bottom: 20px;
+            text-shadow: 5px 5px 0 var(--primary-pink);
+        }
+
+        .floating-cake {
+            font-size: 4rem;
+            margin-bottom: 30px;
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+<body>
+    <div class="error-content reveal">
+        <div class="floating-cake"><i class="fas fa-birthday-cake" style="color: var(--primary-pink);"></i></div>
+        <div class="error-code">404</div>
+        <h1 style="margin-bottom: 20px;">Oops! This Crumb is Missing</h1>
+        <p style="color: var(--text-muted); margin-bottom: 40px;">The page you are looking for has been moved, eaten, or never existed in our recipe book.</p>
+        <a href="../index.html" class="btn btn-primary">Back to Home</a>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

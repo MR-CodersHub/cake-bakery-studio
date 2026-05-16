@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Orders | Cakeology</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+<body>
+
+    <div class="dash-container">
+        <div class="sidebar-overlay" id="dash-overlay"></div>
+
+        <aside class="dash-sidebar" id="dash-sidebar">
+            <div class="dash-sidebar-header">
+                <a href="../index.html" class="logo" style="font-size: 1.4rem;">Cakeology</a>
+            </div>
+            <div class="dash-sidebar-content">
+                <div class="dash-nav-label">Management</div>
+                <a href="admin-dashboard.html" class="dash-nav-link">
+                    <i class="fas fa-chart-pie"></i> Overview
+                </a>
+                <a href="admin-products.html" class="dash-nav-link">
+                    <i class="fas fa-birthday-cake"></i> Products
+                </a>
+                <a href="admin-orders.html" class="dash-nav-link active">
+                    <i class="fas fa-shopping-bag"></i> Orders
+                </a>
+                <a href="admin-custom-orders.html" class="dash-nav-link">
+                    <i class="fas fa-magic"></i> Custom Orders
+                </a>
+                <a href="admin-customers.html" class="dash-nav-link">
+                    <i class="fas fa-users"></i> Customers
+                </a>
+                <a href="admin-offers.html" class="dash-nav-link">
+                    <i class="fas fa-ticket-alt"></i> Offers & Coupons
+                </a>
+                <a href="admin-reviews.html" class="dash-nav-link">
+                    <i class="fas fa-star"></i> Reviews
+                </a>
+
+                <div class="dash-nav-label">Insights</div>
+                <a href="admin-analytics.html" class="dash-nav-link">
+                    <i class="fas fa-chart-line"></i> Analytics
+                </a>
+                <a href="admin-notifications.html" class="dash-nav-link">
+                    <i class="fas fa-bell"></i> Notifications
+                </a>
+
+                <div class="dash-nav-label">Account</div>
+                <a href="admin-profile.html" class="dash-nav-link">
+                    <i class="fas fa-user-circle"></i> Profile
+                </a>
+                <a href="admin-settings.html" class="dash-nav-link">
+                    <i class="fas fa-cog"></i> Settings
+                </a>
+                <a href="login.html" class="dash-nav-link" style="color: var(--dash-danger);">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+        <main class="dash-main">
+            <header class="dash-header">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div id="dash-hamburger">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <a href="../index.html" class="dash-brand-mobile" style="display: none;">Cakeology</a>
+                </div>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div class="dash-search" style="position: relative;">
+                        <i class="fas fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--dash-text-muted);"></i>
+                        <input type="text" placeholder="Search..." style="padding-left: 45px; width: 150px; border-radius: 12px; height: 38px;">
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+                        <img src="../images/favicon.png" alt="Avatar" class="avatar" style="width: 32px; height: 32px;">
+                    </div>
+                </div>
+            </header>
+
+            <div class="dash-content">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+                    <div>
+                        <h1 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 10px;">Orders Management</h1>
+                        <p style="color: var(--dash-text-muted);">Monitor and process customer orders across all categories.</p>
+                    </div>
+                </div>
+
+                <!-- Orders Filter Tabs -->
+                <div style="display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 1px solid var(--dash-border); padding-bottom: 15px;">
+                    <button class="dash-nav-link active" style="padding: 10px 20px; background: none; color: var(--dash-primary); border: none; font-weight: 600;">All Orders</button>
+                    <button class="dash-nav-link" style="padding: 10px 20px; background: none; border: none;">Pending</button>
+                    <button class="dash-nav-link" style="padding: 10px 20px; background: none; border: none;">Processing</button>
+                    <button class="dash-nav-link" style="padding: 10px 20px; background: none; border: none;">Completed</button>
+                </div>
+
+                <!-- Orders Table -->
+                <div class="dash-card">
+                    <div class="dash-table-container">
+                        <table class="dash-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Items</th>
+                                    <th>Total Amount</th>
+                                    <th>Payment</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: 600; color: var(--dash-primary);">#ORD-8942</td>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <img src="https://i.pravatar.cc/150?u=4" class="avatar" style="width: 32px; height: 32px;">
+                                            <div>
+                                                <div style="font-weight: 600; font-size: 0.9rem;">David Miller</div>
+                                                <div style="font-size: 0.7rem; color: var(--dash-text-muted);">david.m@example.com</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>2 Items</td>
+                                    <td style="font-weight: 700;">$112.50</td>
+                                    <td><span style="font-size: 0.8rem;"><i class="fab fa-cc-visa" style="color: #1a1f71;"></i> Visa-4421</span></td>
+                                    <td><span class="badge badge-warning">Processing</span></td>
+                                    <td>
+                                        <div style="display: flex; gap: 15px;">
+                                            <button class="btn btn-primary" style="padding: 6px 12px; font-size: 0.8rem; border-radius: 8px;">Ship</button>
+                                            <i class="fas fa-eye" style="cursor: pointer; color: var(--dash-text-muted); align-self: center;"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 600; color: var(--dash-primary);">#ORD-8941</td>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <img src="https://i.pravatar.cc/150?u=5" class="avatar" style="width: 32px; height: 32px;">
+                                            <div>
+                                                <div style="font-weight: 600; font-size: 0.9rem;">Sophia Chen</div>
+                                                <div style="font-size: 0.7rem; color: var(--dash-text-muted);">sophia.c@example.com</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>5 Items</td>
+                                    <td style="font-weight: 700;">$245.00</td>
+                                    <td><span style="font-size: 0.8rem;"><i class="fab fa-cc-mastercard" style="color: #eb001b;"></i> MC-8892</span></td>
+                                    <td><span class="badge badge-info">Shipped</span></td>
+                                    <td>
+                                        <div style="display: flex; gap: 15px;">
+                                            <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem; border-radius: 8px;">Track</button>
+                                            <i class="fas fa-eye" style="cursor: pointer; color: var(--dash-text-muted); align-self: center;"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 600; color: var(--dash-primary);">#ORD-8940</td>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <img src="https://i.pravatar.cc/150?u=6" class="avatar" style="width: 32px; height: 32px;">
+                                            <div>
+                                                <div style="font-weight: 600; font-size: 0.9rem;">Mark Stevens</div>
+                                                <div style="font-size: 0.7rem; color: var(--dash-text-muted);">mark.s@example.com</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>1 Item</td>
+                                    <td style="font-weight: 700;">$48.00</td>
+                                    <td><span style="font-size: 0.8rem;"><i class="fab fa-paypal" style="color: #003087;"></i> PayPal</span></td>
+                                    <td><span class="badge badge-success">Delivered</span></td>
+                                    <td>
+                                        <div style="display: flex; gap: 15px;">
+                                            <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem; border-radius: 8px;">Invoice</button>
+                                            <i class="fas fa-eye" style="cursor: pointer; color: var(--dash-text-muted); align-self: center;"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

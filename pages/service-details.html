@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Details | Cakeology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            margin-top: 50px;
+        }
+
+        .service-features {
+            margin: 40px 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .feature-list i {
+            color: var(--accent-gold);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .step-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-gold);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-weight: 700;
+        }
+
+        .faq-accordion {
+            margin-top: 80px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--primary-pink);
+            padding: 20px 0;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .faq-answer {
+            padding-top: 15px;
+            display: none;
+            color: var(--text-muted);
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .sidebar-booking {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        @media (max-width: 992px) {
+            .details-grid { grid-template-columns: 1fr; }
+            .sidebar-booking { position: static; }
+        }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+<body>
+    <header id="main-header">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Cakeology</a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="home2.html">Studio</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="user-account">
+                        <div class="account-trigger">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="account-dropdown">
+                            <div class="dropdown-header">
+                                <h5>Sarah Jenkins</h5>
+                                <span>Sarah@example.com</span>
+                            </div>
+                            <a href="login.html" class="dropdown-item"><i class="fas fa-sign-in-alt"></i> Sign Up / Login</a>
+                            <a href="admin-dashboard.html" class="dropdown-item"><i class="fas fa-user-shield"></i> Admin Dashboard</a>
+                            <a href="dashboard.html" class="dropdown-item"><i class="fas fa-th-large"></i> User Dashboard</a>
+                            <a href="dashboard.html" class="dropdown-item"><i class="fas fa-user-circle"></i> Profile</a>
+                            <a href="dashboard.html" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a>
+                            <a href="#" class="dropdown-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section-padding" style="padding-top: 150px;">
+        <div class="container">
+            <div class="details-grid">
+                <div class="details-main reveal">
+                    <img src="../images/hero.png" alt="Wedding Cake Details" style="width: 100%; border-radius: var(--radius-lg); margin-bottom: 40px;">
+                    <h1 style="font-size: 3rem; margin-bottom: 20px;">Luxury Wedding Cake Design</h1>
+                    <p>Your wedding cake is more than just a dessert; it's a centerpiece of your celebration and a reflection of your unique love story. At Cakeology, we specialize in creating breathtaking multi-tiered wedding cakes that combine architectural precision with delicate artistry.</p>
+                    
+                    <div class="service-features">
+                        <h3>What's Included:</h3>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Personal design consultation and sketching session.</li>
+                            <li><i class="fas fa-check-circle"></i> Cake tasting box with 6 signature flavors.</li>
+                            <li><i class="fas fa-check-circle"></i> On-site setup and professional assembly at your venue.</li>
+                            <li><i class="fas fa-check-circle"></i> Coordination with your florist for fresh flower integration.</li>
+                            <li><i class="fas fa-check-circle"></i> Complimentary 1st anniversary mini-cake.</li>
+                        </ul>
+                    </div>
+
+                    <h2 style="margin-top: 60px;">Our Process</h2>
+                    <div class="process-steps">
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <h4>Consultation</h4>
+                            <p>We discuss your vision, venue, and guest count.</p>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <h4>Tasting</h4>
+                            <p>Enjoy our finest flavors and choose your favorite.</p>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <h4>Design</h4>
+                            <p>We finalize the sketches and technical details.</p>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">4</div>
+                            <h4>Creation</h4>
+                            <p>Our chefs bring your dream cake to life.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-accordion">
+                        <h2>Frequently Asked Questions</h2>
+                        <div class="faq-item">
+                            <div class="faq-question">How far in advance should I book? <i class="fas fa-plus"></i></div>
+                            <div class="faq-answer">We recommend booking at least 6-9 months in advance for wedding season, as we only take a limited number of commissions per week.</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">Do you offer vegan or gluten-free options? <i class="fas fa-plus"></i></div>
+                            <div class="faq-answer">Yes, we offer a range of delicious vegan and gluten-free cake flavors that maintain our signature premium quality.</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">Do you deliver to out-of-city venues? <i class="fas fa-plus"></i></div>
+                            <div class="faq-answer">Yes, we provide delivery within a 100-mile radius of our studio. Delivery fees are calculated based on distance.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details-sidebar reveal">
+                    <div class="glass-card sidebar-booking">
+                        <h3>Reserve Your Date</h3>
+                        <p style="margin-bottom: 25px;">Ready to start designing your masterpiece?</p>
+                        <form>
+                            <div class="form-group">
+                                <label>Wedding Date</label>
+                                <input type="date" style="width: 100%; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--primary-pink);">
+                            </div>
+                            <div class="form-group" style="margin-top: 15px;">
+                                <label>Estimated Guests</label>
+                                <input type="number" placeholder="e.g. 150" style="width: 100%; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--primary-pink);">
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 30px;">Request Consultation</button>
+                        </form>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 20px; text-align: center;">Average wedding cake investment starts at $450.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: var(--primary-pink); padding: 80px 0 20px;">
+        <div class="container">
+            <div class="footer-bottom" style="border: none;">
+                <p>&copy; 2026 Cakeology. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // FAQ Accordion Logic
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                q.parentElement.classList.toggle('active');
+                const icon = q.querySelector('i');
+                icon.classList.toggle('fa-plus');
+                icon.classList.toggle('fa-minus');
+            });
+        });
+    </script>
+</body>
+</html>

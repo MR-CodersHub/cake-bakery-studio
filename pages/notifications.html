@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications | Cakeology</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .notifications-container {
+            max-width: 1200px;
+            margin: 120px auto 60px;
+            padding: 0 20px;
+            display: flex;
+            gap: 30px;
+        }
+
+        .notifications-main {
+            flex: 1;
+        }
+
+        .notification-card {
+            background: var(--white);
+            padding: 25px 30px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 20px;
+            display: flex;
+            gap: 20px;
+            position: relative;
+            transition: var(--transition-smooth);
+            border-left: 5px solid transparent;
+        }
+
+        .notification-card.unread {
+            border-left-color: var(--accent-gold);
+            background: var(--primary-cream);
+        }
+
+        .notification-card:hover {
+            box-shadow: var(--shadow-premium);
+        }
+
+        .notif-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-chocolate);
+            flex-shrink: 0;
+        }
+
+        .notif-time {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .notifications-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+
+<body>
+
+    <header id="main-header" class="scrolled">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Cakeology</a>
+                <ul class="nav-links">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="notifications-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar" style="position: static; box-shadow: var(--shadow-soft);">
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html" class="sidebar-link"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                <li><a href="my-orders.html" class="sidebar-link"><i class="fas fa-shopping-bag"></i> My Orders</a></li>
+                <li><a href="notifications.html" class="sidebar-link active"><i class="fas fa-bell"></i> Notifications</a></li>
+                <li><a href="profile.html" class="sidebar-link"><i class="fas fa-user-cog"></i> Profile Settings</a></li>
+                <li><a href="login.html" class="sidebar-link" style="color: #d32f2f;"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </aside>
+
+        <main class="notifications-main">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                <h1>Notifications</h1>
+                <a href="#" style="color: var(--accent-gold); font-size: 0.9rem; font-weight: 600;">Mark all as read</a>
+            </div>
+            
+            <!-- Notif 1 -->
+            <div class="notification-card unread reveal">
+                <div class="notif-icon"><i class="fas fa-truck"></i></div>
+                <div style="flex: 1;">
+                    <h4 style="margin-bottom: 5px;">Your order is out for delivery!</h4>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Order #SE-9842 is on its way to your home address. Get ready for some sweetness!</p>
+                    <div class="notif-time">10 minutes ago</div>
+                </div>
+            </div>
+
+            <!-- Notif 2 -->
+            <div class="notification-card unread reveal" style="transition-delay: 0.1s;">
+                <div class="notif-icon"><i class="fas fa-gift"></i></div>
+                <div style="flex: 1;">
+                    <h4 style="margin-bottom: 5px;">Exclusive Offer for You!</h4>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Use code SWEET10 for 10% off your next custom cake order. Valid for 48 hours.</p>
+                    <div class="notif-time">2 hours ago</div>
+                </div>
+            </div>
+
+            <!-- Notif 3 -->
+            <div class="notification-card reveal" style="transition-delay: 0.2s;">
+                <div class="notif-icon"><i class="fas fa-check-circle"></i></div>
+                <div style="flex: 1;">
+                    <h4 style="margin-bottom: 5px;">Payment Successful</h4>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Payment for Order #SE-9842 has been confirmed. We've started baking!</p>
+                    <div class="notif-time">Yesterday, 4:15 PM</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Bakery & Cake Artistry | Cakeology</title>
+    <meta name="description"
+        content="Experience the art of luxury baking with Cakeology. Bespoke cakes, artisanal pastries, and designer desserts for your most precious moments.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Cakeology</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="pages/home2.html">Home 2</a></li>
+                    <li><a href="pages/shop.html">Shop</a></li>
+                    <li><a href="pages/about.html">About</a></li>
+                    <li><a href="pages/gallery.html">Gallery</a></li>
+                    <li><a href="pages/blog.html">Blog</a></li>
+                    <li><a href="pages/contact.html">Contact</a></li>
+                    <li class="user-account">
+                        <div class="account-trigger">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="account-dropdown">
+                            <div class="dropdown-header">
+                                <h5>Sarah Jenkins</h5>
+                                <span>Sarah@example.com</span>
+                            </div>
+                            <a href="pages/login.html" class="dropdown-item"><i class="fas fa-sign-in-alt"></i> Login /
+                                Sign Up</a>
+                            <a href="pages/admin-dashboard.html" class="dropdown-item"><i
+                                    class="fas fa-user-shield"></i> Admin Dashboard</a>
+                            <a href="pages/dashboard.html" class="dropdown-item"><i class="fas fa-th-large"></i>
+                                Dashboard</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="pages/cart.html" class="cart-trigger" id="cart-btn">
+                        <i class="fas fa-shopping-basket"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <div class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-shapes"></div>
+        <div class="container hero-container">
+            <div class="hero-content reveal">
+                <h1>Crafting Your <br><span style="color: var(--accent-gold);">Sweetest</span> Dreams</h1>
+                <p>Luxury custom cakes and artisanal pastries handcrafted with love and the finest ingredients for your
+                    special celebrations.</p>
+                <div class="hero-btns">
+                    <a href="pages/custom-order.html" class="btn btn-primary">Order Custom Cake</a>
+                    <a href="pages/gallery.html" class="btn btn-outline">View Portfolio</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-slideshow float-animation">
+                    <img src="images/hero.png" alt="Luxury Wedding Cake" class="active">
+                    <img src="images/gallery_2.png" alt="Artisanal Dessert">
+                    <img src="images/cupcake_cat.png" alt="Signature Cupcakes">
+
+                    <div class="slideshow-indicators">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="section-padding">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h2 style="font-size: 3rem;">Signature Collections</h2>
+                <p style="color: var(--text-muted);">Explore our most loved bakery delights</p>
+            </div>
+            <div class="featured-grid">
+                <div class="category-card reveal">
+                    <img src="images/wedding_cat.png" alt="Wedding Cakes">
+                    <div class="category-overlay">
+                        <h3>Wedding Cakes</h3>
+                        <p>Timeless elegance for your big day</p>
+                        <a href="pages/shop.html" class="btn btn-outline">Explore</a>
+                    </div>
+                </div>
+                <div class="category-card reveal" style="transition-delay: 0.1s;">
+                    <img src="images/cupcake_cat.png" alt="Cupcake Collection">
+                    <div class="category-overlay">
+                        <h3>Cupcake Collection</h3>
+                        <p>Bite-sized moments of joy</p>
+                        <a href="pages/shop.html" class="btn btn-outline">Explore</a>
+                    </div>
+                </div>
+                <div class="category-card reveal" style="transition-delay: 0.2s;">
+                    <img src="images/celebration_cat.png" alt="Celebration Cakes">
+                    <div class="category-overlay">
+                        <h3>Celebration Cakes</h3>
+                        <p>Unique designs for every occasion</p>
+                        <a href="pages/shop.html" class="btn btn-outline">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us section-padding">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <h2 style="font-size: 3rem; margin-bottom: 15px;">The Bakery Experience</h2>
+                <p style="color: var(--text-secondary); max-width: 700px; margin: 0 auto;">We believe every celebration
+                    deserves a centerpiece that tastes as good as it looks.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item reveal">
+                    <div class="feature-icon"><i class="fas fa-heart"></i></div>
+                    <h3>Handcrafted with Love</h3>
+                    <p>Every cake is a unique piece of art made specifically for you.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+                    <h3>Premium Ingredients</h3>
+                    <p>We use only the finest organic ingredients and seasonal fruits.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <div class="feature-icon"><i class="fas fa-truck-fast"></i></div>
+                    <h3>Safe Delivery</h3>
+                    <p>Temperature-controlled delivery to ensure perfection.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <div class="feature-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Custom Designs</h3>
+                    <p>Work directly with our designers to bring your vision to life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section-padding newsletter-section">
+        <div class="container" style="text-align: center;">
+            <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Join Our Sweet List</h2>
+                <p style="margin-bottom: 30px;">Subscribe to receive exclusive offers, new flavor alerts, and baking
+                    tips.</p>
+                <form style="display: flex; gap: 10px; max-width: 500px; margin: 0 auto; flex-wrap: wrap;">
+                    <input type="email" placeholder="Your Email Address"
+                        style="flex: 1; padding: 15px 25px; border-radius: var(--radius-pill); border: 1px solid var(--primary-pink); outline: none;">
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand Section -->
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="display: inline-block; margin-bottom: 25px;">Cakeology</a>
+                    <p class="footer-desc">Crafting luxury bespoke cakes and artisanal pastries for your most precious
+                        moments. Every creation is a unique piece of art handcrafted with love.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <!-- Discovery Section -->
+                <div class="footer-col">
+                    <h4>Collections</h4>
+                    <ul class="footer-links">
+                        <li><a href="pages/shop.html">Wedding Collection</a></li>
+                        <li><a href="pages/shop.html">Celebration Cakes</a></li>
+                        <li><a href="pages/shop.html">Designer Cupcakes</a></li>
+                        <li><a href="pages/shop.html">Seasonal Specials</a></li>
+                        <li><a href="pages/offers.html">Exclusive Offers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Experience Section -->
+                <div class="footer-col">
+                    <h4>The Studio</h4>
+                    <ul class="footer-links">
+                        <li><a href="pages/about.html">Our Story</a></li>
+                        <li><a href="pages/gallery.html">Art Portfolio</a></li>
+                        <li><a href="pages/custom-order.html">Custom Design</a></li>
+                        <li><a href="pages/blog.html">Baking Blog</a></li>
+                        <li><a href="pages/testimonials.html">Reviews</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support Section -->
+                <div class="footer-col">
+                    <h4>Visit Us</h4>
+                    <ul class="contact-info-list">
+                        <li>
+                            <i class="fas fa-location-dot"></i>
+                            <span>123 Bakery Lane, Sugar City, NY 10001</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>hello@cakeology.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Tue - Sat: 9:00 AM - 6:00 PM<br>Sun - Mon: Closed</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cakeology Artisanal Bakery. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="pages/privacy.html">Privacy Policy</a>
+                    <a href="pages/terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

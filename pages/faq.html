@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faq | Cakeology</title>
+    <meta name="description" content="Find answers to common questions about our custom cakes, delivery policies, and pastry subscriptions.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .faq-hero {
+            padding: 120px 0 60px;
+            background: var(--gradient-peach);
+            text-align: center;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 20px;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-chocolate);
+        }
+
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            color: var(--text-muted);
+        }
+
+        .faq-item.active .faq-answer {
+            padding-bottom: 25px;
+            max-height: 300px;
+        }
+
+        .faq-item.active i {
+            transform: rotate(180deg);
+            color: var(--accent-gold);
+        }
+
+        .faq-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .faq-tab {
+            padding: 12px 30px;
+            border-radius: var(--radius-pill);
+            background: var(--white);
+            border: 1px solid var(--primary-pink);
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .faq-tab.active {
+            background: var(--primary-pink);
+            border-color: var(--accent-gold);
+        }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Cakeology</a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="faq.html" class="active">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="faq-hero">
+        <div class="container">
+            <h1 style="font-size: 3.5rem; margin-bottom: 20px;">Got Questions?</h1>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Everything you need to know about our cakes, ordering process, and more.</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="faq-tabs">
+                <div class="faq-tab active">General</div>
+                <div class="faq-tab">Ordering & Payment</div>
+                <div class="faq-tab">Delivery & Pickup</div>
+                <div class="faq-tab">Cake Care</div>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        How far in advance should I order a custom cake?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For custom wedding cakes, we recommend booking at least 3-6 months in advance. For other custom celebration cakes, 2-4 weeks is usually sufficient. However, we do occasionally have last-minute openings, so it's always worth asking!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer vegan or gluten-free options?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We have a dedicated range of delicious vegan and gluten-free sponge flavors. While we take every precaution to avoid cross-contamination, please note that our studio handles nuts, gluten, and dairy.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can you deliver to my venue?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. We offer temperature-controlled delivery within a 50-mile radius of our studio. Delivery fees are calculated based on distance. For tiered wedding cakes, we highly recommend our professional delivery and set-up service.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How should I store my cake after I get it home?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most of our cakes are best enjoyed at room temperature. If your event is on the same day, keep the cake in a cool, dry place away from direct sunlight. If you need to store it overnight, keep it refrigerated but take it out 2-3 hours before serving to let the sponge and buttercream soften.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer cake tastings?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer "Taster Boxes" for wedding inquiries which can be ordered through our shop. We also host monthly tasting events at our studio where you can sample our most popular flavors.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="display: block; margin-bottom: 20px;">Cakeology</a>
+                    <p>Transforming your celebrations into unforgettable memories with our bespoke cake designs and artisanal pastries.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cakeology. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

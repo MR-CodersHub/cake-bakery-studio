@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Management | Cakeology</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .sub-management-container {
+            max-width: 1200px;
+            margin: 120px auto 60px;
+            padding: 0 20px;
+            display: flex;
+            gap: 30px;
+        }
+
+        .sub-main {
+            flex: 1;
+        }
+
+        .active-sub-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-premium);
+            padding: 40px;
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+            border-left: 10px solid var(--accent-gold);
+        }
+
+        .sub-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .sub-history {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+        }
+
+        @media (max-width: 768px) {
+            .sub-management-container {
+                flex-direction: column;
+            }
+            .active-sub-card {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+
+<body>
+
+    <header id="main-header" class="scrolled">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Cakeology</a>
+                <ul class="nav-links">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="sub-management-container">
+        <!-- Sidebar Re-used -->
+        <aside class="dashboard-sidebar" style="position: static; box-shadow: var(--shadow-soft);">
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html" class="sidebar-link"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                <li><a href="my-orders.html" class="sidebar-link"><i class="fas fa-shopping-bag"></i> My Orders</a></li>
+                <li><a href="subscription-management.html" class="sidebar-link active"><i class="fas fa-calendar-alt"></i> Subscriptions</a></li>
+                <li><a href="profile.html" class="sidebar-link"><i class="fas fa-user-cog"></i> Profile Settings</a></li>
+                <li><a href="login.html" class="sidebar-link" style="color: #d32f2f;"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </aside>
+
+        <main class="sub-main">
+            <h1 style="margin-bottom: 30px;">My Subscriptions</h1>
+            
+            <div class="active-sub-card reveal">
+                <div style="flex: 1;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div>
+                            <span class="status-badge status-delivered" style="margin-bottom: 10px; display: inline-block;">ACTIVE</span>
+                            <h2 style="font-size: 2.2rem;">The Sweet Suite</h2>
+                            <p style="color: var(--text-muted);">Bi-weekly artisan pastry delivery</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <div class="price" style="font-size: 2rem;">$55<span>/mo</span></div>
+                        </div>
+                    </div>
+
+                    <div class="sub-info-grid">
+                        <div>
+                            <span style="font-size: 0.85rem; color: var(--text-muted);">NEXT DELIVERY</span>
+                            <p style="font-weight: 600;">May 28, 2026</p>
+                        </div>
+                        <div>
+                            <span style="font-size: 0.85rem; color: var(--text-muted);">PAYMENT METHOD</span>
+                            <p style="font-weight: 600;">Visa ending in 4242</p>
+                        </div>
+                        <div>
+                            <span style="font-size: 0.85rem; color: var(--text-muted);">DELIVERY FREQUENCY</span>
+                            <p style="font-weight: 600;">Every 2 Weeks</p>
+                        </div>
+                        <div>
+                            <span style="font-size: 0.85rem; color: var(--text-muted);">SINCE</span>
+                            <p style="font-weight: 600;">March 2026</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px; display: flex; gap: 15px;">
+                        <button class="btn btn-primary" style="padding: 10px 20px;">Change Plan</button>
+                        <button class="btn btn-outline" style="padding: 10px 20px;">Pause Subscription</button>
+                        <a href="#" style="color: #d32f2f; margin-left: auto; align-self: center; font-size: 0.9rem;">Cancel Plan</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sub-history reveal">
+                <h3>Upcoming Deliveries</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Expected Date</th>
+                                <th>Box Type</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>May 28, 2026</td>
+                                <td>Summer Berry Special</td>
+                                <td><span class="status-badge status-pending">Scheduled</span></td>
+                                <td><a href="#" style="color: var(--accent-gold);">Edit Preferences</a></td>
+                            </tr>
+                            <tr>
+                                <td>June 11, 2026</td>
+                                <td>Artisan Selection</td>
+                                <td><span class="status-badge status-pending">Scheduled</span></td>
+                                <td><a href="#" style="color: var(--accent-gold);">Edit Preferences</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

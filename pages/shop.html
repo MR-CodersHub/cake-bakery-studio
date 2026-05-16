@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Cakeology</title>
+    <meta name="description"
+        content="Browse our delicious collection of custom cakes, artisanal pastries, and seasonal desserts. Order online for delivery or pickup.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .shop-header {
+            padding: 120px 0 60px;
+            background: var(--gradient-sweet);
+            text-align: center;
+        }
+
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            border-radius: var(--radius-pill);
+            background: var(--bg-surface);
+            border: 1px solid var(--primary-pink);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-pink);
+            color: var(--text-chocolate);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--bg-surface);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-premium);
+        }
+
+        .product-img {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            background: var(--bg-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-img::after {
+            content: "\f03e";
+            /* FontAwesome Image Icon */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            font-size: 3rem;
+            color: rgba(212, 175, 55, 0.2);
+            z-index: 0;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Generated Empty Card Placeholder Style */
+        .product-img.empty-placeholder::after {
+            content: "\f03e \A Coming Soon";
+            white-space: pre;
+            text-align: center;
+            font-family: "Outfit", "Font Awesome 6 Free";
+            font-weight: 500;
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            line-height: 1.5;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent-gold);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: var(--radius-pill);
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--text-chocolate);
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-chocolate);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .add-to-cart {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-chocolate);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .add-to-cart:hover {
+            background: var(--accent-gold);
+            color: var(--white);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 60px;
+        }
+
+        .page-link {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--bg-surface);
+            border: 1px solid var(--primary-pink);
+            transition: var(--transition-smooth);
+        }
+
+        .page-link.active,
+        .page-link:hover {
+            background: var(--primary-pink);
+            color: var(--text-chocolate);
+        }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+
+<body>
+
+    <!-- Header (JS Injected) -->
+    <header id="main-header"></header>
+
+    <!-- Shop Header -->
+    <section class="shop-header">
+        <div class="container">
+            <h1 style="font-size: 3.5rem; margin-bottom: 20px;">Our Sweet Menu</h1>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">From classic vanilla to exotic
+                passion fruit, explore our wide range of handcrafted delights.</p>
+        </div>
+    </section>
+
+    <!-- Shop Content -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="filter-bar">
+                <button class="filter-btn active">All Delights</button>
+                <button class="filter-btn">Wedding Cakes</button>
+                <button class="filter-btn">Birthday Cakes</button>
+                <button class="filter-btn">Cupcakes</button>
+                <button class="filter-btn">Macarons</button>
+                <button class="filter-btn">Pastries</button>
+                <button class="filter-btn">Vegan Options</button>
+            </div>
+
+            <div class="product-grid">
+                <!-- Product 1: Wedding -->
+                <div class="product-card reveal" data-id="cake-velvet-dream" data-category="Wedding Cakes">
+                    <a href="product-detail.html?id=cake-velvet-dream">
+                        <div class="product-img">
+                            <img src="../images/hero.png" alt="Velvet Dream Cake">
+                            <div class="product-badge">Best Seller</div>
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <span class="product-category">Wedding Cakes</span>
+                        <h3 class="product-title">Velvet Dream Cake</h3>
+                        <div class="product-price">
+                            <span>$45.00</span>
+                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Wedding -->
+                <div class="product-card reveal" data-id="cake-midnight-orchid" data-category="Wedding Cakes">
+                    <a href="product-detail.html?id=cake-midnight-orchid">
+                        <div class="product-img">
+                            <img src="../images/wedding_cat.png" alt="Midnight Orchid">
+                            <div class="product-badge">Premium</div>
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <span class="product-category">Wedding Cakes</span>
+                        <h3 class="product-title">Midnight Orchid Cake</h3>
+                        <div class="product-price">
+                            <span>$85.00</span>
+                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Birthday -->
+                <div class="product-card reveal" data-id="cake-choc-truffle" data-category="Birthday Cakes">
+                    <a href="product-detail.html?id=cake-choc-truffle">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                alt="Chocolate Truffle">
+                            <div class="product-badge">Popular</div>
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <span class="product-category">Birthday Cakes</span>
+                        <h3 class="product-title">Chocolate Truffle Indulgence</h3>
+                        <div class="product-price">
+                            <span>$55.00</span>
+                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Cupcakes -->
+                <div class="product-card reveal" data-id="cupcakes-pastel-party" data-category="Cupcakes">
+                    <a href="product-detail.html?id=cupcakes-pastel-party">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1519340333755-56e9c1d04579?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                alt="Pastel Cupcakes">
+                            <div class="product-badge">Set of 12</div>
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <span class="product-category">Cupcakes</span>
+                        <h3 class="product-title">Pastel Party Set</h3>
+                        <div class="product-price">
+                            <span>$32.00</span>
+                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5: Macarons -->
+                <div class="product-card reveal" data-id="macarons-parisian-gold" data-category="Macarons">
+                    <a href="product-detail.html?id=macarons-parisian-gold">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                alt="Golden Macarons">
+                            <div class="product-badge">New</div>
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <span class="product-category">Macarons</span>
+                        <h3 class="product-title">Parisian Gold Macarons</h3>
+                        <div class="product-price">
+                            <span>$24.00</span>
+                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6: Pastries -->
+                <div class="product-card reveal" data-id="pastry-berry-bliss" data-category="Pastries">
+                    <a href="product-detail.html?id=pastry-berry-bliss">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                alt="Berry Bliss">
+                            <div class="product-badge">Fresh</div>
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <span class="product-category">Pastries</span>
+                        <h3 class="product-title">Berry Bliss Tart</h3>
+                        <div class="product-price">
+                            <span>$18.00</span>
+                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7: Vegan -->
+                <div class="product-card reveal" data-id="cake-vegan-matcha" data-category="Vegan Options">
+                    <a href="product-detail.html?id=cake-vegan-matcha">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                alt="Vegan Matcha">
+                            <div class="product-badge">Healthy</div>
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <span class="product-category">Vegan Options</span>
+                        <h3 class="product-title">Zen Matcha Vegan Cake</h3>
+                        <div class="product-price">
+                            <span>$52.00</span>
+                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8: Cupcakes -->
+                <div class="product-card reveal" data-id="cupcakes-velvet-duet" data-category="Cupcakes">
+                    <a href="product-detail.html?id=cupcakes-velvet-duet">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1599785209707-a456fc1337bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                alt="Velvet Duet">
+                            <div class="product-badge">Romantic</div>
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <span class="product-category">Cupcakes</span>
+                        <h3 class="product-title">Red Velvet Duet</h3>
+                        <div class="product-price">
+                            <span>$36.00</span>
+                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 9: Macarons -->
+                <div class="product-card reveal" data-id="macarons-rose-garden" data-category="Macarons">
+                    <a href="product-detail.html?id=macarons-rose-garden">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1558326567-98ae2405596b?q=80&w=1080&auto=format&fit=crop"
+                                alt="Rose Garden">
+                            <div class="product-badge">Handcrafted</div>
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <span class="product-category">Macarons</span>
+                        <h3 class="product-title">Rose Garden Macarons</h3>
+                        <div class="product-price">
+                            <span>$28.00</span>
+                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 10: Pastries -->
+                <div class="product-card reveal" data-id="pastry-lemon-meringue" data-category="Pastries">
+                    <a href="product-detail.html?id=pastry-lemon-meringue">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                                alt="Lemon Tart">
+                            <div class="product-badge">Zesty</div>
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <span class="product-category">Pastries</span>
+                        <h3 class="product-title">Cloud Nine Lemon Tart</h3>
+                        <div class="product-price">
+                            <span>$15.00</span>
+                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 11: Vegan -->
+                <div class="product-card reveal" data-id="cake-vegan-berry" data-category="Vegan Options">
+                    <a href="product-detail.html?id=cake-vegan-berry">
+                        <div class="product-img">
+                            <img src="../images/celebration_cat.png" alt="Vegan Galette">
+                            <div class="product-badge">Plant Based</div>
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <span class="product-category">Vegan Options</span>
+                        <h3 class="product-title">Wild Berry Vegan Galette</h3>
+                        <div class="product-price">
+                            <span>$48.00</span>
+                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand Section -->
+                <div class="footer-col">
+                    <a href="../index.html" class="logo"
+                        style="display: inline-block; margin-bottom: 25px;">Cakeology</a>
+                    <p class="footer-desc">Crafting luxury bespoke cakes and artisanal pastries for your most precious
+                        moments. Every creation is a unique piece of art handcrafted with love.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <!-- Discovery Section -->
+                <div class="footer-col">
+                    <h4>Collections</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">Wedding Collection</a></li>
+                        <li><a href="shop.html">Celebration Cakes</a></li>
+                        <li><a href="shop.html">Designer Cupcakes</a></li>
+                        <li><a href="shop.html">Seasonal Specials</a></li>
+                        <li><a href="offers.html">Exclusive Offers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Experience Section -->
+                <div class="footer-col">
+                    <h4>The Studio</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="gallery.html">Art Portfolio</a></li>
+                        <li><a href="custom-order.html">Custom Design</a></li>
+                        <li><a href="blog.html">Baking Blog</a></li>
+                        <li><a href="testimonials.html">Reviews</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support Section -->
+                <div class="footer-col">
+                    <h4>Visit Us</h4>
+                    <ul class="contact-info-list">
+                        <li>
+                            <i class="fas fa-location-dot"></i>
+                            <span>123 Bakery Lane, Sugar City, NY 10001</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>hello@cakeology.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Tue - Sat: 9:00 AM - 6:00 PM<br>Sun - Mon: Closed</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cakeology Artisanal Bakery. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

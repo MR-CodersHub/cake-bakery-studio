@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Reviews | Cakeology</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+<body>
+    <div class="dash-container"><div class="sidebar-overlay" id="dash-overlay"></div>
+        <aside class="dash-sidebar" id="dash-sidebar">
+            <div class="dash-sidebar-header"><a href="../index.html" class="logo" style="font-size: 1.4rem;">Cakeology</a></div>
+            <div class="dash-sidebar-content">
+                <div class="dash-nav-label">Shopping</div>
+                <a href="dashboard.html" class="dash-nav-link"><i class="fas fa-th-large"></i> Overview</a>
+                <a href="my-orders.html" class="dash-nav-link"><i class="fas fa-box"></i> My Orders</a>
+                <a href="order-tracking.html" class="dash-nav-link"><i class="fas fa-truck-loading"></i> Track Orders</a>
+                <a href="wishlist.html" class="dash-nav-link"><i class="fas fa-heart"></i> Wishlist</a>
+                <div class="dash-nav-label">Preferences</div>
+                <a href="saved-addresses.html" class="dash-nav-link"><i class="fas fa-map-marker-alt"></i> Saved Addresses</a>
+                <a href="payment-methods.html" class="dash-nav-link"><i class="fas fa-credit-card"></i> Payment Methods</a>
+                <a href="user-reviews.html" class="dash-nav-link active"><i class="fas fa-star"></i> My Reviews</a>
+            </div>
+        </aside>
+        <main class="dash-main">
+            <header class="dash-header"><div style="display: flex; align-items: center; gap: 20px;"><div id="dash-hamburger" style="cursor: pointer; font-size: 1.2rem; display: none;"><i class="fas fa-bars"></i></div><h2>My Feedback</h2></div></header>
+            <div class="dash-content">
+                <h1 style="font-family: 'Playfair Display', serif; margin-bottom: 30px;">My Reviews</h1>
+                <div class="dash-card">
+                    <div style="display: flex; gap: 20px; border-bottom: 1px solid var(--dash-border); padding-bottom: 25px; margin-bottom: 25px;">
+                        <img src="../images/gallery_2.png" style="width: 80px; height: 80px; border-radius: 12px; object-fit: cover;">
+                        <div style="flex: 1;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                <h4 style="font-weight: 700;">Velvet Dream Cake</h4>
+                                <span style="font-size: 0.8rem; color: var(--dash-text-muted);">Verified Purchase</span>
+                            </div>
+                            <div style="color: var(--dash-primary); font-size: 0.9rem; margin: 10px 0;">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p style="font-size: 0.9rem; color: var(--dash-text-muted); line-height: 1.6;">"Absolutely amazing! The texture was so soft and the sweetness was just right. My family loved it!"</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 20px;">
+                        <img src="../images/cupcake_cat.png" style="width: 80px; height: 80px; border-radius: 12px; object-fit: cover;">
+                        <div style="flex: 1;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                <h4 style="font-weight: 700;">Pastel Party Cupcakes</h4>
+                                <span style="font-size: 0.8rem; color: var(--dash-text-muted);">Verified Purchase</span>
+                            </div>
+                            <div style="color: var(--dash-primary); font-size: 0.9rem; margin: 10px 0;">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                            </div>
+                            <p style="font-size: 0.9rem; color: var(--dash-text-muted); line-height: 1.6;">"Great variety of flavors. The strawberry one was a bit too sweet for me but overall very good."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/main.js"></script>
+</body>
+</html>

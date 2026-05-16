@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Products | Cakeology</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+<body>
+
+    <div class="dash-container">
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="dash-overlay"></div>
+
+        <!-- Sidebar -->
+        <aside class="dash-sidebar" id="dash-sidebar">
+            <div class="dash-sidebar-header">
+                <a href="../index.html" class="logo" style="font-size: 1.4rem;">Cakeology</a>
+            </div>
+            <div class="dash-sidebar-content">
+                <div class="dash-nav-label">Management</div>
+                <a href="admin-dashboard.html" class="dash-nav-link">
+                    <i class="fas fa-chart-pie"></i> Overview
+                </a>
+                <a href="admin-products.html" class="dash-nav-link active">
+                    <i class="fas fa-birthday-cake"></i> Products
+                </a>
+                <a href="admin-orders.html" class="dash-nav-link">
+                    <i class="fas fa-shopping-bag"></i> Orders
+                </a>
+                <a href="admin-custom-orders.html" class="dash-nav-link">
+                    <i class="fas fa-magic"></i> Custom Orders
+                </a>
+                <a href="admin-customers.html" class="dash-nav-link">
+                    <i class="fas fa-users"></i> Customers
+                </a>
+                <a href="admin-offers.html" class="dash-nav-link">
+                    <i class="fas fa-ticket-alt"></i> Offers & Coupons
+                </a>
+                <a href="admin-reviews.html" class="dash-nav-link">
+                    <i class="fas fa-star"></i> Reviews
+                </a>
+
+                <div class="dash-nav-label">Insights</div>
+                <a href="admin-analytics.html" class="dash-nav-link">
+                    <i class="fas fa-chart-line"></i> Analytics
+                </a>
+                <a href="admin-notifications.html" class="dash-nav-link">
+                    <i class="fas fa-bell"></i> Notifications
+                </a>
+
+                <div class="dash-nav-label">Account</div>
+                <a href="admin-profile.html" class="dash-nav-link">
+                    <i class="fas fa-user-circle"></i> Profile
+                </a>
+                <a href="admin-settings.html" class="dash-nav-link">
+                    <i class="fas fa-cog"></i> Settings
+                </a>
+                <a href="login.html" class="dash-nav-link" style="color: var(--dash-danger);">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dash-main">
+            <!-- Header -->
+            <header class="dash-header">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div id="dash-hamburger">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <a href="../index.html" class="dash-brand-mobile" style="display: none;">Cakeology</a>
+                </div>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <button class="btn btn-primary" style="padding: 8px 15px; border-radius: 10px; font-size: 0.8rem;"><i class="fas fa-plus"></i> Add</button>
+                    <div style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+                        <img src="../images/favicon.png" alt="Avatar" class="avatar" style="width: 32px; height: 32px;">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="dash-content">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+                    <div>
+                        <h1 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 10px;">Products Management</h1>
+                        <p style="color: var(--dash-text-muted);">Manage your signature collections and inventory levels.</p>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn btn-outline" style="border-radius: 12px;"><i class="fas fa-file-export"></i> Export</button>
+                        <button class="btn btn-outline" style="border-radius: 12px;"><i class="fas fa-filter"></i> Filter</button>
+                    </div>
+                </div>
+
+                <!-- Products Table -->
+                <div class="dash-card">
+                    <div class="dash-table-container">
+                        <table class="dash-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Stock Status</th>
+                                    <th>Sales</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 15px;">
+                                            <img src="../images/gallery_2.png" style="width: 50px; height: 50px; border-radius: 12px; object-fit: cover;">
+                                            <div>
+                                                <div style="font-weight: 600;">Velvet Dream Cake</div>
+                                                <div style="font-size: 0.75rem; color: var(--dash-text-muted);">SKU: SW-VDC-01</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Custom Cakes</td>
+                                    <td style="font-weight: 600;">$45.00</td>
+                                    <td><span style="color: var(--dash-success); font-weight: 500;">In Stock (12)</span></td>
+                                    <td>1,240</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>
+                                        <div style="display: flex; gap: 15px; color: var(--dash-text-muted);">
+                                            <i class="fas fa-edit" style="cursor: pointer;"></i>
+                                            <i class="fas fa-trash-alt" style="cursor: pointer;"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 15px;">
+                                            <img src="../images/cupcake_cat.png" style="width: 50px; height: 50px; border-radius: 12px; object-fit: cover;">
+                                            <div>
+                                                <div style="font-weight: 600;">Pastel Party Cupcakes</div>
+                                                <div style="font-size: 0.75rem; color: var(--dash-text-muted);">SKU: SW-PPC-12</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Cupcakes</td>
+                                    <td style="font-weight: 600;">$32.00</td>
+                                    <td><span style="color: var(--dash-warning); font-weight: 500;">Low Stock (5)</span></td>
+                                    <td>850</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>
+                                        <div style="display: flex; gap: 15px; color: var(--dash-text-muted);">
+                                            <i class="fas fa-edit" style="cursor: pointer;"></i>
+                                            <i class="fas fa-trash-alt" style="cursor: pointer;"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 15px;">
+                                            <img src="../images/pastries.png" style="width: 50px; height: 50px; border-radius: 12px; object-fit: cover;">
+                                            <div>
+                                                <div style="font-weight: 600;">Golden Macarons (Set of 6)</div>
+                                                <div style="font-size: 0.75rem; color: var(--dash-text-muted);">SKU: SW-GMC-06</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Macarons</td>
+                                    <td style="font-weight: 600;">$24.00</td>
+                                    <td><span style="color: var(--dash-danger); font-weight: 500;">Out of Stock</span></td>
+                                    <td>420</td>
+                                    <td><span class="badge badge-warning">Draft</span></td>
+                                    <td>
+                                        <div style="display: flex; gap: 15px; color: var(--dash-text-muted);">
+                                            <i class="fas fa-edit" style="cursor: pointer;"></i>
+                                            <i class="fas fa-trash-alt" style="cursor: pointer;"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 30px;">
+                        <div style="font-size: 0.9rem; color: var(--dash-text-muted);">Showing 1-3 of 24 products</div>
+                        <div style="display: flex; gap: 5px;">
+                            <button class="btn btn-outline" style="padding: 8px 15px; border-radius: 10px;"><i class="fas fa-chevron-left"></i></button>
+                            <button class="btn btn-primary" style="padding: 8px 15px; border-radius: 10px;">1</button>
+                            <button class="btn btn-outline" style="padding: 8px 15px; border-radius: 10px;">2</button>
+                            <button class="btn btn-outline" style="padding: 8px 15px; border-radius: 10px;"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Offers | Cakeology</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+<body>
+    <div class="dash-container"><div class="sidebar-overlay" id="dash-overlay"></div>
+        <aside class="dash-sidebar" id="dash-sidebar">
+            <div class="dash-sidebar-header">
+                <a href="../index.html" class="logo" style="font-size: 1.4rem;">Cakeology</a>
+            </div>
+            <div class="dash-sidebar-content">
+                <div class="dash-nav-label">Management</div>
+                <a href="admin-dashboard.html" class="dash-nav-link"><i class="fas fa-chart-pie"></i> Overview</a>
+                <a href="admin-products.html" class="dash-nav-link"><i class="fas fa-birthday-cake"></i> Products</a>
+                <a href="admin-orders.html" class="dash-nav-link"><i class="fas fa-shopping-bag"></i> Orders</a>
+                <a href="admin-custom-orders.html" class="dash-nav-link"><i class="fas fa-magic"></i> Custom Orders</a>
+                <a href="admin-customers.html" class="dash-nav-link"><i class="fas fa-users"></i> Customers</a>
+                <a href="admin-offers.html" class="dash-nav-link active"><i class="fas fa-ticket-alt"></i> Offers & Coupons</a>
+                <a href="admin-reviews.html" class="dash-nav-link"><i class="fas fa-star"></i> Reviews</a>
+                <div class="dash-nav-label">Insights</div>
+                <a href="admin-analytics.html" class="dash-nav-link"><i class="fas fa-chart-line"></i> Analytics</a>
+                <a href="admin-notifications.html" class="dash-nav-link"><i class="fas fa-bell"></i> Notifications</a>
+                <div class="dash-nav-label">Account</div>
+                <a href="admin-profile.html" class="dash-nav-link"><i class="fas fa-user-circle"></i> Profile</a>
+                <a href="admin-settings.html" class="dash-nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="login.html" class="dash-nav-link" style="color: var(--dash-danger);"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+        <main class="dash-main">
+            <header class="dash-header"><div style="display: flex; align-items: center; gap: 20px;"><div id="dash-hamburger" style="cursor: pointer; font-size: 1.2rem; display: none;"><i class="fas fa-bars"></i></div><h2>Marketing & Offers</h2></div></header>
+            <div class="dash-content">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+                    <h1 style="font-family: 'Playfair Display', serif;">Offers & Coupons</h1>
+                    <button class="btn btn-primary" style="border-radius: 12px;"><i class="fas fa-plus"></i> Create Coupon</button>
+                </div>
+                <div class="dash-card">
+                    <div class="dash-table-container">
+                        <table class="dash-table">
+                            <thead>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Discount</th>
+                                    <th>Usage</th>
+                                    <th>Expiry Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong style="color: var(--dash-primary);">SWEET20</strong></td>
+                                    <td>20% OFF</td>
+                                    <td>125 / 500</td>
+                                    <td>Dec 31, 2026</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td><i class="fas fa-edit" style="cursor: pointer; color: var(--dash-text-muted);"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color: var(--dash-primary);">FIRSTCAKE</strong></td>
+                                    <td>$10 Fixed</td>
+                                    <td>45 / &infin;</td>
+                                    <td>-</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td><i class="fas fa-edit" style="cursor: pointer; color: var(--dash-text-muted);"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color: var(--dash-primary);">WELCOME10</strong></td>
+                                    <td>10% OFF</td>
+                                    <td>320 / 320</td>
+                                    <td>Oct 10, 2023</td>
+                                    <td><span class="badge badge-danger">Expired</span></td>
+                                    <td><i class="fas fa-edit" style="cursor: pointer; color: var(--dash-text-muted);"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/main.js"></script>
+</body>
+</html>

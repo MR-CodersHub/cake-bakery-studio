@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Settings | Cakeology</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+<body>
+    <div class="dash-container">
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="dash-overlay"></div>
+
+        <aside class="dash-sidebar" id="dash-sidebar">
+            <div class="dash-sidebar-header">
+                <a href="../index.html" class="logo" style="font-size: 1.4rem;">Cakeology</a>
+            </div>
+            <div class="dash-sidebar-content">
+                <div class="dash-nav-label">Management</div>
+                <a href="admin-dashboard.html" class="dash-nav-link"><i class="fas fa-chart-pie"></i> Overview</a>
+                <a href="admin-products.html" class="dash-nav-link"><i class="fas fa-birthday-cake"></i> Products</a>
+                <a href="admin-orders.html" class="dash-nav-link"><i class="fas fa-shopping-bag"></i> Orders</a>
+                <a href="admin-custom-orders.html" class="dash-nav-link"><i class="fas fa-magic"></i> Custom Orders</a>
+                <a href="admin-customers.html" class="dash-nav-link"><i class="fas fa-users"></i> Customers</a>
+                <a href="admin-offers.html" class="dash-nav-link"><i class="fas fa-ticket-alt"></i> Offers & Coupons</a>
+                <a href="admin-reviews.html" class="dash-nav-link"><i class="fas fa-star"></i> Reviews</a>
+                <div class="dash-nav-label">Insights</div>
+                <a href="admin-analytics.html" class="dash-nav-link"><i class="fas fa-chart-line"></i> Analytics</a>
+                <a href="admin-notifications.html" class="dash-nav-link"><i class="fas fa-bell"></i> Notifications</a>
+                <div class="dash-nav-label">Account</div>
+                <a href="admin-profile.html" class="dash-nav-link"><i class="fas fa-user-circle"></i> Profile</a>
+                <a href="admin-settings.html" class="dash-nav-link active"><i class="fas fa-cog"></i> Settings</a>
+                <a href="login.html" class="dash-nav-link" style="color: var(--dash-danger);"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+        <main class="dash-main">
+            <header class="dash-header">
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div id="dash-hamburger" style="cursor: pointer; font-size: 1.2rem; display: none;">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <h2 style="font-size: 1.25rem; font-weight: 700;">Platform Settings</h2>
+                </div>
+            </header>
+            <div class="dash-content">
+                <h1 style="font-family: 'Playfair Display', serif; margin-bottom: 30px;">General Settings</h1>
+                <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px;">
+                    <div class="dash-nav-sidebar">
+                        <div class="dash-card" style="padding: 15px;">
+                            <a href="#" class="dash-nav-link active"><i class="fas fa-store"></i> Store Profile</a>
+                            <a href="#" class="dash-nav-link"><i class="fas fa-credit-card"></i> Payment Methods</a>
+                            <a href="#" class="dash-nav-link"><i class="fas fa-truck"></i> Shipping Options</a>
+                            <a href="#" class="dash-nav-link"><i class="fas fa-shield-alt"></i> Security</a>
+                            <a href="#" class="dash-nav-link"><i class="fas fa-envelope"></i> Email Templates</a>
+                        </div>
+                    </div>
+                    <div class="settings-content">
+                        <div class="dash-card">
+                            <h3 style="margin-bottom: 25px; border-bottom: 1px solid var(--dash-border); padding-bottom: 15px;">Store Information</h3>
+                            <form>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                                    <div>
+                                        <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Store Name</label>
+                                        <input type="text" value="Cakeology" style="width: 100%; border: 1px solid var(--dash-border); border-radius: 10px; padding: 12px;">
+                                    </div>
+                                    <div>
+                                        <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Support Email</label>
+                                        <input type="email" value="support@sweetelegance.com" style="width: 100%; border: 1px solid var(--dash-border); border-radius: 10px; padding: 12px;">
+                                    </div>
+                                </div>
+                                <div style="margin-bottom: 20px;">
+                                    <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Store Description</label>
+                                    <textarea style="width: 100%; border: 1px solid var(--dash-border); border-radius: 10px; padding: 12px; height: 100px;">Transforming celebrations into unforgettable memories with bespoke cake designs and artisanal pastries.</textarea>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+                                    <div>
+                                        <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Currency</label>
+                                        <select style="width: 100%; border: 1px solid var(--dash-border); border-radius: 10px; padding: 12px;">
+                                            <option>USD ($)</option>
+                                            <option>EUR (€)</option>
+                                            <option>GBP (£)</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Timezone</label>
+                                        <select style="width: 100%; border: 1px solid var(--dash-border); border-radius: 10px; padding: 12px;">
+                                            <option>(GMT-05:00) Eastern Time</option>
+                                            <option>(GMT+00:00) UTC</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary" style="padding: 12px 30px; border-radius: 12px;">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/main.js"></script>
+</body>
+</html>

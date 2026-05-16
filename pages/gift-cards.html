@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Cards | Cakeology</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .gift-hero {
+            padding: 120px 0 60px;
+            background: var(--gradient-sweet);
+            text-align: center;
+        }
+
+        .gift-card-preview {
+            max-width: 500px;
+            margin: 0 auto 50px;
+            background: linear-gradient(135deg, var(--text-chocolate) 0%, #795548 100%);
+            border-radius: var(--radius-md);
+            padding: 40px;
+            color: var(--white);
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-premium);
+        }
+
+        .gift-card-preview::after {
+            content: 'Cakeology';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 4rem;
+            opacity: 0.1;
+            font-weight: 900;
+        }
+
+        .gift-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .amount-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .amount-btn {
+            padding: 15px;
+            border: 2px solid var(--primary-pink);
+            border-radius: var(--radius-sm);
+            text-align: center;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .amount-btn.active {
+            background: var(--primary-pink);
+            border-color: var(--accent-gold);
+        }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+
+<body>
+
+    <header id="main-header">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Cakeology</a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="gift-cards.html" class="active">Gift Cards</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="gift-hero">
+        <div class="container">
+            <h1 style="font-size: 3.5rem; margin-bottom: 20px;">Gift the Art of Baking</h1>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Share the magic of Cakeology with your loved ones. Perfect for birthdays, weddings, or saying thank you.</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div style="display: flex; gap: 60px; flex-wrap: wrap; align-items: center;">
+                <div style="flex: 1; min-width: 300px;">
+                    <div class="gift-card-preview reveal">
+                        <div style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 40px;">Cakeology Gift Voucher</div>
+                        <div style="font-size: 3rem; font-weight: 700; margin-bottom: 10px;">$50.00</div>
+                        <p style="opacity: 0.8; font-size: 0.9rem;">Redeemable for any cake, pastry, or workshop.</p>
+                        <div style="margin-top: 40px; display: flex; justify-content: space-between; align-items: flex-end;">
+                            <img src="https://via.placeholder.com/60x60/D4AF37/FFFFFF?text=SE" style="width: 40px; height: 40px; border-radius: 5px;">
+                            <span style="font-family: monospace; letter-spacing: 2px;">XXXX-XXXX-XXXX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="flex: 1; min-width: 300px;" class="reveal" style="transition-delay: 0.1s;">
+                    <h2 style="margin-bottom: 30px;">Customize Your Gift</h2>
+                    <div class="amount-selector">
+                        <div class="amount-btn">$25</div>
+                        <div class="amount-btn active">$50</div>
+                        <div class="amount-btn">$100</div>
+                        <div class="amount-btn">$150</div>
+                        <div class="amount-btn">$200</div>
+                        <div class="amount-btn">Other</div>
+                    </div>
+                    <form>
+                        <div class="form-group">
+                            <label>Recipient's Name</label>
+                            <input type="text" class="form-control" placeholder="Who is it for?">
+                        </div>
+                        <div class="form-group">
+                            <label>Personal Message</label>
+                            <textarea class="form-control" rows="4" placeholder="Wishing you a sweet birthday!"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Purchase Digital Gift Card</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

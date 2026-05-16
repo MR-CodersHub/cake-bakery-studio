@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail | Cakeology</title>
+    <meta name="description" content="Order our signature Velvet Dream Cake. A luxurious red velvet sponge with cream cheese frosting and edible gold leaf.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .product-detail {
+            padding: 150px 0 80px;
+        }
+
+        .product-flex {
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .product-gallery {
+            flex: 1.2;
+            min-width: 300px;
+        }
+
+        .main-img {
+            width: 100%;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-premium);
+            margin-bottom: 20px;
+        }
+
+        .thumb-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .thumb-img {
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: 2px solid transparent;
+        }
+
+        .thumb-img:hover, .thumb-img.active {
+            border-color: var(--accent-gold);
+        }
+
+        .product-info-side {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .price-tag {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-chocolate);
+            margin: 20px 0;
+        }
+
+        .option-group {
+            margin-bottom: 30px;
+        }
+
+        .option-group label {
+            display: block;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .size-options {
+            display: flex;
+            gap: 15px;
+        }
+
+        .size-btn {
+            padding: 10px 20px;
+            border: 1px solid var(--primary-pink);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .size-btn.active {
+            background: var(--primary-pink);
+            border-color: var(--accent-gold);
+        }
+
+        .qty-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .qty-input {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--primary-pink);
+            border-radius: var(--radius-pill);
+            padding: 5px;
+        }
+
+        .qty-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary-pink);
+            cursor: pointer;
+        }
+
+        .related-products {
+            margin-top: 100px;
+        }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Cakeology</a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="user-account">
+                        <div class="account-trigger">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="product-detail">
+        <div class="container">
+            <div class="product-flex product-card" data-id="cake-velvet-dream" data-category="Wedding Cakes">
+                <div class="product-gallery">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Velvet Dream Cake" class="main-img">
+                    <div class="thumb-grid">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="thumb-img active">
+                        <img src="https://images.unsplash.com/photo-1616679911721-effd9798601f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="thumb-img">
+                        <img src="https://images.unsplash.com/photo-1562233237-1065544ad821?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="thumb-img">
+                        <img src="https://images.unsplash.com/photo-1535254973040-607b474cb8c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="thumb-img">
+                    </div>
+                </div>
+
+                <div class="product-info-side">
+                    <nav style="margin-bottom: 20px; font-size: 0.9rem; color: var(--text-muted);">
+                        <a href="shop.html">Shop</a> / <a href="#">Custom Cakes</a> / Velvet Dream Cake
+                    </nav>
+                    <h1 style="font-size: 3rem; margin-bottom: 10px;">Velvet Dream Cake</h1>
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                        <div style="color: var(--accent-gold);">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span style="color: var(--text-muted);">(48 Customer Reviews)</span>
+                    </div>
+                    <div class="price-tag">$45.00</div>
+                    <p style="margin-bottom: 30px;">Our signature red velvet sponge, incredibly moist and tender, layered with our secret recipe cream cheese frosting and finished with delicate edible gold leaf. Perfect for birthdays, anniversaries, or just because.</p>
+                    
+                    <div class="option-group">
+                        <label>Select Size</label>
+                        <div class="size-options">
+                            <div class="size-btn">6" Small</div>
+                            <div class="size-btn active">8" Medium</div>
+                            <div class="size-btn">10" Large</div>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Personalized Message (Optional)</label>
+                        <input type="text" class="form-control" placeholder="Happy Birthday Sarah!">
+                    </div>
+
+                    <div class="qty-box">
+                        <div class="qty-input">
+                            <button class="qty-btn">-</button>
+                            <span style="padding: 0 20px; font-weight: 600;">1</span>
+                            <button class="qty-btn">+</button>
+                        </div>
+                        <button class="btn btn-primary add-to-cart" style="flex: 1;">Add to Basket</button>
+                    </div>
+
+                    <div style="border-top: 1px solid var(--primary-pink); padding-top: 30px; margin-top: 30px;">
+                        <p style="margin-bottom: 10px;"><strong>Category:</strong> Custom Cakes, Best Sellers</p>
+                        <p style="margin-bottom: 10px;"><strong>Ingredients:</strong> Premium Flour, Cocoa Powder, Buttermilk, Cream Cheese, Organic Beetroot Extract, Edible Gold Leaf.</p>
+                        <p><strong>Tags:</strong> Red Velvet, Luxury, Gold Leaf, Birthday</p>
+                    </div>
+
+                    <div style="margin-top: 40px;">
+                        <h3 style="margin-bottom: 20px;">Customer Reviews</h3>
+                        <div style="display: flex; flex-direction: column; gap: 20px;">
+                            <div style="border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                    <strong>Emma Watson</strong>
+                                    <span style="color: var(--accent-gold);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                                </div>
+                                <p style="font-size: 0.9rem; color: var(--text-secondary);">Absolutely stunning cake! It was the highlight of our anniversary dinner. The gold leaf adds such a luxurious touch.</p>
+                            </div>
+                            <div style="padding-bottom: 15px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                    <strong>Robert Downey Jr.</strong>
+                                    <span style="color: var(--accent-gold);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>
+                                </div>
+                                <p style="font-size: 0.9rem; color: var(--text-secondary);">The red velvet was so moist and the cream cheese frosting wasn't too sweet. Perfectly balanced.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="related-products">
+                <h2 style="font-size: 2.5rem; margin-bottom: 40px; text-align: center;">You May Also Love</h2>
+                <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                    <!-- Related Item 1 -->
+                    <div class="product-card" data-id="cupcakes-pastel-party" data-category="Cupcakes">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1519340333755-56e9c1d04579?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cupcakes">
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Cupcakes</span>
+                            <h3 class="product-title">Pastel Party Set</h3>
+                            <div class="product-price">
+                                <span>$32.00</span>
+                                <div class="add-to-cart"><i class="fas fa-plus"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Related Item 2 -->
+                    <div class="product-card" data-id="macarons-parisian-gold" data-category="Macarons">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Macarons">
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Macarons</span>
+                            <h3 class="product-title">Parisian Gold Macarons</h3>
+                            <div class="product-price">
+                                <span>$24.00</span>
+                                <div class="add-to-cart"><i class="fas fa-plus"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Related Item 3 -->
+                    <div class="product-card" data-id="pastry-berry-bliss" data-category="Pastries">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Berry Bliss">
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Pastries</span>
+                            <h3 class="product-title">Berry Bliss Tart</h3>
+                            <div class="product-price">
+                                <span>$18.00</span>
+                                <div class="add-to-cart"><i class="fas fa-plus"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="display: block; margin-bottom: 20px;">Cakeology</a>
+                    <p>Transforming your celebrations into unforgettable memories with our bespoke cake designs and artisanal pastries.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-location-dot" style="margin-right: 10px; color: var(--accent-gold);"></i> 123 Bakery Lane, Sugar City</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px; color: var(--accent-gold);"></i> +1 (555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cakeology. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

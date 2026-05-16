@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials | Cakeology</title>
+    <meta name="description" content="Read what our lovely customers have to say about their Cakeology experiences. Real stories from weddings, birthdays, and more.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .testimonials-hero {
+            padding: 120px 0 60px;
+            background: var(--gradient-peach);
+            text-align: center;
+        }
+
+        .rating-overview {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .rating-big h2 {
+            font-size: 4rem;
+            color: var(--text-chocolate);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-premium);
+        }
+
+        .testimonial-card i.quote-icon {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 2.5rem;
+            color: var(--primary-pink);
+            opacity: 0.5;
+        }
+
+        .customer-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .customer-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .review-submission {
+            background: var(--primary-cream);
+            padding: 60px;
+            border-radius: var(--radius-lg);
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .stars-input {
+            font-size: 2rem;
+            color: var(--primary-pink);
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .stars-input i:hover, .stars-input i.active {
+            color: var(--accent-gold);
+        }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Cakeology</a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="testimonials.html" class="active">Reviews</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="testimonials-hero">
+        <div class="container">
+            <h1 style="font-size: 3.5rem; margin-bottom: 20px;">Your Sweet Stories</h1>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">There's nothing we love more than being a part of your most precious moments.</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="rating-overview reveal">
+                <div class="rating-big">
+                    <h2>4.9</h2>
+                    <div style="color: var(--accent-gold);">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p style="margin-top: 10px; color: var(--text-muted);">Average Customer Rating</p>
+                </div>
+                <div style="flex: 1; max-width: 400px;">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 8px;">
+                        <span>5 Star</span>
+                        <div style="flex: 1; height: 8px; background: var(--primary-cream); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 92%; height: 100%; background: var(--accent-gold);"></div>
+                        </div>
+                        <span>92%</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 8px;">
+                        <span>4 Star</span>
+                        <div style="flex: 1; height: 8px; background: var(--primary-cream); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 6%; height: 100%; background: var(--accent-gold);"></div>
+                        </div>
+                        <span>6%</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <span>3 Star</span>
+                        <div style="flex: 1; height: 8px; background: var(--primary-cream); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 2%; height: 100%; background: var(--accent-gold);"></div>
+                        </div>
+                        <span>2%</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 10px;">1,200+</h3>
+                    <p>Happy Customers</p>
+                </div>
+            </div>
+
+            <div class="testimonial-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card reveal">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div style="color: var(--accent-gold); margin-bottom: 15px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Our wedding cake from Cakeology was a literal dream. Not only was the design breath-taking, but the flavor was incredible. Our guests are still talking about it!"</p>
+                    <div class="customer-meta">
+                        <img src="../images/favicon.png" alt="Customer" class="customer-avatar">
+                        <div>
+                            <h4 style="margin: 0;">Emily & David</h4>
+                            <span style="font-size: 0.85rem; color: var(--text-muted);">Wedding Celebration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card reveal" style="transition-delay: 0.1s;">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div style="color: var(--accent-gold); margin-bottom: 15px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Ordered a set of custom cupcakes for my daughter's birthday. They were almost too pretty to eat! Perfectly moist and the frosting wasn't overly sweet. Highly recommend."</p>
+                    <div class="customer-meta">
+                        <img src="../images/favicon.png" alt="Customer" class="customer-avatar">
+                        <div>
+                            <h4 style="margin: 0;">Sarah Jenkins</h4>
+                            <span style="font-size: 0.85rem; color: var(--text-muted);">Birthday Party</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card reveal" style="transition-delay: 0.2s;">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div style="color: var(--accent-gold); margin-bottom: 15px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The subscription box is the highlight of my month! I love the surprise variety every time. It's like having a high-end patisserie delivery every two weeks."</p>
+                    <div class="customer-meta">
+                        <img src="../images/favicon.png" alt="Customer" class="customer-avatar">
+                        <div>
+                            <h4 style="margin: 0;">Mark Thompson</h4>
+                            <span style="font-size: 0.85rem; color: var(--text-muted);">Subscriber</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-submission reveal">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Share Your Experience</h2>
+                <p style="margin-bottom: 30px;">How did we do? Your feedback helps us grow and keep crafting sweetness.</p>
+                <div class="stars-input">
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <form style="max-width: 600px; margin: 0 auto;">
+                    <textarea class="form-control" rows="4" placeholder="Your sweet story..." style="margin-bottom: 20px;"></textarea>
+                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="display: block; margin-bottom: 20px;">Cakeology</a>
+                    <p>Transforming your celebrations into unforgettable memories with our bespoke cake designs and artisanal pastries.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cakeology. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

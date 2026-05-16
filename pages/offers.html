@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offers | Cakeology</title>
+    <meta name="description" content="Exclusive offers, seasonal cake collections, and special discounts at Cakeology. Don't miss our limited-time treats!">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .offers-hero {
+            padding: 150px 0 80px;
+            background: var(--gradient-gold);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            margin-top: -60px;
+        }
+
+        .promo-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-premium);
+            display: flex;
+            height: 300px;
+        }
+
+        .promo-img {
+            flex: 1;
+        }
+
+        .promo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .promo-content {
+            flex: 1.2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .promo-code {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary-pink);
+            border: 2px dashed var(--accent-gold);
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            margin: 20px 0;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .countdown-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .count-item {
+            background: var(--white);
+            padding: 15px 20px;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-soft);
+            min-width: 80px;
+        }
+
+        .count-value {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+            color: var(--text-chocolate);
+        }
+
+        .count-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 992px) {
+            .promo-card {
+                flex-direction: column;
+                height: auto;
+            }
+            .promo-img {
+                height: 200px;
+            }
+        }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Cakeology</a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="offers.html" class="active">Offers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="offers-hero">
+        <div class="container">
+            <h1 style="font-size: 4rem; margin-bottom: 20px;">Limited Time Sweetness</h1>
+            <p style="color: var(--text-chocolate); max-width: 700px; margin: 0 auto; font-size: 1.2rem;">Don't miss our seasonal collections and exclusive subscriber discounts.</p>
+            
+            <div class="countdown-container reveal">
+                <div class="count-item">
+                    <span class="count-value">05</span>
+                    <span class="count-label">Days</span>
+                </div>
+                <div class="count-item">
+                    <span class="count-value">12</span>
+                    <span class="count-label">Hours</span>
+                </div>
+                <div class="count-item">
+                    <span class="count-value">48</span>
+                    <span class="count-label">Mins</span>
+                </div>
+                <div class="count-item">
+                    <span class="count-value">22</span>
+                    <span class="count-label">Secs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="promo-grid">
+                <!-- Promo 1 -->
+                <div class="promo-card reveal">
+                    <div class="promo-img">
+                        <img src="../images/pastries.png" alt="Spring Collection">
+                    </div>
+                    <div class="promo-content">
+                        <span style="color: var(--accent-gold); font-weight: 600; text-transform: uppercase;">Seasonal Collection</span>
+                        <h2 style="font-size: 1.8rem; margin: 10px 0;">Spring Blossom Box</h2>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Enjoy 15% off our limited edition floral-themed pastry boxes.</p>
+                        <div class="promo-code">SPRING15</div>
+                        <a href="shop.html" class="btn btn-outline" style="padding: 10px 20px;">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- Promo 2 -->
+                <div class="promo-card reveal" style="transition-delay: 0.1s;">
+                    <div class="promo-img">
+                        <img src="../images/wedding_cat.png" alt="Wedding Promo">
+                    </div>
+                    <div class="promo-content">
+                        <span style="color: var(--accent-gold); font-weight: 600; text-transform: uppercase;">Wedding Special</span>
+                        <h2 style="font-size: 1.8rem; margin: 10px 0;">Complimentary Tasting</h2>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Book your 2026 wedding consultation and get a free tasting box.</p>
+                        <a href="contact.html" class="btn btn-primary" style="padding: 10px 20px;">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 100px;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 40px; text-align: center;">Seasonal Favorites</h2>
+                <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                    <!-- Item 1 -->
+                    <div class="product-card reveal">
+                        <div class="product-img">
+                            <img src="../images/gallery_2.png" alt="Lavender Honey">
+                            <div class="product-badge">Spring Only</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Lavender Honey Cake</h3>
+                            <div class="product-price">
+                                <span style="text-decoration: line-through; color: #ccc; font-size: 1rem; margin-right: 10px;">$55.00</span>
+                                <span>$48.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- More seasonal items could go here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="display: block; margin-bottom: 20px;">Cakeology</a>
+                    <p>Transforming your celebrations into unforgettable memories with our bespoke cake designs and artisanal pastries.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cakeology. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

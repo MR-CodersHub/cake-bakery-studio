@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | Cakeology</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .careers-hero {
+            padding: 120px 0 60px;
+            background: var(--gradient-sweet);
+            text-align: center;
+        }
+
+        .job-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition-smooth);
+        }
+
+        .job-card:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-premium);
+        }
+
+        @media (max-width: 768px) {
+            .job-card { flex-direction: column; text-align: center; gap: 20px; }
+        }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+
+<body>
+
+    <header id="main-header">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Cakeology</a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="careers.html" class="active">Careers</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="careers-hero">
+        <div class="container">
+            <h1 style="font-size: 3.5rem; margin-bottom: 20px;">Grow With Us</h1>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Join a team of passionate artisans dedicated to crafting beauty and sweetness every day.</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h2 style="font-size: 2.5rem;">Open Positions</h2>
+                <p style="color: var(--text-muted);">We're always looking for talented individuals to join our family.</p>
+            </div>
+
+            <div class="job-list">
+                <!-- Job 1 -->
+                <div class="job-card reveal">
+                    <div>
+                        <h3 style="margin-bottom: 5px;">Senior Pastry Chef</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;"><i class="fas fa-location-dot"></i> Sugar City Studio • Full-time</p>
+                    </div>
+                    <button class="btn btn-outline">View Details</button>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="job-card reveal" style="transition-delay: 0.1s;">
+                    <div>
+                        <h3 style="margin-bottom: 5px;">Cake Decorator</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;"><i class="fas fa-location-dot"></i> Sugar City Studio • Full-time</p>
+                    </div>
+                    <button class="btn btn-outline">View Details</button>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="job-card reveal" style="transition-delay: 0.2s;">
+                    <div>
+                        <h3 style="margin-bottom: 5px;">Customer Experience Associate</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;"><i class="fas fa-location-dot"></i> Remote / Hybrid • Part-time</p>
+                    </div>
+                    <button class="btn btn-outline">View Details</button>
+                </div>
+            </div>
+
+            <div style="margin-top: 80px; text-align: center; background: var(--primary-pink); padding: 60px; border-radius: var(--radius-lg);">
+                <h3>Don't see a role for you?</h3>
+                <p style="margin: 15px 0 30px;">We're always open to meeting passionate people. Send your CV to careers@sweetelegance.com</p>
+                <a href="mailto:careers@sweetelegance.com" class="btn btn-primary">Spontaneous Application</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

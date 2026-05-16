@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon | Cakeology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            background: var(--gradient-sweet);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .coming-soon-card {
+            max-width: 700px;
+            padding: 60px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-premium);
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .count-val {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            color: var(--text-chocolate);
+            display: block;
+        }
+
+        .count-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+
+<body>
+    <div class="coming-soon-card reveal">
+        <span style="letter-spacing: 5px; font-weight: 600; color: var(--accent-gold);">SWEET THINGS ARE COMING</span>
+        <h1 style="font-size: 3.5rem; margin: 20px 0;">Our Studio is Preheating</h1>
+        <p style="color: var(--text-muted);">We are working hard to bring you a new level of dessert artistry. Stay
+            tuned!</p>
+
+        <div class="countdown">
+            <div class="countdown-item">
+                <span class="count-val">14</span>
+                <span class="count-label">Days</span>
+            </div>
+            <div class="countdown-item">
+                <span class="count-val">08</span>
+                <span class="count-label">Hours</span>
+            </div>
+            <div class="countdown-item">
+                <span class="count-val">42</span>
+                <span class="count-label">Mins</span>
+            </div>
+            <div class="countdown-item">
+                <span class="count-val">15</span>
+                <span class="count-label">Secs</span>
+            </div>
+        </div>
+
+        <a href="../index.html" class="btn btn-primary">Notify Me</a>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

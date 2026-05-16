@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Notifications | Cakeology</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+<body>
+    <div class="dash-container"><div class="sidebar-overlay" id="dash-overlay"></div>
+        <aside class="dash-sidebar" id="dash-sidebar">
+            <div class="dash-sidebar-header"><a href="../index.html" class="logo" style="font-size: 1.4rem;">Cakeology</a></div>
+            <div class="dash-sidebar-content">
+                <div class="dash-nav-label">Shopping</div>
+                <a href="dashboard.html" class="dash-nav-link"><i class="fas fa-th-large"></i> Overview</a>
+                <a href="my-orders.html" class="dash-nav-link"><i class="fas fa-box"></i> My Orders</a>
+                <a href="order-tracking.html" class="dash-nav-link"><i class="fas fa-truck-loading"></i> Track Orders</a>
+                <a href="wishlist.html" class="dash-nav-link"><i class="fas fa-heart"></i> Wishlist</a>
+                <div class="dash-nav-label">Preferences</div>
+                <a href="saved-addresses.html" class="dash-nav-link"><i class="fas fa-map-marker-alt"></i> Saved Addresses</a>
+                <a href="payment-methods.html" class="dash-nav-link"><i class="fas fa-credit-card"></i> Payment Methods</a>
+                <a href="user-reviews.html" class="dash-nav-link"><i class="fas fa-star"></i> My Reviews</a>
+                <div class="dash-nav-label">Personal</div>
+                <a href="user-notifications.html" class="dash-nav-link active"><i class="fas fa-bell"></i> Notifications</a>
+                <a href="user-profile.html" class="dash-nav-link"><i class="fas fa-user-circle"></i> Profile</a>
+                <a href="user-settings.html" class="dash-nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="support-center.html" class="dash-nav-link"><i class="fas fa-headset"></i> Support Center</a>
+                <a href="login.html" class="dash-nav-link" style="color: var(--dash-danger); margin-top: 20px;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+        <main class="dash-main">
+            <header class="dash-header"><div style="display: flex; align-items: center; gap: 20px;"><div id="dash-hamburger" style="cursor: pointer; font-size: 1.2rem; display: none;"><i class="fas fa-bars"></i></div><h2>Alerts & Updates</h2></div></header>
+            <div class="dash-content">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                    <h1 style="font-family: 'Playfair Display', serif;">Notifications</h1>
+                    <button class="btn btn-outline" style="border-radius: 12px;">Mark all as read</button>
+                </div>
+                <div class="dash-card">
+                    <div style="padding: 20px; border-bottom: 1px solid var(--dash-border); display: flex; gap: 20px; background: rgba(212, 175, 55, 0.02);">
+                        <div class="stat-icon-wrapper" style="background: rgba(16, 185, 129, 0.1); color: var(--dash-success);"><i class="fas fa-truck"></i></div>
+                        <div style="flex: 1;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                <h4 style="font-weight: 700;">Order Shipped!</h4>
+                                <span style="font-size: 0.75rem; color: var(--dash-text-muted);">1 hour ago</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: var(--dash-text-muted);">Your order #ORD-7282 has been shipped and is on its way to you.</p>
+                            <div style="margin-top: 10px;"><a href="order-tracking.html" class="btn btn-primary" style="padding: 5px 15px; font-size: 0.8rem;">Track Order</a></div>
+                        </div>
+                    </div>
+                    <div style="padding: 20px; border-bottom: 1px solid var(--dash-border); display: flex; gap: 20px;">
+                        <div class="stat-icon-wrapper" style="background: rgba(212, 175, 55, 0.1); color: var(--dash-primary);"><i class="fas fa-gift"></i></div>
+                        <div style="flex: 1;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                <h4 style="font-weight: 700;">Exclusive Offer for You</h4>
+                                <span style="font-size: 0.75rem; color: var(--dash-text-muted);">Yesterday</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: var(--dash-text-muted);">Enjoy 15% OFF your next order with code <strong>SWEET15</strong>. Valid for 7 days.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/main.js"></script>
+</body>
+</html>

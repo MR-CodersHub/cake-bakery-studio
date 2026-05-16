@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Cakeology</title>
+    <meta name="description" content="Explore our gallery of custom wedding cakes, birthday designs, and artistic pastries. Get inspiration for your next celebration.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .gallery-header {
+            padding: 180px 0 60px;
+            text-align: center;
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            border-radius: var(--radius-pill);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent-gold);
+            color: var(--white);
+            border-color: var(--accent-gold);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            padding-bottom: 80px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            background: var(--bg-surface);
+        }
+
+        .gallery-img-wrapper {
+            position: relative;
+            height: 380px;
+            overflow: hidden;
+            background: var(--bg-accent);
+        }
+
+        .gallery-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(15, 9, 8, 0.95) 0%, rgba(15, 9, 8, 0.4) 50%, rgba(15, 9, 8, 0.1) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            padding: 40px 30px;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-premium);
+            border: 1px solid var(--accent-gold);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-img-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay h4 {
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 8px;
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.1s;
+        }
+
+        .gallery-overlay span {
+            font-size: 0.95rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.2s;
+            margin-bottom: 20px;
+        }
+
+        .view-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--white);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.3s;
+            opacity: 0;
+            text-decoration: none;
+        }
+
+        .gallery-item:hover .gallery-overlay h4,
+        .gallery-item:hover .gallery-overlay span,
+        .gallery-item:hover .view-btn {
+            transform: translateY(0);
+        }
+
+        .gallery-item:hover .view-btn {
+            opacity: 1;
+        }
+        
+        .view-btn i {
+            font-size: 0.8rem;
+            background: var(--accent-gold);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1A1311;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+            .gallery-img-wrapper { height: 320px; }
+        }
+        @media (max-width: 360px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+
+<body>
+
+    <!-- Header (JS Injected) -->
+    <header id="main-header"></header>
+
+    <!-- Gallery Header -->
+    <section class="gallery-header">
+        <div class="container">
+            <h1 class="reveal" style="font-size: 4rem; margin-bottom: 20px;">The Atelier Portfolio</h1>
+            <p class="reveal" style="color: var(--text-muted); max-width: 700px; margin: 0 auto; font-size: 1.1rem; transition-delay: 0.1s;">A curated exhibition of our most breathtaking bespoke creations. Explore the intersection of culinary mastery and sculptural elegance.</p>
+        </div>
+    </section>
+
+    <!-- Gallery Grid with Filters -->
+    <section class="section-padding" style="padding-top: 20px;">
+        <div class="container">
+            
+            <div class="gallery-filters reveal" style="transition-delay: 0.2s;">
+                <button class="filter-btn active" data-filter="all">All Designs</button>
+                <button class="filter-btn" data-filter="wedding">Wedding Cakes</button>
+                <button class="filter-btn" data-filter="birthday">Birthday Cakes</button>
+                <button class="filter-btn" data-filter="luxury">Luxury Desserts</button>
+                <button class="filter-btn" data-filter="cupcakes">Cupcakes</button>
+                <button class="filter-btn" data-filter="pastries">Pastries</button>
+                <button class="filter-btn" data-filter="macarons">Macarons</button>
+            </div>
+
+            <div class="gallery-grid">
+                
+                <!-- Item: Wedding -->
+                <div class="gallery-item reveal" data-category="wedding">
+                    <div class="gallery-img-wrapper">
+                        <img src="../images/gallery_2.png" alt="Whimsical Garden Wedding Cake">
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Whimsical Garden</h4>
+                        <span>Wedding Collection</span>
+                        <div class="view-btn">View Details <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+
+                <!-- Item: Birthday -->
+                <div class="gallery-item reveal" data-category="birthday">
+                    <div class="gallery-img-wrapper">
+                        <img src="../images/hero.png" alt="Midnight Sparkle Birthday Cake">
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Midnight Sparkle</h4>
+                        <span>Birthday Collection</span>
+                        <div class="view-btn">View Details <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+
+                <!-- Item: Pastries -->
+                <div class="gallery-item reveal" data-category="pastries">
+                    <div class="gallery-img-wrapper">
+                        <img src="../images/gallery_3.png" alt="Berry Tarts">
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Berry Tarts</h4>
+                        <span>Pastry Collection</span>
+                        <div class="view-btn">View Details <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+
+                <!-- Item: Wedding -->
+                <div class="gallery-item reveal" data-category="wedding">
+                    <div class="gallery-img-wrapper">
+                        <img src="../images/wedding_cat.png" alt="Classic Elegance">
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Classic Elegance</h4>
+                        <span>Wedding Collection</span>
+                        <div class="view-btn">View Details <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+
+                <!-- Item: Macarons -->
+                <div class="gallery-item reveal" data-category="macarons">
+                    <div class="gallery-img-wrapper">
+                        <img src="../images/gallery_1.png" alt="Rainbow Palette Macarons">
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Rainbow Palette</h4>
+                        <span>Macaron Collection</span>
+                        <div class="view-btn">View Details <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+
+                <!-- Item: Luxury -->
+                <div class="gallery-item reveal" data-category="luxury">
+                    <div class="gallery-img-wrapper">
+                        <img src="../images/pastries.png" alt="Golden Sunrise">
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Golden Sunrise</h4>
+                        <span>Luxury Desserts</span>
+                        <div class="view-btn">View Details <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+
+                <!-- Item: Cupcakes -->
+                <div class="gallery-item reveal" data-category="cupcakes">
+                    <div class="gallery-img-wrapper">
+                        <img src="../images/cupcake_cat.png" alt="Floral Whispers Cupcakes">
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Floral Whispers</h4>
+                        <span>Cupcake Collection</span>
+                        <div class="view-btn">View Details <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+
+                <!-- Item: Birthday -->
+                <div class="gallery-item reveal" data-category="birthday">
+                    <div class="gallery-img-wrapper">
+                        <img src="../images/celebration_cat.png" alt="Confetti Celebration">
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Confetti Celebration</h4>
+                        <span>Birthday Collection</span>
+                        <div class="view-btn">View Details <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+                
+                <!-- Item: Luxury -->
+                <div class="gallery-item reveal" data-category="luxury">
+                    <div class="gallery-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?q=80&w=1080&auto=format&fit=crop" alt="Red Velvet Dream">
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Red Velvet Dream</h4>
+                        <span>Luxury Desserts</span>
+                        <div class="view-btn">View Details <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+                
+                <!-- Item: Macarons -->
+                <div class="gallery-item reveal" data-category="macarons">
+                    <div class="gallery-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1558326567-98ae2405596b?q=80&w=1080&auto=format&fit=crop" alt="Rose Garden Macarons">
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Rose Garden</h4>
+                        <span>Macaron Collection</span>
+                        <div class="view-btn">View Details <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (JS Injected) -->
+    <footer id="main-footer"></footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active from all
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active to clicked
+                    btn.classList.add('active');
+
+                    const filter = btn.getAttribute('data-filter');
+
+                    galleryItems.forEach(item => {
+                        const category = item.getAttribute('data-category');
+                        
+                        if (filter === 'all' || category === filter) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 50);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 400); // match transition duration
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

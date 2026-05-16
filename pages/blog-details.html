@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Details | Cakeology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .blog-header {
+            padding: 150px 0 80px;
+            text-align: center;
+            background: var(--gradient-sweet);
+        }
+
+        .blog-content-wrapper {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            margin-top: -60px;
+        }
+
+        .blog-article {
+            background: var(--white);
+            padding: 50px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .blog-article img {
+            width: 100%;
+            border-radius: var(--radius-md);
+            margin-bottom: 40px;
+        }
+
+        .article-text {
+            font-size: 1.1rem;
+            color: var(--text-chocolate);
+        }
+
+        .article-text h2 {
+            margin: 40px 0 20px;
+        }
+
+        .article-text p {
+            margin-bottom: 20px;
+        }
+
+        .sidebar-widget {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 30px;
+        }
+
+        .sidebar-widget h4 {
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-pink);
+            padding-bottom: 10px;
+        }
+
+        .recent-post {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .recent-post img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+        }
+
+        .comment-section {
+            margin-top: 60px;
+        }
+
+        .comment-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .comment-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-pink);
+        }
+
+        @media (max-width: 992px) {
+            .blog-content-wrapper { grid-template-columns: 1fr; }
+        }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+<body>
+    <header id="main-header">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Cakeology</a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="home2.html">Studio</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="user-account">
+                        <div class="account-trigger">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="account-dropdown">
+                            <div class="dropdown-header">
+                                <h5>Sarah Jenkins</h5>
+                                <span>Sarah@example.com</span>
+                            </div>
+                            <a href="login.html" class="dropdown-item"><i class="fas fa-sign-in-alt"></i> Sign Up / Login</a>
+                            <a href="admin-dashboard.html" class="dropdown-item"><i class="fas fa-user-shield"></i> Admin Dashboard</a>
+                            <a href="dashboard.html" class="dropdown-item"><i class="fas fa-th-large"></i> User Dashboard</a>
+                            <a href="dashboard.html" class="dropdown-item"><i class="fas fa-user-circle"></i> Profile</a>
+                            <a href="dashboard.html" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a>
+                            <a href="#" class="dropdown-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="blog-header">
+        <div class="container">
+            <span class="blog-tag" style="position: static; margin-bottom: 20px; display: inline-block;">Tips & Tricks</span>
+            <h1 style="font-size: 3.5rem;">5 Secrets to the Perfect Fluffy Cupcake</h1>
+            <p style="color: var(--text-muted);">Published on May 12, 2026 by Chef Isabella Rose</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="blog-content-wrapper">
+                <div class="blog-article reveal">
+                    <img src="../images/pastries.png" alt="Cupcakes">
+                    <div class="article-text">
+                        <p>There is nothing quite like the satisfaction of biting into a perfectly baked cupcake—one that is light, airy, and moist all at once. While it may seem simple, achieving that bakery-quality texture requires a bit of science and a lot of patience.</p>
+                        
+                        <h2>1. Room Temperature Ingredients</h2>
+                        <p>The biggest mistake home bakers make is using cold butter and eggs. Room temperature ingredients emulsify much better, creating a smooth batter that traps air during the creaming process. This air expands in the oven, giving you that beautiful lift.</p>
+
+                        <h2>2. Don't Overmix the Batter</h2>
+                        <p>Once you add your dry ingredients, mix only until just combined. Overmixing develops the gluten in the flour, which leads to a tough, bread-like cupcake instead of a delicate crumb.</p>
+
+                        <blockquote>
+                            <p style="font-style: italic; font-size: 1.4rem; color: var(--accent-gold); border-left: 4px solid var(--accent-gold); padding-left: 20px; margin: 40px 0;">"Baking is a science, but decorating is an art. Perfection lies in the balance of both."</p>
+                        </blockquote>
+
+                        <h2>3. Measure with Precision</h2>
+                        <p>If possible, use a kitchen scale. A "cup" of flour can vary significantly depending on how you pack it. Consistent measurements lead to consistent results.</p>
+                    </div>
+
+                    <div class="comment-section">
+                        <h3>Comments (3)</h3>
+                        <div class="comment-item">
+                            <div class="comment-avatar"></div>
+                            <div>
+                                <h4 style="margin: 0;">Jane Doe</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px;">2 days ago</p>
+                                <p>Thank you for these tips! I always struggled with my cupcakes being too dense. Can't wait to try these!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-sidebar">
+                    <div class="sidebar-widget reveal">
+                        <h4>About the Author</h4>
+                        <p>Chef Isabella has been designing cakes for over 10 years and loves sharing her passion for pastry with the world.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: var(--primary-pink); padding: 80px 0 20px;">
+        <div class="container">
+            <div class="footer-bottom" style="border: none;">
+                <p>&copy; 2026 Cakeology. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

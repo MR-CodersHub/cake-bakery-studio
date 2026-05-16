@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking | Cakeology</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+<body>
+    <div class="dash-container"><div class="sidebar-overlay" id="dash-overlay"></div>
+        <aside class="dash-sidebar" id="dash-sidebar">
+            <div class="dash-sidebar-header"><a href="../index.html" class="logo" style="font-size: 1.4rem;">Cakeology</a></div>
+            <div class="dash-sidebar-content">
+                <div class="dash-nav-label">Shopping</div>
+                <a href="dashboard.html" class="dash-nav-link"><i class="fas fa-th-large"></i> Overview</a>
+                <a href="my-orders.html" class="dash-nav-link"><i class="fas fa-box"></i> My Orders</a>
+                <a href="order-tracking.html" class="dash-nav-link active"><i class="fas fa-truck-loading"></i> Track Orders</a>
+                <a href="wishlist.html" class="dash-nav-link"><i class="fas fa-heart"></i> Wishlist</a>
+                <div class="dash-nav-label">Preferences</div>
+                <a href="saved-addresses.html" class="dash-nav-link"><i class="fas fa-map-marker-alt"></i> Saved Addresses</a>
+                <a href="payment-methods.html" class="dash-nav-link"><i class="fas fa-credit-card"></i> Payment Methods</a>
+                <a href="user-reviews.html" class="dash-nav-link"><i class="fas fa-star"></i> My Reviews</a>
+                <div class="dash-nav-label">Personal</div>
+                <a href="user-notifications.html" class="dash-nav-link"><i class="fas fa-bell"></i> Notifications</a>
+                <a href="user-profile.html" class="dash-nav-link"><i class="fas fa-user-circle"></i> Profile</a>
+                <a href="user-settings.html" class="dash-nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="support-center.html" class="dash-nav-link"><i class="fas fa-headset"></i> Support Center</a>
+                <a href="login.html" class="dash-nav-link" style="color: var(--dash-danger); margin-top: 20px;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+        <main class="dash-main">
+            <header class="dash-header"><div style="display: flex; align-items: center; gap: 20px;"><div id="dash-hamburger" style="cursor: pointer; font-size: 1.2rem; display: none;"><i class="fas fa-bars"></i></div><h2>Track Your Sweets</h2></div></header>
+            <div class="dash-content">
+                <h1 style="font-family: 'Playfair Display', serif; margin-bottom: 30px;">Order Tracking</h1>
+                <div class="dash-card" style="margin-bottom: 30px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; flex-wrap: wrap; gap: 20px;">
+                        <div>
+                            <div style="font-size: 0.8rem; color: var(--dash-text-muted); text-transform: uppercase; font-weight: 700;">Order ID</div>
+                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--dash-primary);">#ORD-7282</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.8rem; color: var(--dash-text-muted); text-transform: uppercase; font-weight: 700;">Expected Delivery</div>
+                            <div style="font-size: 1.5rem; font-weight: 700;">Oct 18, 2023</div>
+                        </div>
+                        <span class="badge badge-warning" style="padding: 10px 20px; font-size: 1rem;">In Transit</span>
+                    </div>
+                    
+                    <!-- Tracking Timeline -->
+                    <div style="position: relative; padding: 40px 0;">
+                        <div style="position: absolute; left: 15px; top: 0; bottom: 0; width: 4px; background: var(--dash-border); border-radius: 2px;"></div>
+                        <div style="position: relative; padding-left: 50px; margin-bottom: 40px;">
+                            <div style="position: absolute; left: 0; top: 0; width: 34px; height: 34px; background: var(--dash-success); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; border: 4px solid white; box-shadow: 0 0 0 4px var(--dash-success);"><i class="fas fa-check" style="font-size: 0.8rem;"></i></div>
+                            <h4 style="font-weight: 700; margin-bottom: 5px;">Order Placed</h4>
+                            <p style="font-size: 0.85rem; color: var(--dash-text-muted);">Oct 12, 2023 - 10:30 AM</p>
+                        </div>
+                        <div style="position: relative; padding-left: 50px; margin-bottom: 40px;">
+                            <div style="position: absolute; left: 0; top: 0; width: 34px; height: 34px; background: var(--dash-success); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; border: 4px solid white; box-shadow: 0 0 0 4px var(--dash-success);"><i class="fas fa-check" style="font-size: 0.8rem;"></i></div>
+                            <h4 style="font-weight: 700; margin-bottom: 5px;">Payment Confirmed</h4>
+                            <p style="font-size: 0.85rem; color: var(--dash-text-muted);">Oct 12, 2023 - 11:15 AM</p>
+                        </div>
+                        <div style="position: relative; padding-left: 50px; margin-bottom: 40px;">
+                            <div style="position: absolute; left: 0; top: 0; width: 34px; height: 34px; background: var(--dash-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; border: 4px solid white; box-shadow: 0 0 0 4px var(--dash-primary);"><i class="fas fa-truck" style="font-size: 0.8rem;"></i></div>
+                            <h4 style="font-weight: 700; margin-bottom: 5px;">Shipped from Bakery</h4>
+                            <p style="font-size: 0.85rem; color: var(--dash-text-muted);">Oct 15, 2023 - 09:00 AM</p>
+                        </div>
+                        <div style="position: relative; padding-left: 50px;">
+                            <div style="position: absolute; left: 0; top: 0; width: 34px; height: 34px; background: var(--dash-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; border: 4px solid white;"><i class="fas fa-home" style="font-size: 0.8rem;"></i></div>
+                            <h4 style="font-weight: 700; margin-bottom: 5px; opacity: 0.5;">Delivered</h4>
+                            <p style="font-size: 0.85rem; color: var(--dash-text-muted); opacity: 0.5;">Pending</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/main.js"></script>
+</body>
+</html>

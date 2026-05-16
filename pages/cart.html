@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart | Cakeology</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .cart-page-container {
+            padding: 150px 0 80px;
+            min-height: 80vh;
+        }
+
+        .cart-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cart-table th {
+            text-align: left;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .cart-table td {
+            padding: 30px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .cart-product {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cart-product img {
+            width: 100px;
+            height: 100px;
+            border-radius: var(--radius-md);
+            object-fit: cover;
+        }
+
+        .cart-product-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .cart-summary-card {
+            background: var(--bg-surface);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-premium);
+            border: 1px solid var(--border-color);
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .summary-total {
+            border-top: 2px solid var(--border-color);
+            padding-top: 20px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 992px) {
+            .cart-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+<body>
+
+    <!-- Header (JS Injected) -->
+    <header id="main-header"></header>
+
+    <div class="cart-page-container">
+        <div class="container">
+            <h1 class="serif" style="font-size: 3.5rem; margin-bottom: 50px;">Your Basket</h1>
+            
+            <div id="full-cart-content">
+                <!-- Content Injected by JS -->
+                <div class="cart-grid">
+                    <div class="cart-items-column">
+                        <table class="cart-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Subtotal</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="cart-page-items">
+                                <!-- Items here -->
+                            </tbody>
+                        </table>
+                        <a href="shop.html" class="btn btn-outline" style="margin-top: 40px;"><i class="fas fa-arrow-left" style="margin-right: 10px;"></i> Continue Shopping</a>
+                    </div>
+                    
+                    <div class="cart-summary-column">
+                        <div class="cart-summary-card">
+                            <h2 class="serif" style="margin-bottom: 30px;">Order Summary</h2>
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span id="summary-subtotal">$0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Shipping</span>
+                                <span>Calculated at checkout</span>
+                            </div>
+                            <div class="summary-total summary-row">
+                                <span>Total</span>
+                                <span id="summary-total">$0.00</span>
+                            </div>
+                            <button id="checkout-page-btn" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 30px;">Proceed to Checkout</button>
+                            
+                            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border-color);">
+                                <h4 style="margin-bottom: 15px;"><i class="fas fa-truck" style="color: var(--accent-gold); margin-right: 10px;"></i> Delivery Info</h4>
+                                <p style="font-size: 0.9rem; color: var(--text-secondary);">Complimentary delivery for orders over $150. Standard delivery within 24-48 hours.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="empty-cart-page" style="display: none; text-align: center; padding: 100px 0;">
+                <i class="fas fa-shopping-basket" style="font-size: 5rem; color: var(--border-color); margin-bottom: 30px;"></i>
+                <h2 class="serif" style="font-size: 2.5rem; margin-bottom: 20px;">Your basket is empty</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 40px;">Ready to create something special? Explore our signature collections.</p>
+                <a href="shop.html" class="btn btn-primary">Start Shopping</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (JS Injected) -->
+    <footer id="main-footer"></footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Page specific cart rendering
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFullCart();
+            // Listen for storage changes from other tabs/drawer
+            window.addEventListener('storage', renderFullCart);
+        });
+
+        function renderFullCart() {
+            const itemsContainer = document.getElementById('cart-page-items');
+            const emptyState = document.getElementById('empty-cart-page');
+            const cartContent = document.getElementById('full-cart-content');
+            const subtotalEl = document.getElementById('summary-subtotal');
+            const totalEl = document.getElementById('summary-total');
+            
+            const localCart = JSON.parse(localStorage.getItem('bakery_cart')) || [];
+            
+            if (localCart.length === 0) {
+                emptyState.style.display = 'block';
+                cartContent.style.display = 'none';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            cartContent.style.display = 'grid';
+
+            itemsContainer.innerHTML = localCart.map((item, index) => `
+                <tr>
+                    <td>
+                        <div class="cart-product">
+                            <img src="${item.image}" alt="${item.name}">
+                            <div class="cart-product-info">
+                                <h3>${item.name}</h3>
+                                <p style="color: var(--text-secondary); font-size: 0.9rem;">${item.category}</p>
+                                <p style="color: var(--accent-gold); font-weight: 600;">$${item.price.toFixed(2)}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="quantity-controls" style="width: fit-content;">
+                            <button class="qty-btn" onclick="updatePageQty(${index}, -1)">-</button>
+                            <span style="padding: 0 15px;">${item.quantity}</span>
+                            <button class="qty-btn" onclick="updatePageQty(${index}, 1)">+</button>
+                        </div>
+                    </td>
+                    <td>
+                        <span style="font-weight: 700; font-size: 1.1rem;">$${(item.price * item.quantity).toFixed(2)}</span>
+                    </td>
+                    <td style="text-align: right;">
+                        <i class="fas fa-trash remove-item" style="cursor: pointer; color: #ff5252;" onclick="removePageItem(${index})"></i>
+                    </td>
+                </tr>
+            `).join('');
+
+            const total = localCart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            subtotalEl.innerText = `$${total.toFixed(2)}`;
+            totalEl.innerText = `$${total.toFixed(2)}`;
+        }
+
+        window.updatePageQty = (index, delta) => {
+            const localCart = JSON.parse(localStorage.getItem('bakery_cart')) || [];
+            localCart[index].quantity += delta;
+            if (localCart[index].quantity < 1) {
+                localCart.splice(index, 1);
+            }
+            localStorage.setItem('bakery_cart', JSON.stringify(localCart));
+            renderFullCart();
+            // Trigger drawer update if open
+            if (typeof updateCartCount === 'function') updateCartCount();
+        };
+
+        window.removePageItem = (index) => {
+            const localCart = JSON.parse(localStorage.getItem('bakery_cart')) || [];
+            localCart.splice(index, 1);
+            localStorage.setItem('bakery_cart', JSON.stringify(localCart));
+            renderFullCart();
+            if (typeof updateCartCount === 'function') updateCartCount();
+        };
+
+        // Checkout Button Listener
+        document.getElementById('checkout-page-btn')?.addEventListener('click', () => {
+            const localCart = JSON.parse(localStorage.getItem('bakery_cart')) || [];
+            if (localCart.length === 0) {
+                alert("Your basket is empty!");
+                return;
+            }
+            window.location.href = 'checkout.html';
+        });
+    </script>
+</body>
+</html>

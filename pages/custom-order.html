@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Order | Cakeology</title>
+    <meta name="description" content="Design your dream cake with our custom ordering tool. Choose flavors, fillings, and upload your inspiration images.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .custom-order-hero {
+            padding: 140px 0 80px;
+            background: var(--gradient-sweet);
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 950px;
+            margin: -60px auto 80px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Enhanced Stepper */
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px;
+            position: relative;
+            padding: 0 40px;
+        }
+
+        .step-indicator::after {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 50px;
+            right: 50px;
+            height: 3px;
+            background: rgba(212, 175, 55, 0.1);
+            z-index: -1;
+        }
+
+        .step {
+            width: 55px;
+            height: 55px;
+            background: var(--bg-surface);
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--text-muted);
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .step.active {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: white;
+            transform: scale(1.15);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .step.completed {
+            background: var(--bg-main);
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        /* Defined Form Card */
+        .form-card {
+            background: var(--white);
+            padding: 60px;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 60px rgba(78, 52, 46, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 35px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: 0.3px;
+        }
+
+        /* High Visibility Inputs */
+        .form-control {
+            width: 100%;
+            padding: 16px 22px;
+            border-radius: 15px;
+            border: 1.5px solid rgba(212, 175, 55, 0.15);
+            background: #FFFAF5; /* Extremely soft peach for input depth */
+            outline: none;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            background: var(--white);
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Premium Options Grid */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .option-item {
+            background: var(--bg-main);
+            border: 1.5px solid rgba(212, 175, 55, 0.1);
+            padding: 25px 15px;
+            border-radius: 18px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .option-item:hover {
+            border-color: var(--accent-gold);
+            background: #fff;
+            transform: translateY(-5px);
+        }
+
+        .option-item.selected {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: white;
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .option-item i {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            display: block;
+            color: var(--accent-gold);
+            transition: 0.3s;
+        }
+
+        .option-item.selected i {
+            color: white;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--accent-gold);
+            background: rgba(212, 175, 55, 0.02);
+            padding: 50px 30px;
+            text-align: center;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            background: rgba(212, 175, 55, 0.05);
+            border-style: solid;
+        }
+
+        .form-btns {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .form-card { padding: 40px 20px; }
+            .hero-title { font-size: 2.5rem !important; }
+            .step-indicator { padding: 0; }
+            .step { width: 45px; height: 45px; font-size: 0.9rem; }
+        }
+
+        /* --- Dark Mode Form Visibility Fixes --- */
+        body.dark-mode .form-card {
+            background: #1C1412 !important;
+            border-color: rgba(255, 215, 0, 0.2) !important;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.5) !important;
+        }
+
+        body.dark-mode .form-group label {
+            color: #FFFFFF !important;
+        }
+
+        body.dark-mode .form-control {
+            background: #261B19 !important;
+            border-color: rgba(255, 215, 0, 0.1) !important;
+            color: #FFFFFF !important;
+        }
+
+        body.dark-mode .form-control:focus {
+            background: #2D1F1C !important;
+            border-color: var(--accent-gold) !important;
+        }
+
+        body.dark-mode .option-item {
+            background: #261B19 !important;
+            border-color: rgba(255, 215, 0, 0.1) !important;
+            color: #F5F5F5 !important;
+        }
+
+        body.dark-mode .option-item:hover {
+            border-color: var(--accent-gold) !important;
+            background: #2D1F1C !important;
+        }
+
+        body.dark-mode .option-item.selected {
+            background: var(--accent-gold) !important;
+            color: #0F0908 !important;
+        }
+
+        body.dark-mode .step {
+            background: #261B19 !important;
+            border-color: rgba(255, 215, 0, 0.2) !important;
+            color: #E8D5C0 !important;
+        }
+
+        body.dark-mode .step.active {
+            background: var(--accent-gold) !important;
+            color: #0F0908 !important;
+        }
+
+        body.dark-mode .upload-area {
+            background: rgba(255, 215, 0, 0.03) !important;
+            border-color: rgba(255, 215, 0, 0.3) !important;
+        }
+
+        body.dark-mode .form-btns {
+            border-top-color: rgba(255, 215, 0, 0.1) !important;
+        }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Cakeology</a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="subscriptions.html">Subscriptions</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="user-account">
+                        <div class="account-trigger">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="account-dropdown">
+                            <div class="dropdown-header">
+                                <h5>Sarah Jenkins</h5>
+                                <span>Sarah@example.com</span>
+                            </div>
+                            <a href="login.html" class="dropdown-item"><i class="fas fa-sign-in-alt"></i> Login</a>
+                            <a href="dashboard.html" class="dropdown-item"><i class="fas fa-th-large"></i> Dashboard</a>
+                            <a href="profile.html" class="dropdown-item"><i class="fas fa-user-circle"></i> Profile</a>
+                            <a href="#" class="dropdown-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Custom Order Hero -->
+    <section class="custom-order-hero">
+        <div class="container">
+            <h1 style="font-size: 3.5rem; margin-bottom: 20px;">Design Your Dream Cake</h1>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Tell us about your celebration, and we'll create a masterpiece just for you.</p>
+        </div>
+    </section>
+
+    <!-- Custom Order Form -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="form-container">
+                <div class="step-indicator">
+                    <div class="step completed">1</div>
+                    <div class="step active">2</div>
+                    <div class="step">3</div>
+                    <div class="step">4</div>
+                </div>
+
+                <div class="form-card">
+                    <form id="custom-cake-form">
+                        <!-- Step 2: Design & Details -->
+                        <div class="form-step">
+                            <h2 style="margin-bottom: 30px; text-align: center;">Design & Details</h2>
+                            
+                            <div class="form-group">
+                                <label>Cake Occasion</label>
+                                <select class="form-control">
+                                    <option>Wedding</option>
+                                    <option>Birthday</option>
+                                    <option>Anniversary</option>
+                                    <option>Baby Shower</option>
+                                    <option>Corporate Event</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Flavor Selection</label>
+                                <div class="options-grid">
+                                    <div class="option-item selected">
+                                        <i class="fas fa-ice-cream"></i>
+                                        <span>Classic Vanilla</span>
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-cookie"></i>
+                                        <span>Rich Chocolate</span>
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-lemon"></i>
+                                        <span>Lemon Zest</span>
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-apple-whole"></i>
+                                        <span>Red Velvet</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Estimated Number of Guests</label>
+                                <input type="number" class="form-control" placeholder="e.g. 50">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Upload Inspiration (Images)</label>
+                                <div class="upload-area">
+                                    <i class="fas fa-cloud-upload-alt" style="font-size: 3rem; color: var(--primary-pink-dark); margin-bottom: 15px;"></i>
+                                    <h3>Drag & Drop or Click to Upload</h3>
+                                    <p style="color: var(--text-muted);">Support: JPG, PNG, PDF (Max 5MB)</p>
+                                    <input type="file" style="display: none;" id="file-upload" multiple>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Additional Design Notes</label>
+                                <textarea class="form-control" rows="4" placeholder="Tell us about colors, themes, or specific details..."></textarea>
+                            </div>
+
+                            <div class="form-btns">
+                                <button type="button" class="btn btn-outline">Previous</button>
+                                <button type="button" class="btn btn-primary">Next: Delivery Info</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand Section -->
+                <div class="footer-col">
+                    <a href="../index.html" class="logo" style="display: inline-block; margin-bottom: 25px;">Cakeology</a>
+                    <p class="footer-desc">Crafting luxury bespoke cakes and artisanal pastries for your most precious moments. Every creation is a unique piece of art handcrafted with love.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <!-- Discovery Section -->
+                <div class="footer-col">
+                    <h4>Collections</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">Wedding Collection</a></li>
+                        <li><a href="shop.html">Celebration Cakes</a></li>
+                        <li><a href="shop.html">Designer Cupcakes</a></li>
+                        <li><a href="shop.html">Seasonal Specials</a></li>
+                        <li><a href="offers.html">Exclusive Offers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Experience Section -->
+                <div class="footer-col">
+                    <h4>The Studio</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="gallery.html">Art Portfolio</a></li>
+                        <li><a href="custom-order.html">Custom Design</a></li>
+                        <li><a href="blog.html">Baking Blog</a></li>
+                        <li><a href="testimonials.html">Reviews</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support Section -->
+                <div class="footer-col">
+                    <h4>Visit Us</h4>
+                    <ul class="contact-info-list">
+                        <li>
+                            <i class="fas fa-location-dot"></i>
+                            <span>123 Bakery Lane, Sugar City, NY 10001</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>hello@cakeology.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Tue - Sat: 9:00 AM - 6:00 PM<br>Sun - Mon: Closed</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cakeology Artisanal Bakery. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Simple file upload interaction
+        document.querySelector('.upload-area').addEventListener('click', () => {
+            document.getElementById('file-upload').click();
+        });
+
+        // Option selection
+        document.querySelectorAll('.option-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.option-item').forEach(i => i.classList.remove('selected'));
+                item.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home2 | Cakeology</title>
+    <meta name="description" content="Enter the world of bespoke cake design. Where fine art meets high-end pastry. Crafting sculptural masterpieces for life's most significant celebrations.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        :root {
+            --studio-dark: #1E1614;
+            --studio-gold: #D4AF37;
+            --studio-cream: #FFFDF5;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-main);
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Editorial Hero */
+        .editorial-hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-main);
+        }
+
+        .hero-split {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            height: 100%;
+            width: 100%;
+        }
+
+        .hero-text-side {
+            padding: 0 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .hero-image-side {
+            position: relative;
+            height: 100%;
+        }
+
+        .hero-image-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-title {
+            font-size: 6rem;
+            line-height: 0.9;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
+
+        /* Master of Craft Section */
+        .craft-section {
+            padding: 150px 0;
+            background: var(--bg-surface);
+        }
+
+        .craft-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .craft-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+        }
+
+        .craft-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .founder-img {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-premium);
+        }
+
+        /* Premium Features */
+        .premium-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .premium-feature-card {
+            background: var(--bg-main);
+            padding: 40px 30px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.03);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .premium-feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+            border-color: var(--studio-gold);
+        }
+
+        .pf-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--studio-dark);
+            color: var(--studio-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 25px;
+            transition: all 0.4s ease;
+        }
+
+        .premium-feature-card:hover .pf-icon {
+            background: var(--studio-gold);
+            color: var(--studio-dark);
+            transform: rotateY(180deg);
+        }
+
+        .premium-feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .premium-feature-card p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* The Signature Experience */
+        .experience-section .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .exp-grid {
+            width: 100%;
+        }
+        .exp-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .experience-section h2, .experience-section h3 {
+            color: #FFFFFF !important;
+        }
+        .experience-section .hero-subtitle {
+            color: var(--accent-gold) !important;
+        }
+        .experience-section {
+            padding: 120px 0;
+            background: var(--studio-dark);
+            color: white;
+            border-radius: var(--radius-lg);
+            margin: 0 20px;
+        }
+
+        .exp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 60px;
+            margin-top: 80px;
+        }
+
+        .exp-item {
+            text-align: center;
+        }
+
+        .exp-icon {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .exp-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .exp-item p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1rem;
+        }
+
+        /* Mobile Optimization */
+    @media (max-width: 768px) {
+        .experience-section {
+            margin: 0 !important;
+            border-radius: 0 !important;
+            padding: 80px 15px !important;
+        }
+        .exp-grid {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+            margin-top: 50px !important;
+        }
+        .exp-item {
+            width: 100% !important;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+    }
+        @media (max-width: 1024px) {
+            .hero-title { font-size: 4rem; }
+            .hero-split { 
+                grid-template-columns: 1fr; 
+                height: auto;
+            }
+            .hero-image-side { 
+                display: block; 
+                height: 400px;
+                order: 2;
+            }
+            .hero-text-side { 
+                padding: 120px 5% 40px; 
+                text-align: center; 
+                align-items: center; 
+                order: 1;
+            }
+            .craft-container { grid-template-columns: 1fr; gap: 50px; }
+            .hero-title { font-size: 3rem !important; }
+            .craft-content h2, .experience-section h2, .section-padding h2 { font-size: 2.2rem !important; }
+            .exp-grid { gap: 30px !important; }
+        }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+<body>
+
+    <!-- Header (JS Injected) -->
+    <header id="main-header"></header>
+
+    <main>
+        <!-- Editorial Hero -->
+        <section class="editorial-hero">
+            <div class="hero-split">
+                <div class="hero-text-side">
+                    <span class="hero-subtitle reveal">The Couture of Confectionery</span>
+                    <h1 class="hero-title reveal" style="transition-delay: 0.1s;">Sculpting <br><i class="serif">Sugar</i> & Soul</h1>
+                    <p class="hero-desc reveal" style="transition-delay: 0.2s;">
+                        Enter a world where every creation is a dialogue between artistry and indulgence. We don't just bake; we architect memories in sugar.
+                    </p>
+                    <div class="hero-btns reveal" style="transition-delay: 0.3s;">
+                        <a href="contact.html" class="btn btn-primary">Book Consultation</a>
+                        <a href="gallery.html" class="btn btn-outline" style="margin-left: 15px;">Our Portfolios</a>
+                    </div>
+                </div>
+                <div class="hero-image-side reveal">
+                    <img src="../images/hero.png" alt="Bespoke Luxury Cake">
+                </div>
+            </div>
+        </section>
+
+        <!-- The Founder & Craft -->
+        <section class="craft-section">
+            <div class="container">
+                <div class="craft-container">
+                    <div class="founder-img reveal">
+                        <img src="../images/pastries.png" alt="Master Patissier" style="width: 100%;">
+                    </div>
+                    <div class="craft-content reveal" style="transition-delay: 0.2s;">
+                        <span class="hero-subtitle">The Master's Touch</span>
+                        <h2>The Art of the <br>Impeccable Detail</h2>
+                        <p>Founded by award-winning designer Sarah Jenkins, our studio was born from a singular vision: to treat every cake as a work of contemporary art.</p>
+                        <p>We source the world's most exclusive ingredients, from hand-harvested vanilla beans in Madagascar to artisanal organic chocolate from small-batch roasters in Belgium. For us, luxury is a multi-sensory journey.</p>
+                        <a href="about.html" class="btn btn-outline" style="margin-top: 20px;">Read Our Story</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Premium Craftsmanship Features -->
+        <section class="section-padding" style="background-color: var(--studio-cream);">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <span class="hero-subtitle reveal">Our Commitment to Excellence</span>
+                    <h2 class="reveal" style="font-size: 3.5rem; margin-bottom: 20px;">Why Choose Cakeology</h2>
+                    <p class="reveal" style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8;">
+                        We elevate the art of baking with unparalleled dedication to quality, sourcing the finest ingredients, and crafting each masterpiece with meticulous attention to detail.
+                    </p>
+                </div>
+                
+                <div class="premium-features-grid">
+                    <div class="premium-feature-card reveal">
+                        <div class="pf-icon"><i class="fas fa-crown"></i></div>
+                        <h3>Handcrafted Perfection</h3>
+                        <p>Every cake is sculpted by our master pastry chefs, ensuring flawless design and exceptional taste tailored to your vision.</p>
+                    </div>
+                    <div class="premium-feature-card reveal" style="transition-delay: 0.1s;">
+                        <div class="pf-icon"><i class="fas fa-leaf"></i></div>
+                        <h3>Premium Ingredients</h3>
+                        <p>We source only the finest globally-procured organic elements, from Madagascar vanilla to artisanal Belgian chocolate.</p>
+                    </div>
+                    <div class="premium-feature-card reveal" style="transition-delay: 0.2s;">
+                        <div class="pf-icon"><i class="fas fa-cake-candles"></i></div>
+                        <h3>Custom Celebrations</h3>
+                        <p>Bespoke cake architecture designed exclusively for weddings, milestone birthdays, and luxury corporate events.</p>
+                    </div>
+                    <div class="premium-feature-card reveal" style="transition-delay: 0.3s;">
+                        <div class="pf-icon"><i class="fas fa-truck-fast"></i></div>
+                        <h3>White-Glove Delivery</h3>
+                        <p>Temperature-controlled, secure transport guaranteeing your masterpiece arrives in immaculate condition.</p>
+                    </div>
+                </div>
+
+                <div class="reveal" style="text-align: center; margin-top: 50px;">
+                    <a href="shop.html" class="btn btn-primary" style="background: var(--studio-dark); color: var(--studio-gold); border: none; padding: 15px 40px; font-size: 1.1rem; border-radius: var(--radius-pill); box-shadow: var(--shadow-premium);">Explore Collection</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Signature Experience -->
+        <section class="experience-section">
+            <div class="container">
+                <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <span class="hero-subtitle">Signature Services</span>
+                    <h2 style="font-size: 3.5rem; margin-top: 10px;">The Atelier Process</h2>
+                </div>
+                
+                <div class="exp-grid">
+                    <div class="exp-item reveal">
+                        <span class="exp-icon"><i class="fas fa-pencil-ruler"></i></span>
+                        <h3>Design Consultation</h3>
+                        <p>A private session to translate your personal style and event atmosphere into a cohesive architectural concept.</p>
+                    </div>
+                    <div class="exp-item reveal" style="transition-delay: 0.1s;">
+                        <span class="exp-icon"><i class="fas fa-wine-glass"></i></span>
+                        <h3>Flavor Architecture</h3>
+                        <p>Curated tasting menus designed to balance complex textures and sophisticated flavor profiles.</p>
+                    </div>
+                    <div class="exp-item reveal" style="transition-delay: 0.2s;">
+                        <span class="exp-icon"><i class="fas fa-gem"></i></span>
+                        <h3>Luxury Sourcing</h3>
+                        <p>We utilize gold leaf, hand-painted metallics, and bespoke sugar floristry to achieve absolute perfection.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="section-padding" style="text-align: center;">
+            <div class="container">
+                <div class="reveal">
+                    <h2 style="font-size: 4rem; margin-bottom: 20px;">Begin Your Journey</h2>
+                    <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px;">Commission a masterpiece that resonates with your celebration's unique spirit.</p>
+                    <a href="contact.html" class="btn btn-primary btn-lg">Request Consultation</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (JS Injected) -->
+    <footer id="main-footer"></footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

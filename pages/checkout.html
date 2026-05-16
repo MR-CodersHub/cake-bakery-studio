@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Cakeology</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .checkout-container { padding: 120px 0 80px; }
+        .checkout-grid { display: grid; grid-template-columns: 1fr 400px; gap: 40px; }
+        .checkout-form-section { background: var(--bg-surface); padding: 40px; border-radius: var(--radius-md); box-shadow: var(--shadow-soft); }
+        .form-group { margin-bottom: 25px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; color: var(--text-chocolate); }
+        input, select { width: 100%; padding: 12px 20px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-main); color: var(--text-primary); outline: none; transition: var(--transition-smooth); }
+        input:focus { border-color: var(--accent-gold); box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1); }
+        .order-summary-sidebar { position: sticky; top: 120px; }
+        .payment-option { border: 1px solid var(--border-color); padding: 15px; border-radius: var(--radius-sm); margin-bottom: 15px; cursor: pointer; transition: var(--transition-smooth); display: flex; align-items: center; gap: 15px; }
+        .payment-option:hover, .payment-option.active { border-color: var(--accent-gold); background: rgba(212, 175, 55, 0.05); }
+        .payment-option i { font-size: 1.2rem; color: var(--accent-gold); }
+        @media (max-width: 992px) { .checkout-grid { grid-template-columns: 1fr; } .order-summary-sidebar { position: static; } }
+
+        /* Success Modal Styles */
+        .success-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 9, 8, 0.85); backdrop-filter: blur(8px); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: var(--transition-smooth); }
+        .success-overlay.active { opacity: 1; visibility: visible; }
+        .success-modal { background: var(--bg-surface); padding: 50px; border-radius: var(--radius-md); max-width: 500px; width: 90%; text-align: center; box-shadow: var(--shadow-premium); transform: scale(0.9); transition: var(--transition-smooth); border: 1px solid var(--accent-gold); }
+        .success-overlay.active .success-modal { transform: scale(1); }
+        .success-icon { width: 80px; height: 80px; background: var(--accent-gold); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 25px; animation: scaleUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        .success-modal h2 { font-size: 2.2rem; margin-bottom: 15px; color: var(--text-chocolate); }
+        .order-quick-info { background: var(--bg-main); padding: 20px; border-radius: var(--radius-sm); margin: 25px 0; text-align: left; border: 1px dashed var(--accent-gold); }
+        .info-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.95rem; }
+        .success-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; }
+        .spinner { width: 50px; height: 50px; border: 4px solid rgba(212, 175, 55, 0.1); border-top-color: var(--accent-gold); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes scaleUp { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    </style>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#D4AF37">
+</head>
+<body>
+    <!-- Navbar (JS Injected) -->
+    <header id="main-nav"></header>
+
+    <div class="checkout-container">
+        <div class="container">
+            <h1 class="serif" style="font-size: 3.5rem; margin-bottom: 50px;">Secure Checkout</h1>
+            
+            <div class="checkout-grid">
+                <div class="checkout-form-section">
+                    <h2 class="serif" style="margin-bottom: 30px; font-size: 2rem;">Shipping Information</h2>
+                    <form id="checkout-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" placeholder="John" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" placeholder="Doe" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Shipping Address</label>
+                            <input type="text" placeholder="123 Bakery Lane" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>City</label>
+                                <input type="text" placeholder="Sugar City" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Postal Code</label>
+                                <input type="text" placeholder="12345" required>
+                            </div>
+                        </div>
+
+                        <h2 class="serif" style="margin: 50px 0 30px; font-size: 2rem;">Payment Method</h2>
+                        <div class="payment-options">
+                            <div class="payment-option active">
+                                <i class="fas fa-credit-card"></i>
+                                <div>
+                                    <div style="font-weight: 700;">Credit / Debit Card</div>
+                                    <div style="font-size: 0.8rem; color: var(--text-muted);">Secure payment via Stripe</div>
+                                </div>
+                            </div>
+                            <div class="payment-option">
+                                <i class="fab fa-paypal"></i>
+                                <div>
+                                    <div style="font-weight: 700;">PayPal</div>
+                                    <div style="font-size: 0.8rem; color: var(--text-muted);">Faster & safer way to pay</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 40px; padding: 20px; background: rgba(212, 175, 55, 0.05); border-radius: var(--radius-sm); border-left: 4px solid var(--accent-gold);">
+                            <p style="font-size: 0.9rem; color: var(--text-chocolate); line-height: 1.6;">
+                                <i class="fas fa-shield-alt" style="margin-right: 10px;"></i>
+                                Your payment is processed securely. We never store your full credit card details.
+                            </p>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="order-summary-sidebar">
+                    <div class="cart-summary-card" style="margin-top: 0;">
+                        <h2 class="serif" style="margin-bottom: 30px;">Your Order</h2>
+                        <div id="checkout-items-list" style="margin-bottom: 30px; max-height: 300px; overflow-y: auto;">
+                            <!-- Items list injected here -->
+                        </div>
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="checkout-subtotal">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span style="color: var(--accent-gold);">Free</span>
+                        </div>
+                        <div class="summary-total summary-row">
+                            <span>Total</span>
+                            <span id="checkout-total">$0.00</span>
+                        </div>
+                        <button type="submit" form="checkout-form" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 30px;">Place Order</button>
+                        <a href="cart.html" style="display: block; text-align: center; margin-top: 20px; font-size: 0.9rem; color: var(--text-muted);">Return to Basket</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="success-overlay" id="success-overlay">
+        <div class="success-modal">
+            <div id="loading-state">
+                <div class="spinner"></div>
+                <p class="serif" style="font-size: 1.2rem;">Processing your celebration order...</p>
+            </div>
+            <div id="success-state" style="display: none;">
+                <div class="success-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+                <h2 class="serif">Order Placed Successfully!</h2>
+                <p style="color: var(--text-secondary);">Your Cakeology experience has begun. We're preparing your sweet delights with love.</p>
+                
+                <div class="order-quick-info">
+                    <div class="info-row"><span>Order ID:</span> <strong id="conf-order-id">#CK-88291</strong></div>
+                    <div class="info-row"><span>Estimated Delivery:</span> <strong>Within 24-48 Hours</strong></div>
+                    <div class="info-row"><span>Total Amount:</span> <strong id="conf-total">$0.00</strong></div>
+                </div>
+
+                <div class="success-actions">
+                    <a href="order-success.html" class="btn btn-primary">Track Order</a>
+                    <a href="shop.html" class="btn btn-outline">Shop More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (JS Injected) -->
+    <footer id="main-footer"></footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const localCart = JSON.parse(localStorage.getItem('bakery_cart')) || [];
+            const itemsList = document.getElementById('checkout-items-list');
+            const subtotalEl = document.getElementById('checkout-subtotal');
+            const totalEl = document.getElementById('checkout-total');
+
+            if (localCart.length === 0) {
+                window.location.href = 'shop.html';
+                return;
+            }
+
+            itemsList.innerHTML = localCart.map(item => `
+                <div style="display: flex; gap: 15px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--border-color);">
+                    <img src="${item.image}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 700; font-size: 0.95rem;">${item.name}</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">Qty: ${item.quantity}</div>
+                    </div>
+                    <div style="font-weight: 700;">$${(item.price * item.quantity).toFixed(2)}</div>
+                </div>
+            `).join('');
+
+            const total = localCart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            subtotalEl.innerText = `$${total.toFixed(2)}`;
+            totalEl.innerText = `$${total.toFixed(2)}`;
+
+            document.getElementById('checkout-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const submitBtn = document.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Processing...';
+
+                // Show Success Overlay
+                const overlay = document.getElementById('success-overlay');
+                overlay.classList.add('active');
+
+                // Simulate processing
+                setTimeout(() => {
+                    const localCart = JSON.parse(localStorage.getItem('bakery_cart')) || [];
+                    const orderId = 'CK-' + Math.floor(10000 + Math.random() * 90000);
+                    const total = localCart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+                    // Create Order Data
+                    const orderData = {
+                        id: orderId,
+                        items: localCart,
+                        total: total,
+                        date: new Date().toLocaleString(),
+                        status: 'Processing',
+                        customer: {
+                            name: document.querySelectorAll('input[type="text"]')[0].value + ' ' + document.querySelectorAll('input[type="text"]')[1].value,
+                            email: document.querySelector('input[type="email"]').value,
+                            address: document.querySelectorAll('input[type="text"]')[2].value + ', ' + document.querySelectorAll('input[type="text"]')[3].value
+                        }
+                    };
+
+                    // Save to localStorage
+                    const orders = JSON.parse(localStorage.getItem('bakery_orders')) || [];
+                    orders.unshift(orderData);
+                    localStorage.setItem('bakery_orders', JSON.stringify(orders));
+                    localStorage.setItem('last_order', JSON.stringify(orderData));
+
+                    // Clear Cart
+                    localStorage.removeItem('bakery_cart');
+                    if (window.updateCartCount) window.updateCartCount();
+
+                    // Switch to success state
+                    document.getElementById('loading-state').style.display = 'none';
+                    document.getElementById('success-state').style.display = 'block';
+                    document.getElementById('conf-order-id').innerText = '#' + orderId;
+                    document.getElementById('conf-total').innerText = '$' + total.toFixed(2);
+                }, 2500);
+            });
+        });
+    </script>
+</body>
+</html>
