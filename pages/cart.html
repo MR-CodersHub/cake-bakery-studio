@@ -23,72 +23,112 @@
 
         .cart-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: 2.2fr 1fr;
             gap: 50px;
             align-items: start;
         }
 
-        .cart-table {
-            width: 100%;
-            border-collapse: collapse;
+        .cart-list { display: flex; flex-direction: column; gap: 30px; }
+        
+        .cart-item-card {
+            display: grid;
+            grid-template-columns: 3fr 1.5fr 1fr auto;
+            align-items: center;
+            gap: 20px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
         }
-
-        .cart-table th {
-            text-align: left;
-            padding: 20px;
+        
+        .cart-header-row {
+            display: grid;
+            grid-template-columns: 3fr 1.5fr 1fr auto;
+            gap: 20px;
+            padding-bottom: 15px;
             border-bottom: 1px solid var(--border-color);
             color: var(--text-secondary);
             font-weight: 500;
+            margin-bottom: 30px;
         }
 
-        .cart-table td {
-            padding: 30px 20px;
-            border-bottom: 1px solid var(--border-color);
-        }
+        .cart-product { display: flex; align-items: center; gap: 20px; }
+        .cart-product img { width: 100px; height: 100px; border-radius: var(--radius-md); object-fit: cover; }
+        .cart-product-info h3 { font-size: 1.2rem; margin-bottom: 5px; color: var(--text-primary); }
 
-        .cart-product {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .cart-product img {
-            width: 100px;
-            height: 100px;
-            border-radius: var(--radius-md);
-            object-fit: cover;
-        }
-
-        .cart-product-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
-        .cart-summary-card {
-            background: var(--bg-surface);
-            padding: 40px;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-premium);
-            border: 1px solid var(--border-color);
-        }
-
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-
-        .summary-total {
-            border-top: 2px solid var(--border-color);
-            padding-top: 20px;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--accent-gold);
-        }
+        .cart-summary-card { background: var(--bg-surface); padding: 40px; border-radius: var(--radius-lg); box-shadow: var(--shadow-premium); border: 1px solid var(--border-color); }
+        .summary-row { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 1.1rem; }
+        .summary-total { border-top: 2px solid var(--border-color); padding-top: 20px; font-weight: 700; font-size: 1.5rem; color: var(--accent-gold); }
+        
+        .cart-page-header { font-size: 3.5rem; margin-bottom: 50px; }
+        .mobile-label { display: none; color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        .mobile-flex-row { display: contents; } /* Unwraps to parent grid on desktop */
+        
+        /* Remove Button */
+        .cart-remove-btn { font-size: 1.2rem; color: var(--text-muted); cursor: pointer; transition: 0.3s; padding: 10px; }
+        .cart-remove-btn:hover { color: #ff5252; }
 
         @media (max-width: 992px) {
-            .cart-grid { grid-template-columns: 1fr; }
+            .cart-grid { grid-template-columns: 1fr; gap: 40px; }
+            .cart-page-header { font-size: 3rem; text-align: center; }
+        }
+
+        @media (max-width: 768px) {
+            .cart-page-container { padding: 110px 0 60px; }
+            .cart-header-row { display: none; } /* Hide headers on mobile */
+            .cart-item-card { 
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                padding: 25px 20px;
+                background: var(--bg-surface); 
+                border: 1px solid var(--border-color); 
+                border-radius: var(--radius-md); 
+                box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            }
+            .cart-list { gap: 20px; }
+            
+            .cart-product { flex-direction: row; align-items: flex-start; gap: 15px; width: 100%; padding-right: 30px; }
+            .cart-product img { width: 85px; height: 85px; }
+            .cart-product-info h3 { font-size: 1.15rem; line-height: 1.3; margin-bottom: 8px; }
+            
+            /* Responsive stacked layout for Qty & Subtotal */
+            .mobile-label { display: block; }
+            .mobile-flex-row { 
+                display: flex; 
+                justify-content: space-between; 
+                align-items: flex-end; 
+                width: 100%; 
+                border-top: 1px solid var(--border-color); 
+                padding-top: 20px;
+            }
+            
+            /* Modern Remove button moved to top right */
+            .cart-remove-btn { 
+                position: absolute; 
+                top: 15px; 
+                right: 15px; 
+                background: rgba(255, 82, 82, 0.1); 
+                width: 38px; 
+                height: 38px; 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                border-radius: 50%; 
+                color: #ff5252; 
+                padding: 0;
+            }
+            .cart-remove-btn:hover { background: #ff5252; color: white; }
+
+            .cart-summary-card { padding: 30px 20px; }
+            .summary-row { font-size: 1rem; flex-wrap: wrap; gap: 10px; }
+            .summary-row span:last-child { text-align: right; flex: 1; }
+            .summary-total { font-size: 1.35rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .cart-page-header { font-size: 2.4rem; margin-bottom: 30px; }
+            .cart-product img { width: 75px; height: 75px; }
+            .cart-product-info h3 { font-size: 1.05rem; }
         }
     </style>
     <!-- Favicon & Touch Icons -->
@@ -104,25 +144,23 @@
 
     <div class="cart-page-container">
         <div class="container">
-            <h1 class="serif" style="font-size: 3.5rem; margin-bottom: 50px;">Your Basket</h1>
+            <h1 class="serif cart-page-header">Your Basket</h1>
             
             <div id="full-cart-content">
                 <!-- Content Injected by JS -->
                 <div class="cart-grid">
                     <div class="cart-items-column">
-                        <table class="cart-table">
-                            <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Quantity</th>
-                                    <th>Subtotal</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody id="cart-page-items">
-                                <!-- Items here -->
-                            </tbody>
-                        </table>
+                        <div class="cart-header-row">
+                            <div>Product</div>
+                            <div>Quantity</div>
+                            <div>Subtotal</div>
+                            <div></div>
+                        </div>
+                        
+                        <div class="cart-list" id="cart-page-items">
+                            <!-- Items here dynamically -->
+                        </div>
+                        
                         <a href="shop.html" class="btn btn-outline" style="margin-top: 40px;"><i class="fas fa-arrow-left" style="margin-right: 10px;"></i> Continue Shopping</a>
                     </div>
                     
@@ -192,31 +230,37 @@
             cartContent.style.display = 'grid';
 
             itemsContainer.innerHTML = localCart.map((item, index) => `
-                <tr>
-                    <td>
-                        <div class="cart-product">
-                            <img src="${item.image}" alt="${item.name}">
-                            <div class="cart-product-info">
-                                <h3>${item.name}</h3>
-                                <p style="color: var(--text-secondary); font-size: 0.9rem;">${item.category}</p>
-                                <p style="color: var(--accent-gold); font-weight: 600;">$${item.price.toFixed(2)}</p>
+                <div class="cart-item-card">
+                    <div class="cart-product">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-product-info">
+                            <h3>${item.name}</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 5px;">${item.category}</p>
+                            <p style="color: var(--accent-gold); font-weight: 600;">$${item.price.toFixed(2)}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-flex-row">
+                        <div class="cart-qty-wrapper">
+                            <span class="mobile-label">Quantity</span>
+                            <div class="quantity-controls" style="width: fit-content; border: 1.5px solid var(--border-color); border-radius: var(--radius-pill); padding: 4px;">
+                                <button class="qty-btn" style="background: transparent; color: var(--text-primary); border: none; width: 30px; height: 30px; cursor: pointer;" onclick="updatePageQty(${index}, -1)">-</button>
+                                <span style="padding: 0 15px; font-weight: 600;">${item.quantity}</span>
+                                <button class="qty-btn" style="background: transparent; color: var(--text-primary); border: none; width: 30px; height: 30px; cursor: pointer;" onclick="updatePageQty(${index}, 1)">+</button>
                             </div>
                         </div>
-                    </td>
-                    <td>
-                        <div class="quantity-controls" style="width: fit-content;">
-                            <button class="qty-btn" onclick="updatePageQty(${index}, -1)">-</button>
-                            <span style="padding: 0 15px;">${item.quantity}</span>
-                            <button class="qty-btn" onclick="updatePageQty(${index}, 1)">+</button>
+                        
+                        <div class="cart-subtotal-wrapper">
+                            <span class="mobile-label">Subtotal</span>
+                            <span style="font-weight: 700; font-size: 1.2rem; color: var(--text-primary);">$${(item.price * item.quantity).toFixed(2)}</span>
                         </div>
-                    </td>
-                    <td>
-                        <span style="font-weight: 700; font-size: 1.1rem;">$${(item.price * item.quantity).toFixed(2)}</span>
-                    </td>
-                    <td style="text-align: right;">
-                        <i class="fas fa-trash remove-item" style="cursor: pointer; color: #ff5252;" onclick="removePageItem(${index})"></i>
-                    </td>
-                </tr>
+                    </div>
+
+                    <!-- Remove Btn (Desktop & Mobile) -->
+                    <div class="cart-remove-btn" onclick="removePageItem(${index})">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                </div>
             `).join('');
 
             const total = localCart.reduce((sum, item) => sum + (item.price * item.quantity), 0);

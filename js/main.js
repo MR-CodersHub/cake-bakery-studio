@@ -8,6 +8,12 @@ const BAKERY_PRODUCTS = {
         category: "Wedding Cakes",
         price: 45.00,
         image: "../images/hero.png",
+        images: [
+            "../images/hero.png",
+            "../images/gallery_1.png",
+            "../images/gallery_2.png",
+            "../images/gallery_3.png"
+        ],
         badge: "Best Seller",
         description: "Our signature red velvet sponge, incredibly moist and tender, layered with our secret recipe cream cheese frosting and finished with delicate edible gold leaf. Perfect for weddings, anniversaries, or elegant celebrations.",
         ingredients: "Premium Flour, Cocoa Powder, Buttermilk, Cream Cheese, Organic Beetroot Extract, Edible Gold Leaf.",
@@ -20,6 +26,12 @@ const BAKERY_PRODUCTS = {
         category: "Wedding Cakes",
         price: 85.00,
         image: "../images/wedding_cat.png",
+        images: [
+            "../images/wedding_cat.png",
+            "../images/gallery_2.png",
+            "../images/gallery_3.png",
+            "../images/gallery_1.png"
+        ],
         badge: "Premium",
         description: "A dark chocolate ganache cake infused with espresso, decorated with hand-sculpted sugar orchids. A sophisticated choice for a modern evening wedding.",
         ingredients: "Valrhona Chocolate, Espresso Roast, Madagascar Vanilla, Cane Sugar, Hand-sculpted Sugar Art.",
@@ -32,6 +44,12 @@ const BAKERY_PRODUCTS = {
         category: "Wedding Cakes",
         price: 120.00,
         image: "https://images.unsplash.com/photo-1522760883748-aa2c07936653?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        images: [
+            "https://images.unsplash.com/photo-1522760883748-aa2c07936653?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "../images/wedding_cat.png",
+            "../images/gallery_3.png",
+            "../images/gallery_2.png"
+        ],
         badge: "Classic",
         description: "A timeless multi-tier vanilla bean cake with delicate royal icing lace patterns and edible pearl clusters. Pure elegance in every bite.",
         ingredients: "Tahitian Vanilla Bean, Belgian Butter, Egg Whites, Royal Icing, Edible Sugar Pearls.",
@@ -44,6 +62,12 @@ const BAKERY_PRODUCTS = {
         category: "Birthday Cakes",
         price: 55.00,
         image: "https://images.unsplash.com/photo-1535141192574-5d4897c12636?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        images: [
+            "https://images.unsplash.com/photo-1535141192574-5d4897c12636?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "../images/celebration_cat.png",
+            "../images/gallery_1.png",
+            "../images/gallery_2.png"
+        ],
         badge: "Popular",
         description: "Triple-layered rich chocolate sponge filled with dark chocolate truffle ganache and coated in smooth Belgian chocolate. A chocolate lover's ultimate birthday wish.",
         ingredients: "Dark Chocolate 70%, Dutch Cocoa, Heavy Cream, Sea Salt, Chocolate Shavings.",
@@ -56,6 +80,12 @@ const BAKERY_PRODUCTS = {
         category: "Birthday Cakes",
         price: 42.00,
         image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        images: [
+            "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "../images/celebration_cat.png",
+            "../images/gallery_3.png",
+            "../images/gallery_1.png"
+        ],
         badge: "Kids Choice",
         description: "Funfetti sponge with fresh strawberry compote filling and rainbow sprinkle buttercream. The happiest cake for the most joyful birthdays.",
         ingredients: "Sprinkle Cake Base, Fresh Strawberries, Swiss Meringue Buttercream, Rainbow Sprinkles.",
@@ -68,6 +98,12 @@ const BAKERY_PRODUCTS = {
         category: "Cupcakes",
         price: 32.00,
         image: "https://images.unsplash.com/photo-1519340333755-56e9c1d04579?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        images: [
+            "https://images.unsplash.com/photo-1519340333755-56e9c1d04579?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "../images/cupcake_cat.png",
+            "../images/gallery_2.png",
+            "../images/gallery_3.png"
+        ],
         badge: "Best Seller",
         description: "A curated set of 12 cupcakes in soft pastel shades. Includes Vanilla Rose, Lavender Lemon, and Earl Grey Honey flavors. Beautiful and delicious.",
         ingredients: "Artisanal Flour, Organic Petals, Local Honey, Meyer Lemons, Earl Grey Infusion.",
@@ -80,6 +116,12 @@ const BAKERY_PRODUCTS = {
         category: "Macarons",
         price: 24.00,
         image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        images: [
+            "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "../images/pastries.png",
+            "../images/gallery_1.png",
+            "../images/gallery_2.png"
+        ],
         badge: "New",
         description: "Authentic French macarons with almond shells and gold-dusted chocolate ganache. A box of 6 luxury treats that melt in your mouth.",
         ingredients: "Almond Flour, Organic Egg Whites, Gold Leaf, Belgian Chocolate, Sea Salt.",
@@ -92,6 +134,12 @@ const BAKERY_PRODUCTS = {
         category: "Pastries",
         price: 18.00,
         image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        images: [
+            "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "../images/pastries.png",
+            "../images/gallery_3.png",
+            "../images/gallery_2.png"
+        ],
         badge: "Fresh Today",
         description: "A buttery shortbread crust filled with silky vanilla bean custard and topped with a mosaic of fresh seasonal berries.",
         ingredients: "Shortbread Pastry, Vanilla Custard, Raspberries, Blueberries, Apricot Glaze.",
@@ -104,6 +152,12 @@ const BAKERY_PRODUCTS = {
         category: "Vegan Options",
         price: 52.00,
         image: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        images: [
+            "https://images.unsplash.com/photo-1621303837174-89787a7d4729?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "../images/gallery_1.png",
+            "../images/gallery_2.png",
+            "../images/gallery_3.png"
+        ],
         badge: "Healthy",
         description: "A plant-based masterpiece made with ceremonial grade matcha, coconut cream, and a gluten-free almond base. Subtle, earthy, and perfectly sweet.",
         ingredients: "Ceremonial Matcha, Coconut Milk, Almond Flour, Maple Syrup, Flax Seeds.",
@@ -116,6 +170,12 @@ const BAKERY_PRODUCTS = {
         category: "Cupcakes",
         price: 36.00,
         image: "https://images.unsplash.com/photo-1599785209707-a456fc1337bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        images: [
+            "https://images.unsplash.com/photo-1599785209707-a456fc1337bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "../images/cupcake_cat.png",
+            "../images/gallery_1.png",
+            "../images/gallery_2.png"
+        ],
         badge: "Romantic",
         description: "A romantic pairing of red velvet and white chocolate cupcakes. Perfectly sized for sharing or indulging alone.",
         ingredients: "Cocoa, Buttermilk, White Chocolate Ganache, Cream Cheese Frosting.",
@@ -128,6 +188,12 @@ const BAKERY_PRODUCTS = {
         category: "Macarons",
         price: 28.00,
         image: "https://images.unsplash.com/photo-1569864358642-9d16197022c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        images: [
+            "https://images.unsplash.com/photo-1569864358642-9d16197022c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "../images/pastries.png",
+            "../images/gallery_2.png",
+            "../images/gallery_3.png"
+        ],
         badge: "Handcrafted",
         description: "Delicate rose-infused shells filled with a light raspberry cream. These macarons capture the essence of a spring garden in bloom.",
         ingredients: "Rose Water, Raspberry Purée, Almond Flour, Organic Sugar, Egg Whites.",
@@ -140,6 +206,12 @@ const BAKERY_PRODUCTS = {
         category: "Pastries",
         price: 15.00,
         image: "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        images: [
+            "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "../images/pastries.png",
+            "../images/gallery_1.png",
+            "../images/gallery_3.png"
+        ],
         badge: "Zesty",
         description: "Tangy lemon curd in a crisp pastry shell, topped with a mountain of toasted Italian meringue. It's like eating a cloud.",
         ingredients: "Meyer Lemon Curd, Italian Meringue, All-Butter Pastry, Candied Zest.",
@@ -152,6 +224,12 @@ const BAKERY_PRODUCTS = {
         category: "Vegan Options",
         price: 48.00,
         image: "../images/celebration_cat.png",
+        images: [
+            "../images/celebration_cat.png",
+            "../images/gallery_2.png",
+            "../images/gallery_3.png",
+            "../images/gallery_1.png"
+        ],
         badge: "Plant Based",
         description: "A rustic, free-form tart filled with a medley of wild blackberries, blueberries, and raspberries. 100% vegan and naturally delicious.",
         ingredients: "Wild Berries, Vegan Shortcrust, Coconut Sugar, Lemon Juice, Cornstarch.",
@@ -572,54 +650,65 @@ function populateProductDetail() {
 
     // Update Title & Breadcrumbs
     document.title = `${product.name} | Cakeology`;
-    const breadcrumb = document.querySelector('.product-detail nav');
-    if (breadcrumb) {
-        breadcrumb.innerHTML = `<a href="shop.html">Shop</a> / <a href="#">${product.category}</a> / ${product.name}`;
-    }
+    const breadcrumbCategory = document.getElementById('breadcrumb-category');
+    const breadcrumbTitle = document.getElementById('breadcrumb-title');
+    if (breadcrumbCategory) breadcrumbCategory.innerText = product.category;
+    if (breadcrumbTitle) breadcrumbTitle.innerText = product.name;
 
-    // Update Image
-    const mainImg = document.querySelector('.main-img');
+    // Update Image & Thumbnails
+    const mainImg = document.getElementById('featured-image');
     if (mainImg) mainImg.src = product.image;
 
+    const thumbGrid = document.getElementById('thumb-strip');
+    if (thumbGrid) {
+        const productImages = product.images || [
+            product.image,
+            "../images/gallery_1.png",
+            "../images/gallery_2.png",
+            "../images/gallery_3.png"
+        ];
+
+        thumbGrid.innerHTML = productImages.map((imgUrl, idx) => `
+            <div class="thumb-item${idx === 0 ? ' active' : ''}">
+                <img src="${imgUrl}" alt="${product.name} Thumbnail ${idx + 1}">
+            </div>
+        `).join('');
+
+        const thumbnails = thumbGrid.querySelectorAll('.thumb-item');
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                thumbnails.forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
+                if (mainImg) mainImg.src = thumb.querySelector('img').src;
+            });
+        });
+    }
+
     // Update Info
-    const title = document.querySelector('.product-info-side h1');
+    const title = document.getElementById('product-title');
     if (title) title.innerText = product.name;
 
-    const price = document.querySelector('.price-tag');
+    const price = document.getElementById('product-price');
     if (price) price.innerText = `$${product.price.toFixed(2)}`;
+    
+    const stickyPrice = document.getElementById('sticky-price');
+    if (stickyPrice) stickyPrice.innerText = `$${product.price.toFixed(2)}`;
 
-    const desc = document.querySelector('.product-info-side p');
+    const desc = document.getElementById('product-desc');
     if (desc) desc.innerText = product.description;
 
-    const categoryText = document.querySelector('.product-info-side div p:nth-child(1)');
-    if (categoryText) {
-        categoryText.innerHTML = `<strong>Category:</strong> ${product.category}`;
-    }
-
-    const ingredientsText = document.querySelector('.product-info-side div p:nth-child(2)');
-    if (ingredientsText) {
-        ingredientsText.innerHTML = `<strong>Ingredients:</strong> ${product.ingredients}`;
-    }
+    const ingredients = document.getElementById('product-ingredients');
+    if (ingredients) ingredients.innerText = product.ingredients;
 
     // Update Rating
-    const stars = document.querySelectorAll('.product-info-side .fa-star, .product-info-side .fa-star-half-alt');
-    const reviewsCount = document.querySelector('.product-info-side span[style*="color: var(--text-muted)"]');
-    if (reviewsCount) reviewsCount.innerText = `(${product.reviewsCount} Customer Reviews)`;
+    const reviewsCount = document.getElementById('review-count');
+    if (reviewsCount) reviewsCount.innerText = `${product.reviewsCount} Reviews`;
 
     // Update Add to Cart Logic for this specific product
     const productContainer = document.querySelector('.product-card');
     if (productContainer) {
         productContainer.dataset.id = product.id;
         productContainer.dataset.category = product.category;
-        
-        const cardTitle = productContainer.querySelector('h1');
-        if (cardTitle) cardTitle.classList.add('product-title'); // For addToCart to find name
-        
-        const cardPrice = productContainer.querySelector('.price-tag');
-        if (cardPrice) {
-            // Wrap price in span for addToCart to parse
-            cardPrice.innerHTML = `<span class="product-price"><span>$${product.price.toFixed(2)}</span></span>`;
-        }
     }
 }
 
