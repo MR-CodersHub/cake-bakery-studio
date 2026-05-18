@@ -710,6 +710,42 @@ function populateProductDetail() {
         productContainer.dataset.id = product.id;
         productContainer.dataset.category = product.category;
     }
+
+    // Update Size Selection Logic
+    const sizeBtns = document.querySelectorAll('.size-btn');
+    if (sizeBtns.length > 0) {
+        sizeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                sizeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    }
+
+    // Update Quantity Logic
+    const qtyMinus = document.querySelector('.qty-btn-minus');
+    const qtyPlus = document.querySelector('.qty-btn-plus');
+    const qtyVal = document.querySelector('.qty-val');
+    
+    if (qtyMinus && qtyPlus && qtyVal) {
+        let currentQty = parseInt(qtyVal.innerText) || 1;
+        qtyMinus.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentQty > 1) {
+                currentQty--;
+                qtyVal.innerText = currentQty;
+                if (stickyPrice) stickyPrice.innerText = `$${(product.price * currentQty).toFixed(2)}`;
+            }
+        });
+        qtyPlus.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentQty < 10) {
+                currentQty++;
+                qtyVal.innerText = currentQty;
+                if (stickyPrice) stickyPrice.innerText = `$${(product.price * currentQty).toFixed(2)}`;
+            }
+        });
+    }
 }
 
 /**
@@ -777,18 +813,48 @@ function initCart() {
     // Handle "Add to Cart" and Card Redirections
     document.addEventListener("click", (e) => {
         const addToCartBtn = e.target.closest(".add-to-cart");
-        const productCard = e.target.closest(".product-card");
+        let productCard = e.target.closest(".product-card");
+
+        // Fallback for mobile sticky add-to-cart button on product-detail page
+        if (addToCartBtn && !productCard) {
+            productCard = document.querySelector(".product-page-wrapper .product-card");
+        }
 
         // 1. Handle Add to Cart
         if (addToCartBtn && productCard) {
             e.preventDefault();
             e.stopPropagation();
 
-            const name = productCard.querySelector(".product-title")?.innerText || 
-                         productCard.querySelector("h3")?.innerText || 
-                         productCard.querySelector("h1")?.innerText;
+            // Check for size options:
+            const sizeSelector = productCard.querySelector(".size-selector");
+            const activeSizeBtn = productCard.querySelector(".size-btn.active");
             
-            const priceText = productCard.querySelector(".product-price")?.innerText || 
+            if (sizeSelector && !activeSizeBtn) {
+                if (typeof showToast === 'function') {
+                    showToast("Please select a size before adding to basket.");
+                } else {
+                    alert("Please select a size before adding to basket.");
+                }
+                return;
+            }
+
+            const size = activeSizeBtn ? activeSizeBtn.innerText.trim() : null;
+            
+            // Check for custom message
+            const customInput = productCard.querySelector(".custom-input");
+            const customMessage = customInput ? customInput.value.trim() : null;
+            
+            // Check for quantity
+            const qtyVal = productCard.querySelector(".qty-val");
+            const quantity = qtyVal ? parseInt(qtyVal.innerText) : 1;
+
+            const nameElement = productCard.querySelector(".product-title") || 
+                                productCard.querySelector("h3") || 
+                                productCard.querySelector("h1");
+            const name = nameElement ? nameElement.innerText : "Product";
+            
+            const priceText = productCard.querySelector("#product-price")?.innerText || 
+                              productCard.querySelector(".product-price")?.innerText || 
                               productCard.querySelector(".price-tag")?.innerText || "0";
             
             const price = parseFloat(priceText.replace(/[^0-9.]/g, ""));
@@ -796,25 +862,63 @@ function initCart() {
             const image = productCard.querySelector(".product-img img")?.src || 
                           productCard.querySelector(".main-img")?.src ||
                           productCard.querySelector("img")?.src;
+            
+            const baseId = productCard.dataset.id || `prod-${Date.now()}`;
+            const uniqueId = size ? `${baseId}-${size.replace(/[^a-zA-Z0-9]/g, '-')}` : baseId;
 
             const product = {
-                id: productCard.dataset.id || `prod-${Date.now()}`,
-                name: name,
+                id: uniqueId,
+                baseId: baseId,
+                name: size ? `${name} (${size})` : name,
                 price: price,
                 image: image,
                 category: productCard.dataset.category || productCard.querySelector(".product-category")?.innerText || "Pastries",
-                quantity: 1
+                quantity: quantity,
+                size: size,
+                customMessage: customMessage
             };
             
-            window.addToCart(product);
+            // Add animation to the clicked button
+            const originalText = addToCartBtn.innerHTML;
+            
+            // Set temporary loading state
+            addToCartBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Adding...';
+            addToCartBtn.style.opacity = '0.8';
+            addToCartBtn.style.pointerEvents = 'none';
+
+            // Simulate slight delay for premium feel
+            setTimeout(() => {
+                window.addToCart(product);
+                
+                // Show success on button
+                addToCartBtn.innerHTML = '<i class="fas fa-check"></i> Added!';
+                addToCartBtn.style.backgroundColor = '#4CAF50';
+                addToCartBtn.style.color = '#ffffff';
+                addToCartBtn.style.borderColor = '#4CAF50';
+                
+                // Reset custom input if exists
+                if (customInput) customInput.value = '';
+                
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    addToCartBtn.innerHTML = originalText;
+                    addToCartBtn.style.opacity = '';
+                    addToCartBtn.style.pointerEvents = '';
+                    addToCartBtn.style.backgroundColor = '';
+                    addToCartBtn.style.color = '';
+                    addToCartBtn.style.borderColor = '';
+                }, 2000);
+            }, 600);
+            
             return; // Stop here, don't trigger redirection
         }
 
         // 2. Handle Card Redirection
         if (productCard && !isDashboard) {
             // Check if we clicked something interactive that isn't the cart button
-            // (Buttons, inputs, etc should not trigger redirect)
-            if (e.target.closest('button') || e.target.closest('input') || e.target.closest('select') || e.target.closest('.qty-btn')) {
+            if (e.target.closest('button') || e.target.closest('input') || e.target.closest('select') || 
+                e.target.closest('.qty-btn') || e.target.closest('.qty-btn-minus') || e.target.closest('.qty-btn-plus') || 
+                e.target.closest('.size-btn') || e.target.closest('.accordion-header')) {
                 return;
             }
 
@@ -888,10 +992,15 @@ function addToCart(product) {
     }
 
     const localCart = JSON.parse(localStorage.getItem("bakery_cart")) || [];
-    const existingItem = localCart.find(item => item.id === product.id || item.name === product.name);
+    
+    // Match by exact ID and custom message so custom orders don't stack with regular ones
+    const existingItem = localCart.find(item => 
+        item.id === product.id && 
+        (item.customMessage || "") === (product.customMessage || "")
+    );
     
     if (existingItem) {
-        existingItem.quantity += 1;
+        existingItem.quantity += product.quantity;
     } else {
         localCart.push(product);
     }
@@ -905,7 +1014,12 @@ function addToCart(product) {
         window.renderCart();
     }
     
-    showToast(`${product.name} added to basket!`);
+    // Trigger storage event for cross-tab sync and cart.html update
+    window.dispatchEvent(new Event('storage'));
+    
+    if (typeof showToast === 'function') {
+        showToast(`${product.name} added to basket!`);
+    }
 }
 window.addToCart = addToCart;
 
@@ -935,7 +1049,8 @@ window.renderCart = () => {
             <img src="${item.image}" alt="${item.name}" class="cart-item-img">
             <div class="cart-item-info">
                 <h4>${item.name}</h4>
-                <p>${item.category}</p>
+                <p>${item.category}${item.size ? ` &bull; <span style="color: var(--accent-gold); font-weight: 600;">${item.size}</span>` : ''}</p>
+                ${item.customMessage ? `<p style="font-size: 0.8rem; color: var(--text-secondary); font-style: italic; margin-top: 3px;"><i class="fas fa-pen" style="margin-right:4px;"></i>${item.customMessage}</p>` : ''}
                 <div class="cart-item-controls">
                     <div class="quantity-controls">
                         <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
@@ -962,6 +1077,7 @@ window.changeQty = (index, delta) => {
     localStorage.setItem("bakery_cart", JSON.stringify(localCart));
     window.updateCartCount();
     window.renderCart();
+    window.dispatchEvent(new Event('storage'));
 };
 
 window.removeFromCart = (index) => {
@@ -970,6 +1086,7 @@ window.removeFromCart = (index) => {
     localStorage.setItem("bakery_cart", JSON.stringify(localCart));
     window.updateCartCount();
     window.renderCart();
+    window.dispatchEvent(new Event('storage'));
 };
 
 function showToast(message) {

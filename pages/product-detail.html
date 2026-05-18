@@ -108,14 +108,22 @@
         @media (max-width: 768px) {
             .action-row { flex-direction: column; }
             .modern-qty, .btn-add-basket { width: 100%; }
-            .mobile-sticky-action { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--bg-surface); padding: 15px 20px; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); z-index: 1000; align-items: center; gap: 15px; border-top: 1px solid var(--border-color); }
-            .mobile-sticky-price { flex: 1; }
-            .mobile-sticky-price span { display: block; font-size: 0.8rem; color: var(--text-secondary); }
-            .mobile-sticky-price strong { font-size: 1.5rem; color: var(--accent-gold); }
-            .mobile-sticky-btn { flex: 2; padding: 12px; background: var(--accent-gold) !important; color: var(--white) !important; border: none !important; border-radius: var(--radius-pill); font-weight: 600; font-size: 1.05rem; display: flex; justify-content: center; gap: 8px; align-items: center; }
+            .mobile-sticky-action { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--bg-surface); padding: 15px 20px; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); z-index: 1000; align-items: center; gap: 12px; border-top: 1px solid var(--border-color); box-sizing: border-box; }
+            .mobile-sticky-price { flex: 0 0 auto; min-width: 0; }
+            .mobile-sticky-price span { display: block; font-size: 0.75rem; color: var(--text-secondary); white-space: nowrap; }
+            .mobile-sticky-price strong { font-size: 1.35rem; color: var(--accent-gold); display: block; white-space: nowrap; }
+            .mobile-sticky-btn { flex: 1; min-width: 0; padding: 13px 10px; background: var(--accent-gold) !important; color: var(--white) !important; border: none !important; border-radius: var(--radius-pill); font-weight: 600; font-size: 1rem; display: flex; justify-content: center; gap: 8px; align-items: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
             .dark-mode .mobile-sticky-btn { color: #0F0908 !important; }
             .product-page-wrapper { padding-bottom: 100px; }
             .thumb-item { flex: 0 0 calc(33.333% - 10px); }
+        }
+        
+        @media (max-width: 480px) {
+            .mobile-sticky-action { padding: 12px 15px; gap: 10px; }
+            .mobile-sticky-price strong { font-size: 1.15rem; }
+            .mobile-sticky-btn { font-size: 0.9rem; padding: 12px 8px; }
+            .product-title { font-size: 1.9rem; }
+            .size-btn { min-width: 80px; padding: 10px 12px; font-size: 0.9rem; }
         }
     </style>
     <!-- Favicon & Touch Icons -->
@@ -346,31 +354,7 @@
                 content.style.maxHeight = content.scrollHeight + "px";
             }
         }
-        
-        // Simple quantity selector logic for local page demo
-        document.addEventListener('DOMContentLoaded', () => {
-            const minus = document.querySelector('.qty-btn-minus');
-            const plus = document.querySelector('.qty-btn-plus');
-            const val = document.querySelector('.qty-val');
-            if (minus && plus && val) {
-                minus.addEventListener('click', () => {
-                    let v = parseInt(val.innerText);
-                    if (v > 1) val.innerText = v - 1;
-                });
-                plus.addEventListener('click', () => {
-                    let v = parseInt(val.innerText);
-                    val.innerText = v + 1;
-                });
-            }
-            
-            const sizeBtns = document.querySelectorAll('.size-btn');
-            sizeBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    sizeBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                });
-            });
-        });
+        // Note: Size buttons and quantity controls are initialized by main.js populateProductDetail()
     </script>
 
     <!-- Footer -->

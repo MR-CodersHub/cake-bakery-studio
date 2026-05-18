@@ -235,7 +235,11 @@
                         <img src="${item.image}" alt="${item.name}">
                         <div class="cart-product-info">
                             <h3>${item.name}</h3>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 5px;">${item.category}</p>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 5px;">
+                                ${item.category}
+                                ${item.size ? `&bull; <span style="color: var(--accent-gold); font-weight: 600; background: rgba(212,175,55,0.1); padding: 2px 8px; border-radius: 20px; font-size: 0.82rem;">${item.size}</span>` : ''}
+                            </p>
+                            ${item.customMessage ? `<p style="font-size: 0.82rem; color: var(--text-secondary); font-style: italic; margin-bottom: 5px;"><i class="fas fa-pen" style="margin-right:5px; color: var(--accent-gold);"></i>${item.customMessage}</p>` : ''}
                             <p style="color: var(--accent-gold); font-weight: 600;">$${item.price.toFixed(2)}</p>
                         </div>
                     </div>
