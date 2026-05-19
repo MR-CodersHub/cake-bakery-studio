@@ -773,6 +773,50 @@ footer {
         z-index: 2001;
     }
 }
+
+/* --- Blog Cards --- */
+.blog-card {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-smooth);
+}
+.blog-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-premium);
+}
+.blog-img {
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+.blog-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+.blog-card:hover .blog-img img {
+    transform: scale(1.1);
+}
+.blog-content {
+    padding: 30px;
+}
+.read-more {
+    color: var(--accent-gold);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.read-more i {
+    transition: var(--transition-smooth);
+}
+.read-more:hover i {
+    transform: translateX(5px);
+}
+
 /* --- Blog Dark Mode Visibility Fixes --- */
 .dark-mode .blog-card, 
 .dark-mode .sidebar-widget,

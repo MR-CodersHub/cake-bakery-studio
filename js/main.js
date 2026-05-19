@@ -511,14 +511,14 @@ function initThemeSwitcher() {
             body.classList.add('dark-mode');
             if (themeToggle) {
                 const icon = themeToggle.querySelector('i');
-                if (icon) icon.className = 'fas fa-sun';
+                if (icon) icon.className = 'fa-solid fa-sun';
             }
             localStorage.setItem('theme', 'dark');
         } else {
             body.classList.remove('dark-mode');
             if (themeToggle) {
                 const icon = themeToggle.querySelector('i');
-                if (icon) icon.className = 'fas fa-moon';
+                if (icon) icon.className = 'fa-solid fa-moon';
             }
             localStorage.setItem('theme', 'light');
         }

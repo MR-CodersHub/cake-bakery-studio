@@ -25,6 +25,18 @@
             overflow: hidden;
         }
 
+        .article-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.75) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
         .article-hero-img {
             position: absolute;
             top: 0;
@@ -32,8 +44,13 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: -1;
+            z-index: 0;
             filter: brightness(0.7);
+        }
+
+        .article-hero .container {
+            position: relative;
+            z-index: 2;
         }
 
         .article-meta-header {
@@ -59,6 +76,7 @@
             line-height: 1.1;
             margin-bottom: 30px;
             font-family: 'Playfair Display', serif;
+            color: white !important;
         }
 
         .article-info {
@@ -66,6 +84,7 @@
             gap: 40px;
             font-size: 1rem;
             opacity: 0.9;
+            color: white !important;
         }
 
         .article-info span {
@@ -114,8 +133,7 @@
         }
 
         .article-image-wide {
-            width: calc(100% + 160px);
-            margin-left: -80px;
+            width: 100%;
             margin-bottom: 60px;
             border-radius: var(--radius-md);
             overflow: hidden;
@@ -124,6 +142,8 @@
 
         .article-image-wide img {
             width: 100%;
+            max-height: 450px;
+            object-fit: cover;
             display: block;
         }
 
@@ -153,20 +173,29 @@
 
         .author-box {
             display: flex;
-            gap: 30px;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
+            gap: 20px;
             padding: 40px;
             background: var(--bg-accent);
             border-radius: var(--radius-md);
             margin-top: 60px;
+            border: 1px solid var(--border-color);
         }
 
         .author-img {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent-gold);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
+            transition: var(--transition-smooth);
+        }
+
+        .author-img:hover {
+            transform: scale(1.05);
         }
 
         .share-section {
@@ -201,6 +230,17 @@
             .article-container { padding: 40px 30px; width: 95%; margin-top: -40px; }
             .article-image-wide { width: 100%; margin-left: 0; }
             .article-quote { padding: 30px; font-size: 1.5rem; }
+        }
+
+        @media (max-width: 600px) {
+            .author-box {
+                padding: 30px 20px;
+                gap: 15px;
+            }
+            .author-img {
+                width: 90px;
+                height: 90px;
+            }
         }
     </style>
 </head>
@@ -282,34 +322,6 @@
             </div>
         </article>
 
-        <!-- Related Posts -->
-        <section class="section-padding" style="background: var(--bg-accent);">
-            <div class="container">
-                <h2 style="text-align: center; margin-bottom: 50px;">You Might Also Enjoy</h2>
-                <div class="blog-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                    <!-- Related 1 -->
-                    <div class="blog-card reveal">
-                        <div class="blog-img" style="height: 200px;">
-                            <img src="../images/gallery_1.png" alt="Recipe">
-                        </div>
-                        <div class="blog-content" style="padding: 20px;">
-                            <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Lavender Honey Macarons</h3>
-                            <a href="blog-detail.html" class="read-more" style="font-size: 0.9rem;">View Recipe <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- Related 2 -->
-                    <div class="blog-card reveal" style="transition-delay: 0.1s;">
-                        <div class="blog-img" style="height: 200px;">
-                            <img src="../images/cupcake_cat.png" alt="Wedding Trends">
-                        </div>
-                        <div class="blog-content" style="padding: 20px;">
-                            <h3 style="font-size: 1.2rem; margin-bottom: 10px;">2026 Wedding Cake Trends</h3>
-                            <a href="blog-detail.html" class="read-more" style="font-size: 0.9rem;">Read More <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- Footer (JS Injected) -->
