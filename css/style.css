@@ -224,9 +224,9 @@ nav { display: flex; justify-content: space-between; align-items: center; width:
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(212, 175, 55, 0.1);
-    color: var(--text-primary); 
+    background: #FFFFFF;
+    border: 1.5px solid rgba(212, 175, 55, 0.35);
+    color: #4E342E; 
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
     display: flex; 
     align-items: center; 
@@ -234,14 +234,35 @@ nav { display: flex; justify-content: space-between; align-items: center; width:
     font-size: 1.1rem;
     position: relative;
     backdrop-filter: blur(5px);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+/* Ensure icon inside each button inherits correct color */
+.cart-trigger i, .theme-toggle i, .account-trigger i, .mobile-menu-btn i {
+    color: #4E342E;
+    transition: color 0.3s ease;
 }
 
 .cart-trigger:hover, .theme-toggle:hover, .account-trigger:hover, .mobile-menu-btn:hover {
     background: var(--accent-gold);
     color: white !important;
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
     border-color: var(--accent-gold);
+}
+
+.cart-trigger:hover i, .theme-toggle:hover i, .account-trigger:hover i, .mobile-menu-btn:hover i {
+    color: white !important;
+}
+
+/* Dark mode: flip to light surface with gold icon */
+.dark-mode .cart-trigger, .dark-mode .theme-toggle, .dark-mode .account-trigger, .dark-mode .mobile-menu-btn {
+    background: #261B19;
+    border-color: rgba(255, 215, 0, 0.3);
+    color: #FFD700;
+}
+.dark-mode .cart-trigger i, .dark-mode .theme-toggle i, .dark-mode .account-trigger i, .dark-mode .mobile-menu-btn i {
+    color: #FFD700 !important;
 }
 
 .cart-trigger { position: relative; }
@@ -532,7 +553,10 @@ footer {
     .logo { font-size: 1.45rem !important; margin: 0 !important; flex: 1 !important; text-align: left !important; }
     
     .nav-actions { display: flex !important; flex-direction: row !important; align-items: center !important; gap: 8px !important; flex: 0 0 auto !important; }
-    .cart-trigger, .theme-toggle, .account-trigger, .mobile-menu-btn { width: 38px !important; height: 38px !important; border-radius: 50% !important; background: var(--bg-surface) !important; border: 1px solid var(--border-color) !important; display: flex !important; align-items: center !important; justify-content: center !important; font-size: 1rem !important; }
+    .cart-trigger, .theme-toggle, .account-trigger, .mobile-menu-btn { width: 38px !important; height: 38px !important; border-radius: 50% !important; background: #FFFFFF !important; border: 1.5px solid rgba(212,175,55,0.3) !important; color: #4E342E !important; display: flex !important; align-items: center !important; justify-content: center !important; font-size: 1rem !important; box-shadow: 0 3px 10px rgba(0,0,0,0.08) !important; }
+    .cart-trigger i, .theme-toggle i, .account-trigger i, .mobile-menu-btn i { color: #4E342E !important; }
+    .dark-mode .cart-trigger, .dark-mode .theme-toggle, .dark-mode .account-trigger, .dark-mode .mobile-menu-btn { background: #261B19 !important; border-color: rgba(255,215,0,0.3) !important; color: #FFD700 !important; }
+    .dark-mode .cart-trigger i, .dark-mode .theme-toggle i, .dark-mode .account-trigger i, .dark-mode .mobile-menu-btn i { color: #FFD700 !important; }
     .mobile-menu-btn { display: flex !important; }
     
     .cart-count { width: 18px !important; height: 18px !important; font-size: 0.6rem !important; top: -5px !important; right: -5px !important; }
@@ -1135,11 +1159,24 @@ footer {
         min-width: 38px !important;
         border-radius: 12px !important;
         font-size: 0.95rem !important;
-        background: rgba(212, 175, 55, 0.05) !important;
-        border: 1px solid rgba(212, 175, 55, 0.1) !important;
+        background: #FFFFFF !important;
+        border: 1.5px solid rgba(212, 175, 55, 0.3) !important;
+        color: #4E342E !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.07) !important;
+    }
+    .account-trigger i, .cart-trigger i, .theme-toggle i, .mobile-menu-btn i {
+        color: #4E342E !important;
+    }
+    .dark-mode .account-trigger, .dark-mode .cart-trigger, .dark-mode .theme-toggle, .dark-mode .mobile-menu-btn {
+        background: #261B19 !important;
+        border-color: rgba(255,215,0,0.3) !important;
+        color: #FFD700 !important;
+    }
+    .dark-mode .account-trigger i, .dark-mode .cart-trigger i, .dark-mode .theme-toggle i, .dark-mode .mobile-menu-btn i {
+        color: #FFD700 !important;
     }
 
     /* Fixed dropdown positioning to prevent "clumsy" overlap */

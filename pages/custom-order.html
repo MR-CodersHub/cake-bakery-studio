@@ -363,11 +363,23 @@
 
                             <div class="form-group">
                                 <label>Upload Inspiration (Images)</label>
-                                <div class="upload-area">
-                                    <i class="fas fa-cloud-upload-alt" style="font-size: 3rem; color: var(--primary-pink-dark); margin-bottom: 15px;"></i>
+                                <div class="upload-area" id="upload-area">
+                                    <i class="fas fa-cloud-upload-alt upload-icon" style="font-size: 3rem; color: var(--accent-gold); margin-bottom: 15px; transition: 0.3s;"></i>
                                     <h3>Drag & Drop or Click to Upload</h3>
                                     <p style="color: var(--text-muted);">Support: JPG, PNG, PDF (Max 5MB)</p>
-                                    <input type="file" style="display: none;" id="file-upload" multiple>
+                                    <input type="file" style="display: none;" id="file-upload" multiple accept=".jpg,.jpeg,.png,.pdf">
+                                    <div class="upload-feedback" style="display: none; margin-top: 15px; color: #28a745; font-weight: 500;">
+                                        <i class="fas fa-check-circle"></i> <span>Files uploaded successfully!</span>
+                                    </div>
+                                    <div class="upload-error" style="display: none; margin-top: 15px; color: #dc3545; font-weight: 500;">
+                                        <i class="fas fa-exclamation-circle"></i> <span></span>
+                                    </div>
+                                    <div class="upload-loading" style="display: none; margin-top: 15px; color: var(--accent-gold); font-weight: 500;">
+                                        <i class="fas fa-spinner fa-spin"></i> Processing files...
+                                    </div>
+                                </div>
+                                <div class="file-preview-container" id="file-preview-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 15px; margin-top: 20px;">
+                                    <!-- Previews will be injected here -->
                                 </div>
                             </div>
 
@@ -463,10 +475,143 @@
 
     <script src="../js/main.js"></script>
     <script>
-        // Simple file upload interaction
-        document.querySelector('.upload-area').addEventListener('click', () => {
-            document.getElementById('file-upload').click();
+        // File Upload Logic with Previews and Validation
+        const uploadArea = document.getElementById('upload-area');
+        const fileInput = document.getElementById('file-upload');
+        const previewContainer = document.getElementById('file-preview-container');
+        const uploadFeedback = document.querySelector('.upload-feedback');
+        const uploadError = document.querySelector('.upload-error');
+        const uploadLoading = document.querySelector('.upload-loading');
+        
+        const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+        const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/jpg', 'application/pdf'];
+        let uploadedFiles = [];
+
+        // Click to upload
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
         });
+
+        // Drag and Drop Events
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            uploadArea.style.borderColor = 'var(--accent-gold)';
+            uploadArea.style.background = 'rgba(212, 175, 55, 0.1)';
+            uploadArea.querySelector('.upload-icon').style.transform = 'translateY(-5px)';
+        }
+
+        function unhighlight(e) {
+            uploadArea.style.borderColor = 'var(--accent-gold)';
+            uploadArea.style.background = 'rgba(212, 175, 55, 0.02)';
+            uploadArea.querySelector('.upload-icon').style.transform = 'translateY(0)';
+        }
+
+        uploadArea.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+
+        fileInput.addEventListener('change', function() {
+            handleFiles(this.files);
+        });
+
+        function handleFiles(files) {
+            uploadError.style.display = 'none';
+            uploadFeedback.style.display = 'none';
+            uploadLoading.style.display = 'block';
+
+            setTimeout(() => {
+                let hasError = false;
+                Array.from(files).forEach(file => {
+                    // Validation
+                    if (!ALLOWED_TYPES.includes(file.type)) {
+                        showError(`Invalid file type: ${file.name}. Only JPG, PNG, and PDF are allowed.`);
+                        hasError = true;
+                        return;
+                    }
+                    if (file.size > MAX_FILE_SIZE) {
+                        showError(`File too large: ${file.name}. Maximum size is 5MB.`);
+                        hasError = true;
+                        return;
+                    }
+
+                    uploadedFiles.push(file);
+                    renderPreview(file);
+                });
+
+                uploadLoading.style.display = 'none';
+                if (!hasError && files.length > 0) {
+                    uploadFeedback.style.display = 'block';
+                    setTimeout(() => { uploadFeedback.style.display = 'none'; }, 3000);
+                }
+            }, 800); // Simulate processing time
+        }
+
+        function showError(msg) {
+            uploadLoading.style.display = 'none';
+            uploadError.querySelector('span').textContent = msg;
+            uploadError.style.display = 'block';
+        }
+
+        function renderPreview(file) {
+            const previewItem = document.createElement('div');
+            previewItem.className = 'preview-item';
+            previewItem.style.cssText = 'position: relative; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); background: var(--bg-surface); aspect-ratio: 1; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5px;';
+
+            const removeBtn = document.createElement('span');
+            removeBtn.innerHTML = '&times;';
+            removeBtn.style.cssText = 'position: absolute; top: 5px; right: 5px; background: rgba(0,0,0,0.6); color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 14px; z-index: 10; line-height: 1;';
+            removeBtn.onclick = (e) => {
+                e.stopPropagation();
+                previewItem.remove();
+                uploadedFiles = uploadedFiles.filter(f => f !== file);
+            };
+
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onloadend = function() {
+                    const img = document.createElement('img');
+                    img.src = reader.result;
+                    img.style.cssText = 'width: 100%; height: 100%; object-fit: cover; border-radius: 8px;';
+                    previewItem.appendChild(img);
+                    previewItem.appendChild(removeBtn);
+                    previewContainer.appendChild(previewItem);
+                }
+            } else if (file.type === 'application/pdf') {
+                const icon = document.createElement('i');
+                icon.className = 'fas fa-file-pdf';
+                icon.style.cssText = 'font-size: 2.5rem; color: #dc3545; margin-bottom: 5px;';
+                
+                const name = document.createElement('span');
+                name.textContent = file.name.substring(0, 10) + '...';
+                name.style.cssText = 'font-size: 0.75rem; text-align: center; word-break: break-all; color: var(--text-primary);';
+
+                previewItem.appendChild(icon);
+                previewItem.appendChild(name);
+                previewItem.appendChild(removeBtn);
+                previewContainer.appendChild(previewItem);
+            }
+        }
 
         // Option selection
         document.querySelectorAll('.option-item').forEach(item => {

@@ -153,20 +153,37 @@
 
         .author-box {
             display: flex;
+            flex-direction: row;
             gap: 30px;
-            align-items: center;
+            align-items: flex-start;
             padding: 40px;
             background: var(--bg-accent);
             border-radius: var(--radius-md);
             margin-top: 60px;
+            border: 1px solid var(--border-color);
         }
 
         .author-img {
             width: 100px;
             height: 100px;
+            min-width: 100px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent-gold);
+            box-shadow: 0 8px 20px rgba(212,175,55,0.2);
+        }
+
+        .author-info h4 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .author-info p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 0;
         }
 
         .share-section {
@@ -201,6 +218,30 @@
             .article-container { padding: 40px 30px; width: 95%; margin-top: -40px; }
             .article-image-wide { width: 100%; margin-left: 0; }
             .article-quote { padding: 30px; font-size: 1.5rem; }
+        }
+
+        @media (max-width: 600px) {
+            .article-title { font-size: 2rem !important; }
+            .article-info { flex-direction: column; gap: 10px; }
+            .article-container { padding: 30px 18px; margin-top: -30px; border-radius: 20px; }
+            .article-quote { padding: 20px; font-size: 1.2rem; }
+            .article-content { font-size: 1rem; }
+            .article-content h2 { font-size: 1.6rem; }
+
+            /* Author box: image on top-left, content beside it */
+            .author-box {
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 18px;
+                padding: 25px 18px;
+            }
+            .author-img {
+                width: 70px;
+                height: 70px;
+                min-width: 70px;
+            }
+            .author-info h4 { font-size: 1.1rem; }
+            .author-info p { font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -262,9 +303,9 @@
             <!-- Author Box -->
             <div class="author-box">
                 <img src="../images/cupcake_cat.png" alt="Isabella Rose" class="author-img">
-                <div>
-                    <h4 style="font-size: 1.5rem; margin-bottom: 10px;">Isabella Rose</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem;">Founder and Head Designer at Cakeology. Isabella spent ten years in Paris mastering French patisserie before bringing her vision of sculptural cake design to life.</p>
+                <div class="author-info">
+                    <h4>Isabella Rose</h4>
+                    <p>Founder and Head Designer at Cakeology. Isabella spent ten years in Paris mastering French patisserie before bringing her vision of sculptural cake design to life.</p>
                 </div>
             </div>
 
