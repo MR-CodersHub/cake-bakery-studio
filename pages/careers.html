@@ -19,8 +19,12 @@
     <style>
         .careers-hero {
             padding: 120px 0 60px;
-            background: var(--gradient-sweet);
+            background: linear-gradient(rgba(255, 253, 245, 0.35), rgba(255, 253, 245, 0.35)), url('../images/careers_hero.png') no-repeat center center / cover;
             text-align: center;
+        }
+
+        .dark-mode .careers-hero {
+            background: linear-gradient(rgba(15, 9, 8, 0.4), rgba(15, 9, 8, 0.4)), url('../images/careers_hero.png') no-repeat center center / cover !important;
         }
 
         .job-card {
@@ -43,6 +47,14 @@
         @media (max-width: 768px) {
             .job-card { flex-direction: column; text-align: center; gap: 20px; }
         }
+    
+        .careers-hero h1, .careers-hero p {
+            text-shadow: 0 2px 8px rgba(255, 253, 245, 0.75) !important;
+        }
+        .dark-mode .careers-hero h1, .dark-mode .careers-hero p {
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9) !important;
+        }
+    
     </style>
     <!-- Favicon & Touch Icons -->
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">

@@ -20,14 +20,27 @@
     <style>
         .blog-hero {
             padding: 120px 0 60px;
-            background: var(--gradient-sweet);
+            background: linear-gradient(rgba(255, 253, 245, 0.35), rgba(255, 253, 245, 0.35)), url('../images/blog_hero.png') no-repeat center center / cover;
             text-align: center;
+        }
+
+        .dark-mode .blog-hero {
+            background: linear-gradient(rgba(15, 9, 8, 0.4), rgba(15, 9, 8, 0.4)), url('../images/blog_hero.png') no-repeat center center / cover !important;
         }
 
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 32px;
+            width: 100%;
+            align-items: stretch;
+        }
+
+        .blog-layout-grid {
+            display: grid;
+            grid-template-columns: 2.5fr 1fr;
+            gap: 50px;
+            align-items: start;
         }
 
         .blog-card {
@@ -138,6 +151,108 @@
             background: var(--primary-pink);
             color: var(--text-chocolate);
         }
+
+        @media (max-width: 1024px) {
+            .blog-layout-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .blog-grid {
+                gap: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blog-hero {
+                padding: 100px 0 40px;
+            }
+
+            .blog-hero h1 {
+                font-size: 2.4rem !important;
+                line-height: 1.1;
+                margin-bottom: 12px;
+            }
+
+            .blog-hero p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+                padding: 0 6px;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .blog-card {
+                border-radius: 18px;
+                max-width: 100%;
+            }
+
+            .blog-img {
+                height: 200px;
+                min-height: 200px;
+            }
+
+            .blog-content {
+                padding: 18px 16px 20px;
+            }
+
+            .blog-date {
+                margin-bottom: 8px;
+                font-size: 0.78rem;
+            }
+
+            .blog-title {
+                font-size: 1.15rem;
+                line-height: 1.35;
+                margin-bottom: 10px;
+            }
+
+            .blog-excerpt {
+                font-size: 0.9rem;
+                line-height: 1.55;
+                margin-bottom: 14px;
+            }
+
+            .read-more {
+                font-size: 0.9rem;
+            }
+
+            .sidebar-widget {
+                padding: 18px;
+                border-radius: 18px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .blog-hero {
+                padding: 92px 0 30px;
+            }
+
+            .blog-hero h1 {
+                font-size: 2rem !important;
+            }
+
+            .blog-img {
+                height: 180px;
+                min-height: 180px;
+            }
+
+            .blog-content {
+                padding: 16px 14px 18px;
+            }
+
+            .blog-title {
+                font-size: 1.05rem;
+            }
+
+            .blog-excerpt,
+            .read-more {
+                font-size: 0.88rem;
+            }
+        }
     </style>
     <!-- Favicon & Touch Icons -->
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
@@ -155,8 +270,10 @@
                 <a href="../index.html" class="logo">Cakeology</a>
                 <ul class="nav-links">
                     <li><a href="../index.html">Home</a></li>
-                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="home2.html">Home 2</a></li>
                     <li><a href="about.html">About</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="blog.html" class="active">Blog</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
@@ -173,13 +290,13 @@
 
     <section class="section-padding">
         <div class="container">
-            <div style="display: grid; grid-template-columns: 2.5fr 1fr; gap: 50px;">
+            <div class="blog-layout-grid">
                 <!-- Blog List -->
                                 <div class="blog-grid">
                     <!-- Post 1 -->
                     <div class="blog-card reveal" onclick="window.location.href='blog-detail-1.html'" style="cursor: pointer;">
                         <div class="blog-img">
-                            <img src="../images/cupcake_cat.png" alt="Baking Secrets">
+                            <img src="../images/blog_fluffy_sponge.png" alt="Baking Secrets">
                             <div class="blog-category">Baking Tips</div>
                         </div>
                         <div class="blog-content">
@@ -193,7 +310,7 @@
                     <!-- Post 2 -->
                     <div class="blog-card reveal" onclick="window.location.href='blog-detail-2.html'" style="cursor: pointer; transition-delay: 0.1s;">
                         <div class="blog-img">
-                            <img src="../images/gallery_1.png" alt="Recipe">
+                            <img src="../images/blog_lavender_macarons.png" alt="Recipe">
                             <div class="blog-category">Recipes</div>
                         </div>
                         <div class="blog-content">
@@ -207,7 +324,7 @@
                     <!-- Post 3 -->
                     <div class="blog-card reveal" onclick="window.location.href='blog-detail-3.html'" style="cursor: pointer; transition-delay: 0.2s;">
                         <div class="blog-img">
-                            <img src="../images/gallery_2.png" alt="Wedding Trends">
+                            <img src="../images/blog_wedding_trends.png" alt="Wedding Trends">
                             <div class="blog-category">Studio News</div>
                         </div>
                         <div class="blog-content">
@@ -215,6 +332,20 @@
                             <h2 class="blog-title"><a href="blog-detail-3.html" onclick="event.stopPropagation();">2026 Wedding Cake Trends We Love</a></h2>
                             <p class="blog-excerpt">From pressed flowers to architectural tiers, see what's trending in the world of luxury weddings.</p>
                             <a href="blog-detail-3.html" class="read-more" onclick="event.stopPropagation();">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Post 4 -->
+                    <div class="blog-card reveal" onclick="window.location.href='blog-detail-4.html'" style="cursor: pointer; transition-delay: 0.3s;">
+                        <div class="blog-img">
+                            <img src="../images/blog_buttercream_mastery.png" alt="Buttercream Art">
+                            <div class="blog-category">Baking Tips</div>
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-date">April 25, 2026</span>
+                            <h2 class="blog-title"><a href="blog-detail-4.html" onclick="event.stopPropagation();">Mastering the Art of Buttercream</a></h2>
+                            <p class="blog-excerpt">Learn the secrets to achieving a silky-smooth, professional buttercream finish for your celebration cakes.</p>
+                            <a href="blog-detail-4.html" class="read-more" onclick="event.stopPropagation();">Read Full Story <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>

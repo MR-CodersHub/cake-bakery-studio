@@ -29,7 +29,7 @@
         <!-- Sidebar -->
         <aside class="dash-sidebar" id="dash-sidebar">
             <div class="dash-sidebar-header">
-                <a href="../index.html" class="logo-wrapper">
+                <a href="../index.html" class="logo-wrapper dash-brand-link" aria-label="Go to Cakeology home page" title="Go to Home page">
                     <div class="logo-icon">
                         <i class="fa-solid fa-cake-candles"></i>
                     </div>
@@ -79,29 +79,53 @@
         <main class="dash-main">
             <!-- Header -->
             <header class="dash-header">
-                <div style="display: flex; align-items: center; gap: 15px;">
-                    <div id="dash-hamburger">
+                <div class="dash-header-left">
+                    <div id="dash-hamburger" aria-label="Open navigation menu">
                         <i class="fas fa-bars"></i>
                     </div>
-                    <span class="dash-brand-mobile" style="display: none;">Cakeology</span>
-                    <div class="dash-greeting" style="font-weight: 600; margin-left: 10px;">Welcome back, <span class="text-gold">Sarah!</span></div>
-                </div>
-                
-                <div style="display: flex; align-items: center; gap: 15px;">
-                    <a href="shop.html" class="btn btn-outline" style="padding: 0 12px; font-size: 0.7rem; border-radius: 50px; width: auto !important; white-space: nowrap; height: 32px; display: flex; align-items: center; border: 1.5px solid var(--dash-primary); font-weight: 700; color: var(--dash-primary); text-transform: uppercase; letter-spacing: 0.5px;">Explore Shop</a>
-                    
-                    <div class="dash-header-icon" style="position: relative; cursor: pointer; width: 38px; height: 38px; background: rgba(212,175,55,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--dash-primary); transition: 0.3s;">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <span style="position: absolute; top: -5px; right: -5px; background: var(--dash-primary); color: white; width: 18px; height: 18px; border-radius: 50%; font-size: 0.65rem; display: flex; align-items: center; justify-content: center; font-weight: 700; border: 2px solid var(--dash-bg);">5</span>
+                    <a href="../index.html" class="dash-brand-mobile" aria-label="Go to Cakeology home page" title="Go to Home page" style="display: none;">Cakeology</a>
+                    <div class="dash-greeting">
+                        <span class="dash-greeting-label">Welcome back</span>
+                        <span class="dash-greeting-name" id="dash-greeting-name">Sarah</span>
                     </div>
+                </div>
+
+                <div class="dash-header-actions">
+                    <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <button type="button" id="rtl-toggle" class="theme-toggle rtl-toggle" aria-label="Toggle RTL mode" title="Toggle RTL mode">
+                        <i class="fa-solid fa-right-left"></i>
+                    </button>
                 </div>
             </header>
 
             <!-- Content -->
             <div class="dash-content">
-                <div style="margin-bottom: 40px;" class="animate-slide">
-                    <h1 style="font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 10px;">Account <span class="text-gold">Overview</span></h1>
-                    <p style="color: var(--dash-text-muted); font-size: 1.1rem;">Manage your orders, addresses, and account details in one place.</p>
+                <div class="dash-welcome-wrap animate-slide">
+                    <div class="dash-card dash-welcome-card">
+                        <p class="dash-kicker">Personalized welcome</p>
+                        <h1 id="welcome-title" style="font-family: 'Playfair Display', serif; font-size: 2.4rem; margin: 0 0 10px;">Good morning, Sarah</h1>
+                        <p id="welcome-summary" style="color: var(--dash-text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 18px;">You have 12 orders, 1 item in transit, and 8 favorites saved. Your account is in excellent standing.</p>
+                        <div class="dash-welcome-tags">
+                            <span class="dash-pill">Premium Member</span>
+                            <span class="dash-pill">Verified Account</span>
+                            <span class="dash-pill">Free Delivery</span>
+                        </div>
+                    </div>
+                    <div class="dash-card dash-balance-card">
+                        <p class="dash-kicker">Account summary</p>
+                        <div class="dash-mini-stat-row">
+                            <div class="dash-mini-stat"><strong>12</strong><span>Total orders</span></div>
+                            <div class="dash-mini-stat"><strong>3</strong><span>Saved addresses</span></div>
+                            <div class="dash-mini-stat"><strong>8</strong><span>Wishlist items</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 24px;" class="animate-slide">
+                    <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 8px;">Account <span class="text-gold">Overview</span></h2>
+                    <p style="color: var(--dash-text-muted); font-size: 1rem; margin: 0;">Manage your orders, addresses, and account details in one place.</p>
                 </div>
 
                 <!-- Stats Grid -->
@@ -111,7 +135,7 @@
                             <i class="fas fa-shopping-bag"></i>
                         </div>
                         <div>
-                            <div style="font-size: 1.8rem; font-weight: 700;">12</div>
+                            <div style="font-size: 1.8rem; font-weight: 550;">12</div>
                             <div style="font-size: 0.85rem; color: var(--dash-text-muted); font-weight: 600;">Total Orders</div>
                         </div>
                     </div>
@@ -121,7 +145,7 @@
                             <i class="fas fa-truck"></i>
                         </div>
                         <div>
-                            <div style="font-size: 1.8rem; font-weight: 700;">1</div>
+                            <div style="font-size: 1.8rem; font-weight: 550;">1</div>
                             <div style="font-size: 0.85rem; color: var(--dash-text-muted); font-weight: 600;">In Transit</div>
                         </div>
                     </div>
@@ -131,7 +155,7 @@
                             <i class="fas fa-heart"></i>
                         </div>
                         <div>
-                            <div style="font-size: 1.8rem; font-weight: 700;">8</div>
+                            <div style="font-size: 1.8rem; font-weight: 550;">8</div>
                             <div style="font-size: 0.85rem; color: var(--dash-text-muted); font-weight: 600;">Wishlist Items</div>
                         </div>
                     </div>
@@ -141,8 +165,8 @@
                     <!-- Recent Orders -->
                     <div class="dash-card animate-slide" style="animation-delay: 0.4s;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
-                            <h3 style="font-size: 1.4rem; font-weight: 700; font-family: 'Playfair Display', serif;">Recent <span class="text-gold">Orders</span></h3>
-                            <a href="my-orders.html" style="color: var(--dash-primary); font-size: 0.9rem; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                            <h3 style="font-size: 1.4rem; font-weight: 600; font-family: 'Playfair Display', serif;">Recent <span class="text-gold">Orders</span></h3>
+                            <a href="my-orders.html" style="color: var(--dash-primary); font-size: 0.9rem; font-weight: 550; display: flex; align-items: center; gap: 8px;">
                                 View All <i class="fas fa-arrow-right" style="font-size: 0.7rem;"></i>
                             </a>
                         </div>
@@ -159,17 +183,17 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td style="font-weight: 700; color: var(--dash-secondary);">#ORD-7281</td>
+                                        <td style="font-weight: 550; color: var(--dash-secondary);">#ORD-7281</td>
                                         <td>Oct 12, 2023</td>
                                         <td><span class="badge badge-success">Delivered</span></td>
-                                        <td style="font-weight: 700; color: var(--dash-primary);">$145.00</td>
+                                        <td style="font-weight: 550; color: var(--dash-primary);">$145.00</td>
                                         <td><a href="order-tracking.html" style="color: var(--dash-text-muted);"><i class="fas fa-eye"></i></a></td>
                                     </tr>
                                     <tr>
-                                        <td style="font-weight: 700; color: var(--dash-secondary);">#ORD-7282</td>
+                                        <td style="font-weight: 550; color: var(--dash-secondary);">#ORD-7282</td>
                                         <td>Oct 15, 2023</td>
                                         <td><span class="badge badge-warning">Processing</span></td>
-                                        <td style="font-weight: 700; color: var(--dash-primary);">$82.50</td>
+                                        <td style="font-weight: 550; color: var(--dash-primary);">$82.50</td>
                                         <td><a href="order-tracking.html" style="color: var(--dash-text-muted);"><i class="fas fa-eye"></i></a></td>
                                     </tr>
                                 </tbody>
@@ -177,21 +201,47 @@
                         </div>
                     </div>
 
-                    <!-- Profile Quick View -->
-                    <div class="dash-card animate-slide" style="text-align: center; animation-delay: 0.5s;">
-                        <div style="position: relative; display: inline-block; margin-bottom: 20px;">
-                            <img src="https://i.pravatar.cc/150?u=sarah" style="width: 100px; height: 100px; border-radius: 30px; border: 4px solid var(--dash-accent); padding: 5px;">
-                            <div style="position: absolute; bottom: 0; right: 0; background: var(--dash-success); width: 24px; height: 24px; border-radius: 50%; border: 3px solid var(--dash-card-bg);"></div>
+                    <!-- Profile Overview -->
+                    <div class="dash-card dash-profile-overview animate-slide" style="animation-delay: 0.5s;">
+                        <div class="dash-profile-head">
+                            <div class="dash-profile-photo-wrap">
+                                <img src="https://i.pravatar.cc/150?u=sarah" alt="Sarah Jenkins" class="dash-profile-photo">
+                                <span class="dash-profile-status"></span>
+                            </div>
+                            <div class="dash-profile-copy">
+                                <p class="dash-kicker">Profile overview</p>
+                                <h4>Sarah Jenkins</h4>
+                                <p class="dash-profile-email">sarah.jenkins@example.com</p>
+                                <span class="dash-status-chip">Verified • Premium</span>
+                            </div>
                         </div>
-                        <h4 style="font-weight: 700; font-size: 1.2rem; font-family: 'Playfair Display', serif;">Sarah Jenkins</h4>
-                        <p style="font-size: 0.85rem; color: var(--dash-text-muted); margin-bottom: 25px;">sarah.jenkins@example.com</p>
-                        
-                        <div style="text-align: left; background: rgba(212, 175, 55, 0.05); padding: 20px; border-radius: 18px; margin-bottom: 25px; border: 1px solid var(--dash-border);">
-                            <div style="font-size: 0.7rem; color: var(--dash-primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Primary Address</div>
-                            <p style="font-size: 0.9rem; line-height: 1.5; color: var(--dash-secondary);">123 Bakery Lane, Sweet City,<br>New York, NY 10001</p>
+
+                        <div class="dash-profile-details">
+                            <div class="dash-profile-detail-item">
+                                <span>Member since</span>
+                                <strong>April 2024</strong>
+                            </div>
+                            <div class="dash-profile-detail-item">
+                                <span>Phone</span>
+                                <strong>+1 (555) 123-4567</strong>
+                            </div>
+                            <div class="dash-profile-detail-item">
+                                <span>Primary address</span>
+                                <strong>123 Bakery Lane, Sweet City, NY</strong>
+                            </div>
                         </div>
-                        
-                        <a href="user-profile.html" class="btn btn-primary" style="width: 100%; border-radius: 14px; padding: 12px;">Edit Profile</a>
+
+                        <div class="dash-profile-actions">
+                            <a href="user-profile.html" class="btn btn-primary dash-profile-btn">Edit Profile</a>
+                            <a href="saved-addresses.html" class="btn btn-outline dash-profile-btn">Addresses</a>
+                            <a href="user-settings.html" class="btn btn-outline dash-profile-btn">Settings</a>
+                        </div>
+
+                        <div class="dash-account-status">
+                            <div class="dash-account-status-item"><i class="fas fa-shield-alt"></i> Secure account</div>
+                            <div class="dash-account-status-item"><i class="fas fa-gift"></i> Loyalty perks active</div>
+                            <div class="dash-account-status-item"><i class="fas fa-star"></i> VIP support ready</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -204,17 +254,30 @@
             const hamburger = document.getElementById('dash-hamburger');
             const sidebar = document.getElementById('dash-sidebar');
             const overlay = document.getElementById('dash-overlay');
+            const greetingName = document.getElementById('dash-greeting-name');
+            const welcomeTitle = document.getElementById('welcome-title');
+            const welcomeSummary = document.getElementById('welcome-summary');
 
+            // Personalize greeting
+            const savedUser = localStorage.getItem('dashboardUser') || localStorage.getItem('userName') || 'Sarah';
+            const hour = new Date().getHours();
+            const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
+
+            if (greetingName) greetingName.textContent = savedUser;
+            if (welcomeTitle) welcomeTitle.textContent = `${greeting}, ${savedUser}`;
+            if (welcomeSummary) welcomeSummary.textContent = `You have 12 orders, 1 item in transit, and 8 favorites saved. ${savedUser}, your account is in excellent standing.`;
+
+            // Hamburger / Sidebar (unique to this page)
             if (hamburger) {
                 hamburger.addEventListener('click', () => {
-                    sidebar.classList.add('active');
-                    overlay.classList.add('active');
+                    if (sidebar) sidebar.classList.add('active');
+                    if (overlay) overlay.classList.add('active');
                 });
             }
 
             if (overlay) {
                 overlay.addEventListener('click', () => {
-                    sidebar.classList.remove('active');
+                    if (sidebar) sidebar.classList.remove('active');
                     overlay.classList.remove('active');
                 });
             }

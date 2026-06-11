@@ -20,8 +20,12 @@
     <style>
         .custom-order-hero {
             padding: 140px 0 80px;
-            background: var(--gradient-sweet);
+            background: linear-gradient(rgba(255, 253, 245, 0.35), rgba(255, 253, 245, 0.35)), url('../images/custom_order_hero.png') no-repeat center center / cover;
             text-align: center;
+        }
+
+        .dark-mode .custom-order-hero {
+            background: linear-gradient(rgba(15, 9, 8, 0.4), rgba(15, 9, 8, 0.4)), url('../images/custom_order_hero.png') no-repeat center center / cover !important;
         }
 
         .form-container {
@@ -60,7 +64,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
+            font-weight: 550;
             color: var(--text-muted);
             transition: all 0.4s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
@@ -252,6 +256,14 @@
         body.dark-mode .form-btns {
             border-top-color: rgba(255, 215, 0, 0.1) !important;
         }
+    
+        .custom-order-hero h1, .custom-order-hero p {
+            text-shadow: 0 2px 8px rgba(255, 253, 245, 0.75) !important;
+        }
+        .dark-mode .custom-order-hero h1, .dark-mode .custom-order-hero p {
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9) !important;
+        }
+    
     </style>
     <!-- Favicon & Touch Icons -->
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">

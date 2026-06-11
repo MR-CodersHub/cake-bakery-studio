@@ -80,30 +80,46 @@
             <!-- Header -->
             <header class="dash-header">
                 <div style="display: flex; align-items: center; gap: 15px;">
-                    <div id="dash-hamburger">
+                    <div id="dash-hamburger" style="cursor: pointer;">
                         <i class="fas fa-bars"></i>
                     </div>
                     <span class="dash-brand-mobile" style="display: none;">Cakeology</span>
-                    <div class="dash-greeting" style="font-weight: 600; margin-left: 10px;">Welcome back, <span class="text-gold">Admin</span></div>
+                    <div class="dash-greeting" style="font-weight: 600;">Welcome back, <span class="text-gold">Admin</span></div>
+                </div>
+
+                <!-- Redesigned Search Input -->
+                <div class="dash-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search orders...">
                 </div>
                 
-                <div style="display: flex; align-items: center; gap: 20px;">
-                    <div class="dash-search" style="position: relative; width: 250px;">
-                        <i class="fas fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--dash-text-muted); font-size: 0.9rem;"></i>
-                        <input type="text" placeholder="Search orders..." style="padding-left: 45px; height: 44px; background: rgba(255,255,255,0.5); border-radius: 12px; border: 1px solid var(--dash-border);">
-                    </div>
-                    
-                    <div class="dash-header-icon" style="position: relative; cursor: pointer; width: 44px; height: 44px; background: rgba(212,175,55,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--dash-primary); transition: 0.3s;">
+                <div class="dash-header-actions">
+                    <!-- Notification Icon Button styled as theme-toggle -->
+                    <button class="theme-toggle" id="notification-toggle" title="Notifications" aria-label="Notifications" style="position: relative; border: none; outline: none;">
                         <i class="fa-solid fa-bell"></i>
-                        <span style="position: absolute; top: -5px; right: -5px; background: var(--dash-danger); color: white; width: 18px; height: 18px; border-radius: 50%; font-size: 0.65rem; display: flex; align-items: center; justify-content: center; font-weight: 700; border: 2px solid var(--dash-bg);">3</span>
-                    </div>
+                        <span style="position: absolute; top: -3px; right: -3px; background: var(--dash-danger); color: white; width: 16px; height: 16px; border-radius: 50%; font-size: 0.6rem; display: flex; align-items: center; justify-content: center; font-weight: 550; border: 1.5px solid var(--dash-bg);">3</span>
+                    </button>
+
+                    <!-- Dark Mode Toggle Button (Home page design/behavior) -->
+                    <button class="theme-toggle" id="theme-toggle" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+
+                    <!-- RTL Toggle Button (Home page design/behavior) -->
+                    <button class="theme-toggle rtl-toggle" id="rtl-toggle" title="Toggle RTL mode" aria-label="Toggle RTL mode">
+                        <i class="fa-solid fa-right-left"></i>
+                    </button>
                     
-                    <div style="display: flex; align-items: center; gap: 12px; cursor: pointer; padding: 5px 10px; border-radius: 14px; transition: 0.3s;" class="admin-profile-trigger">
-                        <div style="text-align: right;" class="dash-greeting">
-                            <div style="font-weight: 700; font-size: 0.9rem;">Alexander</div>
-                            <div style="font-size: 0.7rem; color: var(--dash-text-muted);">Master Chef</div>
+                    <!-- Enhanced Profile Card -->
+                    <div class="dash-user-profile admin-profile-trigger">
+                        <div class="user-details">
+                            <span class="user-name">Alexander</span>
+                            <span class="user-role">Master Chef</span>
                         </div>
-                        <img src="../images/favicon.png" alt="Admin" class="avatar">
+                        <div class="avatar-wrapper">
+                            <img src="../images/founder_portrait.png" alt="Admin Avatar" class="avatar">
+                            <span class="status-indicator online"></span>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -123,7 +139,7 @@
                         </div>
                         <div>
                             <div style="font-size: 0.85rem; color: var(--dash-text-muted); font-weight: 600;">Monthly Revenue</div>
-                            <div style="font-size: 1.8rem; font-weight: 700;">$24,850</div>
+                            <div style="font-size: 1.8rem; font-weight: 550;">$24,850</div>
                             <div style="font-size: 0.8rem; color: var(--dash-success); margin-top: 5px;">
                                 <i class="fas fa-caret-up"></i> 14.2% <span style="color: var(--dash-text-muted); font-weight: 400;">vs last month</span>
                             </div>
@@ -136,7 +152,7 @@
                         </div>
                         <div>
                             <div style="font-size: 0.85rem; color: var(--dash-text-muted); font-weight: 600;">Total Orders</div>
-                            <div style="font-size: 1.8rem; font-weight: 700;">1,248</div>
+                            <div style="font-size: 1.8rem; font-weight: 550;">1,248</div>
                             <div style="font-size: 0.8rem; color: var(--dash-success); margin-top: 5px;">
                                 <i class="fas fa-caret-up"></i> 8.5% <span style="color: var(--dash-text-muted); font-weight: 400;">new orders</span>
                             </div>
@@ -149,7 +165,7 @@
                         </div>
                         <div>
                             <div style="font-size: 0.85rem; color: var(--dash-text-muted); font-weight: 600;">New Customers</div>
-                            <div style="font-size: 1.8rem; font-weight: 700;">156</div>
+                            <div style="font-size: 1.8rem; font-weight: 550;">156</div>
                             <div style="font-size: 0.8rem; color: var(--dash-danger); margin-top: 5px;">
                                 <i class="fas fa-caret-down"></i> 2.4% <span style="color: var(--dash-text-muted); font-weight: 400;">drop from peak</span>
                             </div>
@@ -162,7 +178,7 @@
                         </div>
                         <div>
                             <div style="font-size: 0.85rem; color: var(--dash-text-muted); font-weight: 600;">Store Rating</div>
-                            <div style="font-size: 1.8rem; font-weight: 700;">4.9 / 5.0</div>
+                            <div style="font-size: 1.8rem; font-weight: 550;">4.9 / 5.0</div>
                             <div style="font-size: 0.8rem; color: var(--dash-primary); margin-top: 5px;">
                                 <i class="fas fa-award"></i> Top Rated <span style="color: var(--dash-text-muted); font-weight: 400;">this week</span>
                             </div>
@@ -174,8 +190,8 @@
                     <!-- Recent Orders -->
                     <div class="dash-card animate-slide" style="animation-delay: 0.5s;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
-                            <h3 style="font-size: 1.4rem; font-weight: 700; font-family: 'Playfair Display', serif;">Recent <span class="text-gold">Orders</span></h3>
-                            <a href="admin-orders.html" style="color: var(--dash-primary); font-size: 0.9rem; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                            <h3 style="font-size: 1.4rem; font-weight: 600; font-family: 'Playfair Display', serif;">Recent <span class="text-gold">Orders</span></h3>
+                            <a href="admin-orders.html" style="color: var(--dash-primary); font-size: 0.9rem; font-weight: 550; display: flex; align-items: center; gap: 8px;">
                                 View All <i class="fas fa-arrow-right" style="font-size: 0.7rem;"></i>
                             </a>
                         </div>
@@ -193,7 +209,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td style="font-weight: 700; color: var(--dash-secondary);">#CK-9201</td>
+                                        <td style="font-weight: 550; color: var(--dash-secondary);">#CK-9201</td>
                                         <td>
                                             <div style="display: flex; align-items: center; gap: 12px;">
                                                 <img src="https://i.pravatar.cc/150?u=1" class="avatar" style="width: 32px; height: 32px;">
@@ -201,12 +217,12 @@
                                             </div>
                                         </td>
                                         <td>Oct 24, 2023</td>
-                                        <td style="font-weight: 700; color: var(--dash-primary);">$128.00</td>
+                                        <td style="font-weight: 550; color: var(--dash-primary);">$128.00</td>
                                         <td><span class="badge badge-success">Delivered</span></td>
                                         <td><button style="background: none; border: none; color: var(--dash-text-muted); cursor: pointer;"><i class="fas fa-ellipsis-h"></i></button></td>
                                     </tr>
                                     <tr>
-                                        <td style="font-weight: 700; color: var(--dash-secondary);">#CK-9202</td>
+                                        <td style="font-weight: 550; color: var(--dash-secondary);">#CK-9202</td>
                                         <td>
                                             <div style="display: flex; align-items: center; gap: 12px;">
                                                 <img src="https://i.pravatar.cc/150?u=2" class="avatar" style="width: 32px; height: 32px;">
@@ -214,12 +230,12 @@
                                             </div>
                                         </td>
                                         <td>Oct 24, 2023</td>
-                                        <td style="font-weight: 700; color: var(--dash-primary);">$75.50</td>
+                                        <td style="font-weight: 550; color: var(--dash-primary);">$75.50</td>
                                         <td><span class="badge badge-warning">Processing</span></td>
                                         <td><button style="background: none; border: none; color: var(--dash-text-muted); cursor: pointer;"><i class="fas fa-ellipsis-h"></i></button></td>
                                     </tr>
                                     <tr>
-                                        <td style="font-weight: 700; color: var(--dash-secondary);">#CK-9203</td>
+                                        <td style="font-weight: 550; color: var(--dash-secondary);">#CK-9203</td>
                                         <td>
                                             <div style="display: flex; align-items: center; gap: 12px;">
                                                 <img src="https://i.pravatar.cc/150?u=3" class="avatar" style="width: 32px; height: 32px;">
@@ -227,7 +243,7 @@
                                             </div>
                                         </td>
                                         <td>Oct 23, 2023</td>
-                                        <td style="font-weight: 700; color: var(--dash-primary);">$210.00</td>
+                                        <td style="font-weight: 550; color: var(--dash-primary);">$210.00</td>
                                         <td><span class="badge badge-info">Shipped</span></td>
                                         <td><button style="background: none; border: none; color: var(--dash-text-muted); cursor: pointer;"><i class="fas fa-ellipsis-h"></i></button></td>
                                     </tr>
@@ -238,16 +254,16 @@
 
                     <!-- Top Products -->
                     <div class="dash-card animate-slide" style="animation-delay: 0.6s;">
-                        <h3 style="font-size: 1.4rem; font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 30px;">Best <span class="text-gold">Sellers</span></h3>
+                        <h3 style="font-size: 1.4rem; font-weight: 600; font-family: 'Playfair Display', serif; margin-bottom: 30px;">Best <span class="text-gold">Sellers</span></h3>
                         <div style="display: flex; flex-direction: column; gap: 20px;">
                             <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border-radius: 12px; transition: 0.3s; background: rgba(255,255,255,0.4);">
                                 <img src="../images/gallery_2.png" style="width: 60px; height: 60px; border-radius: 14px; object-fit: cover;">
                                 <div style="flex: 1;">
-                                    <div style="font-weight: 700; font-size: 0.95rem; color: var(--dash-secondary);">Velvet Dream Cake</div>
+                                    <div style="font-weight: 550; font-size: 0.95rem; color: var(--dash-secondary);">Velvet Dream Cake</div>
                                     <div style="font-size: 0.8rem; color: var(--dash-text-muted);">458 Sales this month</div>
                                 </div>
                                 <div style="text-align: right;">
-                                    <div style="font-weight: 700; color: var(--dash-primary);">$5,420</div>
+                                    <div style="font-weight: 550; color: var(--dash-primary);">$5,420</div>
                                     <div style="font-size: 0.7rem; color: var(--dash-success); font-weight: 600;"><i class="fas fa-arrow-up"></i> 12%</div>
                                 </div>
                             </div>
@@ -255,11 +271,11 @@
                             <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border-radius: 12px; transition: 0.3s;">
                                 <img src="../images/cupcake_cat.png" style="width: 60px; height: 60px; border-radius: 14px; object-fit: cover;">
                                 <div style="flex: 1;">
-                                    <div style="font-weight: 700; font-size: 0.95rem; color: var(--dash-secondary);">Pastel Cupcakes</div>
+                                    <div style="font-weight: 550; font-size: 0.95rem; color: var(--dash-secondary);">Pastel Cupcakes</div>
                                     <div style="font-size: 0.8rem; color: var(--dash-text-muted);">320 Sales this month</div>
                                 </div>
                                 <div style="text-align: right;">
-                                    <div style="font-weight: 700; color: var(--dash-primary);">$2,840</div>
+                                    <div style="font-weight: 550; color: var(--dash-primary);">$2,840</div>
                                     <div style="font-size: 0.7rem; color: var(--dash-success); font-weight: 600;"><i class="fas fa-arrow-up"></i> 5%</div>
                                 </div>
                             </div>
@@ -267,11 +283,11 @@
                             <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border-radius: 12px; transition: 0.3s;">
                                 <img src="../images/pastries.png" style="width: 60px; height: 60px; border-radius: 14px; object-fit: cover;">
                                 <div style="flex: 1;">
-                                    <div style="font-weight: 700; font-size: 0.95rem; color: var(--dash-secondary);">Golden Macarons</div>
+                                    <div style="font-weight: 550; font-size: 0.95rem; color: var(--dash-secondary);">Golden Macarons</div>
                                     <div style="font-size: 0.8rem; color: var(--dash-text-muted);">215 Sales this month</div>
                                 </div>
                                 <div style="text-align: right;">
-                                    <div style="font-weight: 700; color: var(--dash-primary);">$1,950</div>
+                                    <div style="font-weight: 550; color: var(--dash-primary);">$1,950</div>
                                     <div style="font-size: 0.7rem; color: var(--dash-danger); font-weight: 600;"><i class="fas fa-arrow-down"></i> 2%</div>
                                 </div>
                             </div>

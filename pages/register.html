@@ -1,181 +1,831 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register | Cakeology</title>
+    <meta name="description" content="Create a Cakeology account to save custom cake designs, order online, and manage sweet rewards.">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="../css/style.css">
+    
     <style>
+        :root {
+            --auth-primary: var(--accent-gold);
+            --auth-primary-hover: #c29d2b;
+        }
+
         body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
             background: var(--gradient-sweet);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-wrapper {
+            width: 100%;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 40px 20px;
+            padding: 20px;
         }
 
-        .auth-card {
+        .auth-container {
             width: 100%;
-            max-width: 550px;
-            background: var(--white);
-            padding: 50px;
+            max-width: 1050px;
+            height: 680px;
+            background: var(--bg-surface);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-premium);
-            text-align: center;
-        }
-
-
-        .auth-form .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            text-align: left;
-        }
-
-        .auth-form .form-group {
-            margin-bottom: 20px;
-        }
-
-        .auth-form .full {
-            grid-column: span 2;
-        }
-
-        .auth-form label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .auth-form input {
-            width: 100%;
-            padding: 12px 20px;
-            border: 1px solid var(--primary-pink);
-            border-radius: var(--radius-pill);
-            outline: none;
-            transition: var(--transition-smooth);
-        }
-
-        .auth-form input:focus {
-            border-color: var(--accent-gold);
-        }
-
-        .social-login {
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 25px 0;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(212, 175, 55, 0.15);
         }
 
-        .social-btn {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            border: 1px solid var(--primary-pink);
+        .auth-visual {
+            flex: 1;
+            position: relative;
+            background-image: url('../images/register_visual.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            padding: 50px 40px;
+        }
+
+        .auth-visual-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(78, 52, 46, 0.82) 0%, rgba(15, 9, 8, 0.94) 100%);
+            z-index: 1;
+        }
+
+        .auth-visual-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .auth-visual .logo-wrapper {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .auth-visual .logo-text {
+            color: #FFFFFF !important;
+        }
+
+        .visual-middle {
+            margin-top: auto;
+            margin-bottom: auto;
+            padding-right: 20px;
+        }
+
+        .visual-heading {
+            font-size: 2.8rem;
+            color: #FFFFFF !important;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .visual-subtext {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8) !important;
+            line-height: 1.6;
+        }
+
+        .visual-quote-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius-md);
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .quote-stars {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 12px;
+        }
+
+        .quote-stars i {
+            color: var(--accent-gold);
+            font-size: 0.85rem;
+        }
+
+        .quote-text {
+            color: #FFFFFF !important;
+            font-size: 0.95rem;
+            font-style: italic;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .quote-author {
+            color: var(--accent-gold) !important;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .auth-form-panel {
+            flex: 1.1;
+            padding: 40px 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-chocolate);
+            background: var(--bg-surface);
+            overflow-y: auto;
+        }
+
+        .auth-form-box {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .mobile-logo-header {
+            display: none;
+        }
+
+        .auth-header {
+            margin-bottom: 20px;
+        }
+
+        .auth-header h2 {
+            font-size: 2.2rem;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .auth-header p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Tab Toggle Pill */
+        .auth-toggle {
+            display: flex;
+            background: var(--bg-main);
+            padding: 5px;
+            border-radius: var(--radius-pill);
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary) !important;
+            border-radius: var(--radius-pill);
             transition: var(--transition-smooth);
+            text-decoration: none;
+        }
+
+        .auth-tab.active {
+            background: var(--bg-surface);
+            color: var(--accent-gold) !important;
+            box-shadow: var(--shadow-soft);
+        }
+
+        /* Social Buttons */
+        .social-login {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .social-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 11px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            background: var(--bg-surface);
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-decoration: none;
         }
 
         .social-btn:hover {
-            background: var(--primary-pink);
+            border-color: var(--accent-gold);
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateY(-2px);
         }
 
-        .divider {
-            margin: 20px 0;
+        .social-btn i {
+            font-size: 0.95rem;
+        }
+
+        .social-btn .fa-google { color: #DB4437; }
+        .social-btn .fa-facebook-f { color: #4267B2; }
+        .social-btn .fa-apple { color: var(--text-primary); }
+
+        /* Divider */
+        .auth-divider {
+            text-align: center;
             position: relative;
+            margin: 15px 0;
         }
 
-        .divider::before {
+        .auth-divider::before {
             content: '';
             position: absolute;
             top: 50%;
             left: 0;
             width: 100%;
             height: 1px;
-            background: var(--primary-pink);
+            background: var(--border-color);
         }
 
-        .divider span {
-            background: var(--white);
-            padding: 0 10px;
+        .auth-divider span {
+            background: var(--bg-surface);
+            padding: 0 15px;
             position: relative;
-            z-index: 1;
-            font-size: 0.9rem;
-            color: var(--text-muted);
+            color: var(--text-muted) !important;
+            font-size: 0.85rem;
         }
 
-        @media (max-width: 600px) {
-            .auth-form .form-grid {
-                grid-template-columns: 1fr;
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            letter-spacing: 0.2px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            pointer-events: none;
+            transition: var(--transition-smooth);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 11px 15px 11px 42px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            background: var(--bg-main);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .form-input.has-toggle {
+            padding-right: 42px;
+        }
+
+        .form-input:focus {
+            border-color: var(--accent-gold);
+            background: var(--bg-surface);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-input:focus + .input-icon {
+            color: var(--accent-gold);
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        .toggle-password:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Custom Checkbox */
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checkbox-container input {
+            display: none;
+        }
+
+        .checkmark {
+            width: 18px;
+            height: 18px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: var(--bg-main);
+            display: inline-block;
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .checkbox-container input:checked + .checkmark {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+
+        .checkbox-container input:checked + .checkmark::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: white;
+            font-size: 0.65rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 13px;
+            background: var(--accent-gold);
+            color: #FFFFFF !important;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .submit-btn:hover {
+            background: var(--auth-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .auth-footer a {
+            color: var(--accent-gold) !important;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+        }
+
+        .auth-footer a:hover {
+            color: var(--auth-primary-hover) !important;
+            text-decoration: underline;
+        }
+
+        /* Responsive Overrides */
+        @media (max-width: 992px) {
+            .auth-container {
+                max-width: 480px;
+                height: auto;
+                flex-direction: column;
             }
-            .auth-form .full {
+
+            .auth-visual {
+                display: none;
+            }
+
+            .auth-form-panel {
+                padding: 40px 30px;
+            }
+
+            .mobile-logo-header {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 25px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .auth-wrapper {
+                padding: 10px;
+            }
+            
+            .auth-form-panel {
+                padding: 30px 20px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .form-grid .form-group {
                 grid-column: span 1;
+            }
+            
+            .auth-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* ============================================
+           Auth Page Dark Mode Overrides
+           ============================================ */
+        .dark-mode .auth-container {
+            background: var(--bg-surface) !important;
+            border-color: rgba(255, 215, 0, 0.2) !important;
+        }
+        .dark-mode .auth-form-panel {
+            background: var(--bg-surface) !important;
+        }
+        .dark-mode .auth-header h2 {
+            color: #FFFFFF !important;
+        }
+        .dark-mode .auth-header p {
+            color: var(--text-secondary) !important;
+        }
+        .dark-mode .auth-toggle {
+            background: var(--bg-main) !important;
+            border-color: rgba(255, 215, 0, 0.2) !important;
+        }
+        .dark-mode .auth-tab {
+            color: var(--text-secondary) !important;
+        }
+        .dark-mode .auth-tab.active {
+            background: var(--bg-surface) !important;
+            color: var(--accent-gold) !important;
+        }
+        .dark-mode .social-btn {
+            background: var(--bg-accent) !important;
+            border-color: rgba(255, 215, 0, 0.2) !important;
+            color: #FFFFFF !important;
+        }
+        .dark-mode .social-btn:hover {
+            border-color: var(--accent-gold) !important;
+            background: rgba(255, 215, 0, 0.08) !important;
+        }
+        .dark-mode .auth-divider span {
+            background: var(--bg-surface) !important;
+            color: var(--text-muted) !important;
+        }
+        .dark-mode .auth-divider::before {
+            background: rgba(255, 215, 0, 0.15) !important;
+        }
+        .dark-mode .form-label {
+            color: #FFFFFF !important;
+        }
+        .dark-mode .form-input {
+            background: var(--bg-accent) !important;
+            border-color: rgba(255, 215, 0, 0.2) !important;
+            color: #FFFFFF !important;
+        }
+        .dark-mode .form-input::placeholder {
+            color: var(--text-muted) !important;
+        }
+        .dark-mode .form-input:focus {
+            border-color: var(--accent-gold) !important;
+            background: var(--bg-accent-dark) !important;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.12) !important;
+        }
+        .dark-mode .checkbox-container {
+            color: var(--text-secondary) !important;
+        }
+        .dark-mode .checkmark {
+            background: var(--bg-accent) !important;
+            border-color: rgba(255, 215, 0, 0.3) !important;
+        }
+        .dark-mode .auth-footer {
+            color: var(--text-secondary) !important;
+        }
+        .dark-mode .visual-quote-card {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+        /* Floating toggle controls */
+        .auth-floating-controls {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .auth-floating-controls .theme-toggle,
+        .auth-floating-controls .rtl-toggle {
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            border: 1.5px solid rgba(212, 175, 55, 0.4);
+            color: #4E342E;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            box-shadow: 0 4px 14px rgba(78, 52, 46, 0.12);
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            outline: none;
+            padding: 0;
+        }
+        .auth-floating-controls .theme-toggle i,
+        .auth-floating-controls .rtl-toggle i {
+            font-size: 0.95rem;
+            color: #4E342E;
+            pointer-events: none;
+            line-height: 1;
+        }
+        .auth-floating-controls .theme-toggle:hover,
+        .auth-floating-controls .rtl-toggle:hover {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: white;
+            transform: translateY(-2px) scale(1.06);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+        .auth-floating-controls .theme-toggle:hover i,
+        .auth-floating-controls .rtl-toggle:hover i {
+            color: white;
+        }
+        .dark-mode .auth-floating-controls .theme-toggle,
+        .dark-mode .auth-floating-controls .rtl-toggle {
+            background: #261B19;
+            border-color: rgba(255, 215, 0, 0.35);
+            color: #FFD700;
+        }
+        .dark-mode .auth-floating-controls .theme-toggle i,
+        .dark-mode .auth-floating-controls .rtl-toggle i {
+            color: #FFD700;
+        }
+        @media (max-width: 576px) {
+            .auth-floating-controls {
+                top: 10px;
+                right: 10px;
+                gap: 6px;
+            }
+            .auth-floating-controls .theme-toggle,
+            .auth-floating-controls .rtl-toggle {
+                width: 36px;
+                height: 36px;
+                font-size: 0.85rem;
             }
         }
     </style>
+
     <!-- Favicon & Touch Icons -->
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon.png">
     <link rel="apple-touch-icon" sizes="256x256" href="../images/apple-touch-icon.png">
     <meta name="theme-color" content="#D4AF37">
 </head>
+
 <body>
-    <div class="auth-card reveal">
-        <a href="../index.html" class="logo" style="margin-bottom: 30px; display: inline-block;">Cakeology</a>
-        <h2 style="margin-bottom: 10px;">Join the Family</h2>
-        <p style="color: var(--text-muted); margin-bottom: 30px;">Create an account to start your sweet journey.</p>
+    <!-- Immediate Theme & RTL Application — runs before CSS renders to prevent flash -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                document.body.classList.add('dark-mode');
+            }
+            const savedDir = localStorage.getItem('rtl');
+            if (savedDir === 'rtl') {
+                document.documentElement.setAttribute('dir', 'rtl');
+            }
+        })();
+    </script>
 
-        <form class="auth-form">
-            <div class="form-grid">
-                <div class="form-group">
-                    <label>First Name</label>
-                    <input type="text" placeholder="John" required>
-                </div>
-                <div class="form-group">
-                    <label>Last Name</label>
-                    <input type="text" placeholder="Doe" required>
-                </div>
-                <div class="form-group full">
-                    <label>Email Address</label>
-                    <input type="email" placeholder="example@mail.com" required>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" placeholder="••••••••" required>
-                </div>
-                <div class="form-group">
-                    <label>Confirm Password</label>
-                    <input type="password" placeholder="••••••••" required>
-                </div>
-            </div>
-            
-            <div style="text-align: left; margin: 10px 0 25px;">
-                <label style="font-size: 0.9rem; display: flex; align-items: center; gap: 10px; font-weight: 400; cursor: pointer;">
-                    <input type="checkbox" style="width: auto;"> I agree to the <a href="#" style="color: var(--accent-gold);">Terms & Conditions</a>
-                </label>
-            </div>
-            
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
-        </form>
-
-        <div class="divider"><span>OR</span></div>
-
-        <div class="social-login">
-            <a href="#" class="social-btn"><i class="fab fa-google"></i></a>
-            <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-btn"><i class="fab fa-apple"></i></a>
-        </div>
-
-        <p style="font-size: 0.9rem;">Already have an account? <a href="login.html" style="color: var(--accent-gold); font-weight: 600;">Sign In</a></p>
+    <!-- Floating Theme & RTL Toggle Controls -->
+    <div class="auth-floating-controls" role="group" aria-label="Display controls">
+        <button id="theme-toggle" class="theme-toggle" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+        <button id="rtl-toggle" class="theme-toggle rtl-toggle" title="Toggle RTL layout" aria-label="Toggle RTL layout">
+            <i class="fa-solid fa-right-left"></i>
+        </button>
     </div>
 
+    <div class="auth-wrapper">
+        <div class="auth-container">
+            <!-- Left Side: Visual Showcase -->
+            <div class="auth-visual">
+                <div class="auth-visual-overlay"></div>
+                <div class="auth-visual-content">
+                    <a href="../index.html" class="logo-wrapper">
+                        <div class="logo-icon">
+                            <i class="fa-solid fa-cake-candles"></i>
+                        </div>
+                        <span class="logo-text">Cakeology</span>
+                    </a>
+                    <div class="visual-middle">
+                        <h2 class="visual-heading">The Couture of Confectionery</h2>
+                        <p class="visual-subtext">Create an account to design bespoke creations, book private tastings, and earn exclusive rewards.</p>
+                    </div>
+                    <div class="visual-quote-card">
+                        <div class="quote-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="quote-text">"Every guest was in awe of our cake. It was a beautiful, custom work of art that tasted incredible!"</p>
+                        <span class="quote-author">— Vivienne Ross</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Form Panel -->
+            <div class="auth-form-panel">
+                <div class="auth-form-box">
+                    <!-- Mobile Logo (hidden on desktop) -->
+                    <div class="mobile-logo-header">
+                        <a href="../index.html" class="logo-wrapper">
+                            <div class="logo-icon">
+                                <i class="fa-solid fa-cake-candles"></i>
+                            </div>
+                            <span class="logo-text">Cakeology</span>
+                        </a>
+                    </div>
+
+                    <div class="auth-header">
+                        <h2>Join the Family</h2>
+                        <p>Create an account to start your sweet journey</p>
+                    </div>
+
+                    <!-- Slide toggle selector -->
+                    <div class="auth-toggle">
+                        <a href="login.html" class="auth-tab">Sign In</a>
+                        <a href="register.html" class="auth-tab active">Sign Up</a>
+                    </div>
+
+                    <!-- Form -->
+                    <form class="auth-form" action="dashboard.html">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="first-name">First Name</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-regular fa-user input-icon"></i>
+                                    <input type="text" id="first-name" class="form-input" placeholder="John" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="last-name">Last Name</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-regular fa-user input-icon"></i>
+                                    <input type="text" id="last-name" class="form-input" placeholder="Doe" required>
+                                </div>
+                            </div>
+                            <div class="form-group full-width">
+                                <label class="form-label" for="email">Email Address</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-regular fa-envelope input-icon"></i>
+                                    <input type="email" id="email" class="form-input" placeholder="example@mail.com" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="password">Password</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-regular fa-lock input-icon"></i>
+                                    <input type="password" id="password" class="form-input has-toggle" placeholder="••••••••" required>
+                                    <i class="fa-regular fa-eye toggle-password" id="toggle-password-1"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="confirm-password">Confirm Password</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-regular fa-lock input-icon"></i>
+                                    <input type="password" id="confirm-password" class="form-input has-toggle" placeholder="••••••••" required>
+                                    <i class="fa-regular fa-eye toggle-password" id="toggle-password-2"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: left; margin: 10px 0 20px;">
+                            <label class="checkbox-container">
+                                <input type="checkbox" required>
+                                <span class="checkmark"></span>
+                                I agree to the <a href="#" style="color: var(--accent-gold); font-weight: 500;">Terms &amp; Conditions</a>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <span>Create Account</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+
+                    <div class="auth-divider">
+                        <span>OR</span>
+                    </div>
+
+                    <!-- Social Sign Ins -->
+                    <div class="social-login">
+                        <a href="#" class="social-btn"><i class="fa-brands fa-google"></i><span>Google</span></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i><span>Facebook</span></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-apple"></i><span>Apple</span></a>
+                    </div>
+
+                    <div class="auth-footer">
+                        <p>Already have an account? <a href="login.html">Sign In</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme synchronization script -->
     <script src="../js/main.js"></script>
+
+    <script>
+        // Password Visibility Toggle for Password
+        const togglePassword1 = document.querySelector('#toggle-password-1');
+        const passwordField1 = document.querySelector('#password');
+        togglePassword1.addEventListener('click', function() {
+            const type = passwordField1.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField1.setAttribute('type', type);
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        // Password Visibility Toggle for Confirm Password
+        const togglePassword2 = document.querySelector('#toggle-password-2');
+        const passwordField2 = document.querySelector('#confirm-password');
+        togglePassword2.addEventListener('click', function() {
+            const type = passwordField2.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField2.setAttribute('type', type);
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
 </body>
+
 </html>

@@ -23,8 +23,12 @@
     <style>
         .shop-header {
             padding: 120px 0 60px;
-            background: var(--gradient-sweet);
+            background: linear-gradient(rgba(255, 253, 245, 0.35), rgba(255, 253, 245, 0.35)), url('../images/shop_hero.png') no-repeat center center / cover;
             text-align: center;
+        }
+
+        .dark-mode .shop-header {
+            background: linear-gradient(rgba(15, 9, 8, 0.4), rgba(15, 9, 8, 0.4)), url('../images/shop_hero.png') no-repeat center center / cover !important;
         }
 
         .filter-bar {
@@ -86,7 +90,7 @@
             content: "\f03e";
             /* FontAwesome Image Icon */
             font-family: "Font Awesome 6 Free";
-            font-weight: 900;
+            font-weight: 550;
             position: absolute;
             font-size: 3rem;
             color: rgba(212, 175, 55, 0.2);
@@ -152,7 +156,7 @@
 
         .product-price {
             font-size: 1.2rem;
-            font-weight: 700;
+            font-weight: 550;
             color: var(--text-chocolate);
             display: flex;
             justify-content: space-between;
@@ -201,6 +205,14 @@
             background: var(--primary-pink);
             color: var(--text-chocolate);
         }
+    
+        .shop-header h1, .shop-header p {
+            text-shadow: 0 2px 8px rgba(255, 253, 245, 0.75) !important;
+        }
+        .dark-mode .shop-header h1, .dark-mode .shop-header p {
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9) !important;
+        }
+    
     </style>
     <!-- Favicon & Touch Icons -->
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
@@ -438,6 +450,25 @@
                         <h3 class="product-title">Wild Berry Vegan Galette</h3>
                         <div class="product-price">
                             <span>$48.00</span>
+                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 12: Wedding -->
+                <div class="product-card reveal" data-id="cake-white-lace" data-category="Wedding Cakes">
+                    <a href="product-detail.html?id=cake-white-lace">
+                        <div class="product-img">
+                            <img src="../images/cake_white_lace.png"
+                                alt="White Lace & Pearls">
+                            <div class="product-badge">Classic</div>
+                        </div>
+                    </a>
+                    <div class="product-info">
+                        <span class="product-category">Wedding Cakes</span>
+                        <h3 class="product-title">White Lace & Pearls</h3>
+                        <div class="product-price">
+                            <span>$120.00</span>
                             <div class="add-to-cart"><i class="fas fa-plus"></i></div>
                         </div>
                     </div>

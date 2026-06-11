@@ -20,8 +20,12 @@
     <style>
         .sub-hero {
             padding: 120px 0 60px;
-            background: var(--gradient-sweet);
+            background: linear-gradient(rgba(255, 253, 245, 0.35), rgba(255, 253, 245, 0.35)), url('../images/subscriptions_hero.png') no-repeat center center / cover;
             text-align: center;
+        }
+
+        .dark-mode .sub-hero {
+            background: linear-gradient(rgba(15, 9, 8, 0.4), rgba(15, 9, 8, 0.4)), url('../images/subscriptions_hero.png') no-repeat center center / cover !important;
         }
 
         .pricing-grid {
@@ -114,6 +118,14 @@
             font-size: 2rem;
             color: var(--text-chocolate);
         }
+    
+        .sub-hero h1, .sub-hero p {
+            text-shadow: 0 2px 8px rgba(255, 253, 245, 0.75) !important;
+        }
+        .dark-mode .sub-hero h1, .dark-mode .sub-hero p {
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9) !important;
+        }
+    
     </style>
     <!-- Favicon & Touch Icons -->
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">

@@ -7,7 +7,7 @@
 
 :root {
     --dash-sidebar-width: 280px;
-    --dash-header-height: 80px;
+    --dash-header-height: 70px;
     
     /* Dashboard Specific Colors - Premium Bakery Palette */
     --dash-bg: #FFFDF5; 
@@ -97,7 +97,7 @@
 
 .dash-nav-label {
     font-size: 0.7rem;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--dash-text-muted);
@@ -150,22 +150,310 @@
 
 .dash-header {
     height: var(--dash-header-height);
+    width: calc(100% - var(--dash-sidebar-width));
     background: var(--dash-sidebar-bg);
     backdrop-filter: var(--dash-glass);
     border-bottom: 1px solid var(--dash-border);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 40px;
+    padding: 0 32px;
     position: sticky;
     top: 0;
     z-index: 900;
     transition: all 0.3s ease;
+    margin-left: auto;
+    box-sizing: border-box;
+}
+
+.dash-header-left,
+.dash-header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    flex-wrap: nowrap;
+}
+
+.dash-header-left { min-width: 0; }
+
+.dash-greeting {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-left: 10px;
+    line-height: 1.1;
+}
+
+.dash-greeting-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--dash-text-muted);
+}
+
+.dash-greeting-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dash-secondary);
+}
+
+.dash-action-btn,
+.dash-cart-badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--dash-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212, 175, 55, 0.08);
+    color: var(--dash-secondary);
+    transition: all 0.3s ease;
+}
+
+.dash-action-btn:hover,
+.dash-cart-badge:hover {
+    background: rgba(212, 175, 55, 0.18);
+    color: var(--dash-primary);
+    transform: translateY(-1px);
+}
+
+.dash-cart-badge { position: relative; cursor: pointer; }
+
+.dash-cart-badge span {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--dash-primary);
+    color: white;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 0.65rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    border: 2px solid var(--dash-bg);
+}
+
+.dash-shop-btn {
+    padding: 0 12px;
+    font-size: 0.72rem;
+    border-radius: 50px;
+    width: auto !important;
+    white-space: nowrap;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    border: 1.5px solid var(--dash-primary);
+    font-weight: 600;
+    color: var(--dash-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .dash-content {
-    padding: 40px;
+    padding: 32px 32px 40px;
     max-width: 1600px;
+}
+
+.dash-welcome-wrap {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.dash-welcome-card,
+.dash-balance-card,
+.dash-profile-overview {
+    position: relative;
+    overflow: hidden;
+}
+
+.dash-welcome-card::after,
+.dash-balance-card::after,
+.dash-profile-overview::after {
+    content: '';
+    position: absolute;
+    inset: auto -20px -30px auto;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.14) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+.dash-kicker {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    color: var(--dash-primary);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.dash-welcome-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.dash-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--dash-border);
+    background: rgba(212, 175, 55, 0.08);
+    color: var(--dash-secondary);
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.dash-mini-stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.dash-mini-stat {
+    background: rgba(212, 175, 55, 0.06);
+    border: 1px solid var(--dash-border);
+    border-radius: 16px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dash-mini-stat strong {
+    font-size: 1.35rem;
+    color: var(--dash-primary);
+}
+
+.dash-mini-stat span {
+    color: var(--dash-text-muted);
+    font-size: 0.82rem;
+}
+
+.dash-profile-head {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.dash-profile-photo-wrap {
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.dash-profile-photo {
+    width: 88px;
+    height: 88px;
+    border-radius: 26px;
+    border: 4px solid rgba(212, 175, 55, 0.18);
+    padding: 4px;
+    object-fit: cover;
+}
+
+.dash-profile-status {
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 3px solid var(--dash-card-bg);
+    background: var(--dash-success);
+}
+
+.dash-profile-copy h4 {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 0 0 4px;
+    font-family: 'Playfair Display', serif;
+}
+
+.dash-profile-email {
+    font-size: 0.92rem;
+    color: var(--dash-text-muted);
+    margin: 0 0 8px;
+}
+
+.dash-status-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 999px;
+    padding: 7px 10px;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.18);
+    color: #059669;
+    font-size: 0.74rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dash-profile-details {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.dash-profile-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: rgba(212, 175, 55, 0.05);
+    border: 1px solid var(--dash-border);
+}
+
+.dash-profile-detail-item span {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--dash-text-muted);
+}
+
+.dash-profile-detail-item strong {
+    color: var(--dash-secondary);
+    font-size: 0.92rem;
+    line-height: 1.4;
+}
+
+.dash-profile-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.dash-profile-btn {
+    flex: 1 1 120px;
+    justify-content: center;
+}
+
+.dash-account-status {
+    display: grid;
+    gap: 8px;
+}
+
+.dash-account-status-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--dash-text-muted);
+    font-size: 0.88rem;
+}
+
+.dash-account-status-item i {
+    color: var(--dash-primary);
 }
 
 /* Cards */
@@ -242,7 +530,7 @@
     padding: 18px 25px;
     text-align: left;
     font-size: 0.85rem;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--dash-secondary);
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -265,7 +553,7 @@
     padding: 8px 14px;
     border-radius: 10px;
     font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -290,6 +578,14 @@
    ============================================================== */
 
 @media (max-width: 992px) {
+    .dash-header {
+        width: 100% !important;
+        padding: 0 20px !important;
+    }
+
+    .dash-welcome-wrap {
+        grid-template-columns: 1fr !important;
+    }
     .dash-sidebar {
         transform: translateX(-100%);
         box-shadow: 10px 0 30px rgba(0,0,0,0.1);
@@ -330,6 +626,12 @@
 
 @media (max-width: 768px) {
     .dash-content { padding: 25px 15px !important; }
+    .dash-header { height: 74px !important; }
+    .dash-header-actions { gap: 10px !important; }
+    .dash-shop-btn { display: none !important; }
+    .dash-mini-stat-row { grid-template-columns: 1fr !important; }
+    .dash-profile-head { align-items: flex-start; }
+    .dash-profile-actions { flex-direction: column; }
     
     .dash-stat-grid {
         grid-template-columns: 1fr !important;
@@ -365,11 +667,26 @@
         font-weight: 700;
         font-size: 1.3rem;
         color: var(--dash-primary);
+        text-decoration: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .dash-brand-mobile:hover,
+    .dash-brand-mobile:focus-visible,
+    .dash-brand-link:hover,
+    .dash-brand-link:focus-visible {
+        opacity: 0.92;
+        color: var(--dash-primary);
+        outline: none;
     }
 }
 
 @media (max-width: 360px) {
     .dash-header { height: 65px !important; }
+    .dash-header-actions { gap: 8px !important; }
     .dash-content { padding: 20px 10px !important; }
     .stat-card { gap: 15px !important; padding: 18px !important; }
     .stat-icon-wrapper { width: 50px !important; height: 50px !important; font-size: 1.3rem !important; }
@@ -407,3 +724,333 @@
 .text-gold { color: var(--dash-primary) !important; }
 .bg-glass { background: var(--dash-card-bg); backdrop-filter: var(--dash-glass); }
 .border-premium { border: 1px solid var(--dash-border); }
+
+/* ==============================================================
+   RESPONSIVE OVERFLOW & ALIGNMENT CORRECTIONS
+   ============================================================== */
+
+/* Prevent horizontal page overflow on dashboard views */
+.dash-container,
+.dash-main,
+.dash-content {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+/* Restrict tables to self-scroll horizontally, keeping the page layout stable */
+.dash-table-container {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Stack inline flex title rows and pagination rows vertically on mobile */
+@media (max-width: 768px) {
+    /* Target title rows and pagination containers that use flex layout inline */
+    .dash-content > div[style*="display: flex"],
+    .dash-content > div[style*="display:flex"],
+    .dash-card > div[style*="display: flex"],
+    .dash-card > div[style*="display:flex"] {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 15px !important;
+        text-align: center !important;
+    }
+    
+    /* Force inner groups to span full width and align centered */
+    .dash-content > div[style*="display: flex"] > div,
+    .dash-content > div[style*="display:flex"] > div,
+    .dash-card > div[style*="display: flex"] > div,
+    .dash-card > div[style*="display:flex"] > div {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    /* Stacking structure for headings and text descriptions */
+    .dash-content > div[style*="display: flex"] > div:first-child,
+    .dash-content > div[style*="display:flex"] > div:first-child {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+    
+    /* Center headings on mobile screens */
+    .dash-content h1 {
+        text-align: center !important;
+        margin-bottom: 5px !important;
+    }
+}
+
+/* ==============================================================
+   PREMIUM REDESIGNED HEADER STYLES
+   ============================================================== */
+
+/* Center items and prevent wrapping */
+.dash-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(78, 52, 46, 0.04);
+}
+
+/* Redesigned Search Input */
+.dash-search {
+    position: relative;
+    width: 280px;
+}
+.dash-search i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--dash-text-muted);
+    font-size: 0.85rem;
+    pointer-events: none;
+    transition: color 0.3s;
+}
+.dash-search input {
+    width: 100%;
+    height: 38px;
+    padding: 0 16px 0 42px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--dash-border);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--dash-text-main);
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(78, 52, 46, 0.02);
+}
+.dash-search input:focus {
+    background: #FFFFFF;
+    border-color: var(--dash-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+.dark-mode .dash-search input {
+    background: rgba(38, 27, 25, 0.6);
+}
+.dark-mode .dash-search input:focus {
+    background: rgba(38, 27, 25, 0.9);
+}
+
+/* User Profile Section */
+.dash-user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 5px 12px;
+    border-radius: 30px;
+    background: rgba(212, 175, 55, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: all 0.3s ease;
+}
+.dash-user-profile:hover {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: rgba(212, 175, 55, 0.25);
+    transform: translateY(-1px);
+}
+.dark-mode .dash-user-profile {
+    background: rgba(255, 215, 0, 0.05);
+    border-color: rgba(255, 215, 0, 0.1);
+}
+.dark-mode .dash-user-profile:hover {
+    background: rgba(255, 215, 0, 0.1);
+    border-color: rgba(255, 215, 0, 0.25);
+}
+.dash-user-profile .user-details {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    line-height: 1.25;
+}
+.dash-user-profile .user-name {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--dash-secondary);
+}
+.dark-mode .dash-user-profile .user-name {
+    color: #FFFFFF;
+}
+.dash-user-profile .user-role {
+    font-size: 0.7rem;
+    color: var(--dash-text-muted);
+}
+.dash-user-profile .avatar-wrapper {
+    position: relative;
+    width: 36px;
+    height: 36px;
+}
+.dash-user-profile .avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50% !important;
+    object-fit: cover;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0 2px 6px rgba(78, 52, 46, 0.12);
+    margin: 0 !important;
+}
+.dark-mode .dash-user-profile .avatar {
+    border-color: var(--dash-card-bg);
+}
+.dash-user-profile .status-indicator {
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--dash-success);
+    border: 1.5px solid #FFFFFF;
+}
+.dark-mode .dash-user-profile .status-indicator {
+    border-color: var(--dash-card-bg);
+}
+
+/* ================================================================
+   Dashboard Header Action Buttons (theme-toggle, rtl-toggle)
+   ================================================================ */
+.dash-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+}
+
+/* Base button shape — shared by theme-toggle & rtl-toggle in dash */
+.dash-header-actions .theme-toggle,
+.dash-header-actions .rtl-toggle,
+.dash-header-actions .dash-action-btn {
+    cursor: pointer;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 50% !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid rgba(212, 175, 55, 0.35) !important;
+    color: #4E342E !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    font-size: 0.95rem !important;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Icon inside each button */
+.dash-header-actions .theme-toggle i,
+.dash-header-actions .rtl-toggle i,
+.dash-header-actions .dash-action-btn i {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    height: auto !important;
+    line-height: 1 !important;
+    font-size: 0.95rem !important;
+    color: #4E342E !important;
+    pointer-events: none;
+}
+
+/* Hover state */
+.dash-header-actions .theme-toggle:hover,
+.dash-header-actions .rtl-toggle:hover,
+.dash-header-actions .dash-action-btn:hover {
+    background: var(--dash-primary) !important;
+    border-color: var(--dash-primary) !important;
+    color: var(--dash-secondary) !important;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 18px rgba(212, 175, 55, 0.25);
+}
+
+.dash-header-actions .theme-toggle:hover i,
+.dash-header-actions .rtl-toggle:hover i,
+.dash-header-actions .dash-action-btn:hover i {
+    color: var(--dash-secondary) !important;
+}
+
+/* Dark mode adjustments */
+.dark-mode .dash-header-actions .theme-toggle,
+.dark-mode .dash-header-actions .rtl-toggle,
+.dark-mode .dash-header-actions .dash-action-btn {
+    background: #261B19 !important;
+    border-color: rgba(255, 215, 0, 0.3) !important;
+    color: #FFD700 !important;
+}
+
+.dark-mode .dash-header-actions .theme-toggle i,
+.dark-mode .dash-header-actions .rtl-toggle i,
+.dark-mode .dash-header-actions .dash-action-btn i {
+    color: #FFD700 !important;
+}
+
+/* ==============================================================
+   RTL LAYOUT SUPPORT
+   ============================================================== */
+
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="rtl"] .dash-sidebar {
+    left: auto;
+    right: 0;
+    border-right: none;
+    border-left: 1px solid var(--dash-border);
+}
+
+[dir="rtl"] .dash-main {
+    margin-left: 0 !important;
+    margin-right: var(--dash-sidebar-width) !important;
+}
+
+[dir="rtl"] .dash-header {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+@media (max-width: 992px) {
+    [dir="rtl"] .dash-sidebar {
+        transform: translateX(100%);
+    }
+    [dir="rtl"] .dash-sidebar.active {
+        transform: translateX(0);
+    }
+    [dir="rtl"] .dash-main {
+        margin-right: 0 !important;
+    }
+}
+
+[dir="rtl"] .dash-nav-link i {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+[dir="rtl"] .dash-search i {
+    left: auto;
+    right: 16px;
+}
+
+[dir="rtl"] .dash-search input {
+    padding-left: 16px;
+    padding-right: 42px;
+}
+
+[dir="rtl"] .dash-user-profile .user-details {
+    text-align: left;
+}
+
+[dir="rtl"] .dash-greeting {
+    margin-left: 0 !important;
+    margin-right: 10px !important;
+}
+
+[dir="rtl"] .dash-header-actions {
+    justify-content: flex-start;
+}

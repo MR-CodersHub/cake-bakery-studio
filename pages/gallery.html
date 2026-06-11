@@ -19,8 +19,13 @@
     <link rel="stylesheet" href="../css/style.css">
     <style>
         .gallery-header {
-            padding: 180px 0 60px;
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(255, 253, 245, 0.35), rgba(255, 253, 245, 0.35)), url('../images/gallery_hero.png') no-repeat center center / cover;
             text-align: center;
+        }
+
+        .dark-mode .gallery-header {
+            background: linear-gradient(rgba(15, 9, 8, 0.4), rgba(15, 9, 8, 0.4)), url('../images/gallery_hero.png') no-repeat center center / cover !important;
         }
 
         .gallery-filters {
@@ -170,6 +175,14 @@
         @media (max-width: 360px) {
             .gallery-grid { grid-template-columns: 1fr; }
         }
+    
+        .gallery-header h1, .gallery-header p {
+            text-shadow: 0 2px 8px rgba(255, 253, 245, 0.75) !important;
+        }
+        .dark-mode .gallery-header h1, .dark-mode .gallery-header p {
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9) !important;
+        }
+    
     </style>
     <!-- Favicon & Touch Icons -->
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
@@ -186,7 +199,7 @@
     <!-- Gallery Header -->
     <section class="gallery-header">
         <div class="container">
-            <h1 class="reveal" style="font-size: 4rem; margin-bottom: 20px;">The Atelier Portfolio</h1>
+            <h1 class="reveal" style="font-size: 4rem; margin-bottom: 20px;">The Cakeology Portfolio</h1>
             <p class="reveal" style="color: var(--text-muted); max-width: 700px; margin: 0 auto; font-size: 1.1rem; transition-delay: 0.1s;">A curated exhibition of our most breathtaking bespoke creations. Explore the intersection of culinary mastery and sculptural elegance.</p>
         </div>
     </section>
@@ -207,7 +220,7 @@
 
             <div class="gallery-grid">
                 
-                <!-- Item: Wedding -->
+                <!-- Item 1: Wedding -->
                 <div class="gallery-item reveal" data-category="wedding">
                     <div class="gallery-img-wrapper">
                         <img src="../images/gallery_2.png" alt="Whimsical Garden Wedding Cake">
@@ -219,7 +232,7 @@
                     </div>
                 </div>
 
-                <!-- Item: Birthday -->
+                <!-- Item 2: Birthday -->
                 <div class="gallery-item reveal" data-category="birthday">
                     <div class="gallery-img-wrapper">
                         <img src="../images/hero.png" alt="Midnight Sparkle Birthday Cake">
@@ -231,7 +244,7 @@
                     </div>
                 </div>
 
-                <!-- Item: Pastries -->
+                <!-- Item 3: Pastries -->
                 <div class="gallery-item reveal" data-category="pastries">
                     <div class="gallery-img-wrapper">
                         <img src="../images/gallery_3.png" alt="Berry Tarts">
@@ -243,7 +256,7 @@
                     </div>
                 </div>
 
-                <!-- Item: Wedding -->
+                <!-- Item 4: Wedding -->
                 <div class="gallery-item reveal" data-category="wedding">
                     <div class="gallery-img-wrapper">
                         <img src="../images/wedding_cat.png" alt="Classic Elegance">
@@ -255,7 +268,7 @@
                     </div>
                 </div>
 
-                <!-- Item: Macarons -->
+                <!-- Item 5: Macarons -->
                 <div class="gallery-item reveal" data-category="macarons">
                     <div class="gallery-img-wrapper">
                         <img src="../images/gallery_1.png" alt="Rainbow Palette Macarons">
@@ -267,7 +280,7 @@
                     </div>
                 </div>
 
-                <!-- Item: Luxury -->
+                <!-- Item 6: Luxury -->
                 <div class="gallery-item reveal" data-category="luxury">
                     <div class="gallery-img-wrapper">
                         <img src="../images/pastries.png" alt="Golden Sunrise">
@@ -279,7 +292,7 @@
                     </div>
                 </div>
 
-                <!-- Item: Cupcakes -->
+                <!-- Item 7: Cupcakes -->
                 <div class="gallery-item reveal" data-category="cupcakes">
                     <div class="gallery-img-wrapper">
                         <img src="../images/cupcake_cat.png" alt="Floral Whispers Cupcakes">
@@ -291,7 +304,7 @@
                     </div>
                 </div>
 
-                <!-- Item: Birthday -->
+                <!-- Item 8: Birthday -->
                 <div class="gallery-item reveal" data-category="birthday">
                     <div class="gallery-img-wrapper">
                         <img src="../images/celebration_cat.png" alt="Confetti Celebration">
@@ -303,7 +316,7 @@
                     </div>
                 </div>
                 
-                <!-- Item: Luxury -->
+                <!-- Item 9: Luxury -->
                 <div class="gallery-item reveal" data-category="luxury">
                     <div class="gallery-img-wrapper">
                         <img src="https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?q=80&w=1080&auto=format&fit=crop" alt="Red Velvet Dream">
@@ -315,7 +328,7 @@
                     </div>
                 </div>
                 
-                <!-- Item: Macarons -->
+                <!-- Item 10: Macarons -->
                 <div class="gallery-item reveal" data-category="macarons">
                     <div class="gallery-img-wrapper">
                         <img src="https://images.unsplash.com/photo-1558326567-98ae2405596b?q=80&w=1080&auto=format&fit=crop" alt="Rose Garden Macarons">
@@ -323,6 +336,30 @@
                     <div class="gallery-overlay">
                         <h4>Rose Garden</h4>
                         <span>Macaron Collection</span>
+                        <div class="view-btn">View Details <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+
+                <!-- Item 11: Wedding -->
+                <div class="gallery-item reveal" data-category="wedding">
+                    <div class="gallery-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?q=80&w=1080&auto=format&fit=crop" alt="Ethereal Blossom Wedding Cake">
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Ethereal Blossom</h4>
+                        <span>Wedding Collection</span>
+                        <div class="view-btn">View Details <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+
+                <!-- Item 12: Pastries -->
+                <div class="gallery-item reveal" data-category="pastries">
+                    <div class="gallery-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1519869325930-281384150729?q=80&w=1080&auto=format&fit=crop" alt="Golden Pear Tart">
+                    </div>
+                    <div class="gallery-overlay">
+                        <h4>Golden Pear Tart</h4>
+                        <span>Pastry Collection</span>
                         <div class="view-btn">View Details <i class="fas fa-arrow-right"></i></div>
                     </div>
                 </div>

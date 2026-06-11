@@ -20,8 +20,12 @@
     <style>
         .testimonials-hero {
             padding: 120px 0 60px;
-            background: var(--gradient-peach);
+            background: linear-gradient(rgba(255, 253, 245, 0.35), rgba(255, 253, 245, 0.35)), url('../images/testimonials_hero.png') no-repeat center center / cover;
             text-align: center;
+        }
+
+        .dark-mode .testimonials-hero {
+            background: linear-gradient(rgba(15, 9, 8, 0.4), rgba(15, 9, 8, 0.4)), url('../images/testimonials_hero.png') no-repeat center center / cover !important;
         }
 
         .rating-overview {
@@ -103,6 +107,14 @@
         .stars-input i:hover, .stars-input i.active {
             color: var(--accent-gold);
         }
+    
+        .testimonials-hero h1, .testimonials-hero p {
+            text-shadow: 0 2px 8px rgba(255, 253, 245, 0.75) !important;
+        }
+        .dark-mode .testimonials-hero h1, .dark-mode .testimonials-hero p {
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9) !important;
+        }
+    
     </style>
     <!-- Favicon & Touch Icons -->
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">

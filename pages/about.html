@@ -18,23 +18,21 @@
     <link rel="stylesheet" href="../css/style.css">
     <style>
         .about-hero {
-            height: 70vh;
-            background: linear-gradient(rgba(30, 22, 20, 0.4), rgba(30, 22, 20, 0.4)), url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
+            padding: 140px 0 70px;
+            background: linear-gradient(rgba(255, 253, 245, 0.35), rgba(255, 253, 245, 0.35)), url('../images/about_banner_final.png') no-repeat center center / cover;
             text-align: center;
-            position: relative;
+        }
+
+        .dark-mode .about-hero {
+            background: linear-gradient(rgba(15, 9, 8, 0.4), rgba(15, 9, 8, 0.4)), url('../images/about_banner_final.png') no-repeat center center / cover !important;
         }
 
         .about-hero h1 {
-            font-size: 5rem;
+            font-size: 3.8rem;
             max-width: 900px;
-            line-height: 1.1;
-            color: #FFFFFF; /* Ensure it stays white */
+            margin: 0 auto;
+            line-height: 1.2;
+            color: var(--text-primary);
         }
 
         /* Narrative Section */
@@ -187,11 +185,7 @@
         }
 
         /* Dark Mode Specific Overrides for About Page */
-        .dark-mode .about-hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-        }
+        
 
         .dark-mode .standard-card {
             background: var(--bg-surface);
@@ -205,7 +199,8 @@
         .dark-mode .timeline-event::after {
             background: var(--bg-surface);
         }
-            @media (max-width: 768px) {
+
+        @media (max-width: 768px) {
             .about-hero h1 { font-size: 3rem !important; }
             .narrative-row { gap: 40px !important; margin-bottom: 60px !important; text-align: center; }
             .narrative-content, .narrative-image { min-width: 100% !important; }
@@ -231,7 +226,7 @@
     <!-- About Hero -->
     <section class="about-hero">
         <div class="container">
-            <span style="text-transform: uppercase; letter-spacing: 5px; font-weight: 600; margin-bottom: 20px; display: block;">Est. 2015</span>
+            <span style="color: var(--accent-gold); text-transform: uppercase; letter-spacing: 5px; font-weight: 550; margin-bottom: 10px; display: block; font-size: 0.9rem;">Est. 2015</span>
             <h1 class="reveal">Handcrafting the Art of <span style="color: var(--accent-gold);">Sweet Celebration</span></h1>
         </div>
     </section>

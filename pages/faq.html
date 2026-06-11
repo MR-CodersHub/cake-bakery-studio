@@ -20,8 +20,12 @@
     <style>
         .faq-hero {
             padding: 120px 0 60px;
-            background: var(--gradient-peach);
+            background: linear-gradient(rgba(255, 253, 245, 0.35), rgba(255, 253, 245, 0.35)), url('../images/faq_hero.png') no-repeat center center / cover;
             text-align: center;
+        }
+
+        .dark-mode .faq-hero {
+            background: linear-gradient(rgba(15, 9, 8, 0.4), rgba(15, 9, 8, 0.4)), url('../images/faq_hero.png') no-repeat center center / cover !important;
         }
 
         .faq-container {
@@ -87,6 +91,14 @@
             background: var(--primary-pink);
             border-color: var(--accent-gold);
         }
+    
+        .faq-hero h1, .faq-hero p {
+            text-shadow: 0 2px 8px rgba(255, 253, 245, 0.75) !important;
+        }
+        .dark-mode .faq-hero h1, .dark-mode .faq-hero p {
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9) !important;
+        }
+    
     </style>
     <!-- Favicon & Touch Icons -->
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">

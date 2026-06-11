@@ -88,14 +88,14 @@
                             <div class="payment-option active">
                                 <i class="fas fa-credit-card"></i>
                                 <div>
-                                    <div style="font-weight: 700;">Credit / Debit Card</div>
+                                    <div style="font-weight: 550;">Credit / Debit Card</div>
                                     <div style="font-size: 0.8rem; color: var(--text-muted);">Secure payment via Stripe</div>
                                 </div>
                             </div>
                             <div class="payment-option">
                                 <i class="fab fa-paypal"></i>
                                 <div>
-                                    <div style="font-weight: 700;">PayPal</div>
+                                    <div style="font-weight: 550;">PayPal</div>
                                     <div style="font-size: 0.8rem; color: var(--text-muted);">Faster & safer way to pay</div>
                                 </div>
                             </div>
@@ -184,10 +184,10 @@
                 <div style="display: flex; gap: 15px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--border-color);">
                     <img src="${item.image}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
                     <div style="flex: 1;">
-                        <div style="font-weight: 700; font-size: 0.95rem;">${item.name}</div>
+                        <div style="font-weight: 550; font-size: 0.95rem;">${item.name}</div>
                         <div style="font-size: 0.85rem; color: var(--text-muted);">Qty: ${item.quantity}</div>
                     </div>
-                    <div style="font-weight: 700;">$${(item.price * item.quantity).toFixed(2)}</div>
+                    <div style="font-weight: 550;">$${(item.price * item.quantity).toFixed(2)}</div>
                 </div>
             `).join('');
 

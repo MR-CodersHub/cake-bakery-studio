@@ -10,6 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <style>
+        .services-hero {
+            background: linear-gradient(rgba(255, 253, 245, 0.35), rgba(255, 253, 245, 0.35)), url('../images/services_hero.png') no-repeat center center / cover;
+        }
+        .dark-mode .services-hero {
+            background: linear-gradient(rgba(15, 9, 8, 0.4), rgba(15, 9, 8, 0.4)), url('../images/services_hero.png') no-repeat center center / cover !important;
+        }
+
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -64,10 +71,18 @@
         }
 
         .price-tag {
-            font-weight: 700;
+            font-weight: 550;
             color: var(--accent-gold);
             font-size: 1.2rem;
         }
+    
+        .services-hero h1, .services-hero p {
+            text-shadow: 0 2px 8px rgba(255, 253, 245, 0.75) !important;
+        }
+        .dark-mode .services-hero h1, .dark-mode .services-hero p {
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9) !important;
+        }
+    
     </style>
     <!-- Favicon & Touch Icons -->
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
@@ -82,11 +97,10 @@
                 <a href="../index.html" class="logo">Cakeology</a>
                 <ul class="nav-links">
                     <li><a href="../index.html">Home</a></li>
-                    <li><a href="home2.html">Studio</a></li>
+                    <li><a href="home2.html">Home 2</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
+                    <li><a href="shop.html">Shop</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li class="user-account">
@@ -114,7 +128,7 @@
         </div>
     </header>
 
-    <section class="section-padding" style="background: var(--gradient-sweet); padding-top: 150px;">
+    <section class="section-padding services-hero" style="padding-top: 150px;">
         <div class="container">
             <div style="text-align: center; margin-bottom: 80px;">
                 <h1 style="font-size: 3.5rem;">Our Services</h1>
@@ -125,7 +139,7 @@
                 <!-- Custom Cakes -->
                 <div class="service-card reveal">
                     <div class="service-img">
-                        <img src="../images/hero.png" alt="Custom Cakes">
+                        <img src="../images/celebration_cat.png" alt="Custom Cakes">
                     </div>
                     <div class="service-info">
                         <h3>Custom Celebration Cakes</h3>
@@ -140,7 +154,7 @@
                 <!-- Wedding Cakes -->
                 <div class="service-card reveal" style="transition-delay: 0.1s;">
                     <div class="service-img">
-                        <img src="../images/hero.png" alt="Wedding Cakes">
+                        <img src="../images/wedding_cat.png" alt="Wedding Cakes">
                     </div>
                     <div class="service-info">
                         <h3>Luxury Wedding Cakes</h3>
@@ -155,7 +169,7 @@
                 <!-- Dessert Tables -->
                 <div class="service-card reveal" style="transition-delay: 0.2s;">
                     <div class="service-img">
-                        <img src="../images/pastries.png" alt="Dessert Tables">
+                        <img src="../images/service_dessert_table.png" alt="Dessert Tables">
                     </div>
                     <div class="service-info">
                         <h3>Dessert Tables</h3>
@@ -170,7 +184,7 @@
                 <!-- Pastry Subscription -->
                 <div class="service-card reveal">
                     <div class="service-img">
-                        <img src="../images/pastries.png" alt="Subscription Box">
+                        <img src="../images/service_subscription.png" alt="Subscription Box">
                     </div>
                     <div class="service-info">
                         <h3>Pastry Box Subscription</h3>
@@ -185,7 +199,7 @@
                 <!-- Corporate Gifting -->
                 <div class="service-card reveal" style="transition-delay: 0.1s;">
                     <div class="service-img">
-                        <img src="../images/hero.png" alt="Corporate Gifting">
+                        <img src="../images/cupcake_cat.png" alt="Corporate Gifting">
                     </div>
                     <div class="service-info">
                         <h3>Corporate Gifting</h3>
@@ -200,7 +214,7 @@
                 <!-- Workshops -->
                 <div class="service-card reveal" style="transition-delay: 0.2s;">
                     <div class="service-img">
-                        <img src="../images/pastries.png" alt="Cake Workshops">
+                        <img src="../images/service_workshop.png" alt="Cake Workshops">
                     </div>
                     <div class="service-info">
                         <h3>Cake Workshops</h3>

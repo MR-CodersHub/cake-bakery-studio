@@ -20,10 +20,14 @@
     <style>
         .offers-hero {
             padding: 150px 0 80px;
-            background: var(--gradient-gold);
+            background: linear-gradient(rgba(255, 253, 245, 0.35), rgba(255, 253, 245, 0.35)), url('../images/offers_hero.png') no-repeat center center / cover;
             text-align: center;
             position: relative;
             overflow: hidden;
+        }
+
+        .dark-mode .offers-hero {
+            background: linear-gradient(rgba(15, 9, 8, 0.4), rgba(15, 9, 8, 0.4)), url('../images/offers_hero.png') no-repeat center center / cover !important;
         }
 
         .promo-grid {
@@ -66,7 +70,7 @@
             background: var(--primary-pink);
             border: 2px dashed var(--accent-gold);
             border-radius: var(--radius-sm);
-            font-weight: 700;
+            font-weight: 550;
             margin: 20px 0;
             text-align: center;
             cursor: pointer;
@@ -89,7 +93,7 @@
 
         .count-value {
             font-size: 2rem;
-            font-weight: 700;
+            font-weight: 550;
             display: block;
             color: var(--text-chocolate);
         }
@@ -109,6 +113,14 @@
                 height: 200px;
             }
         }
+    
+        .offers-hero h1, .offers-hero p {
+            text-shadow: 0 2px 8px rgba(255, 253, 245, 0.75) !important;
+        }
+        .dark-mode .offers-hero h1, .dark-mode .offers-hero p {
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9) !important;
+        }
+    
     </style>
     <!-- Favicon & Touch Icons -->
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">

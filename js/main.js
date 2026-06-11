@@ -43,9 +43,9 @@ const BAKERY_PRODUCTS = {
         name: "White Lace & Pearls",
         category: "Wedding Cakes",
         price: 120.00,
-        image: "https://images.unsplash.com/photo-1522760883748-aa2c07936653?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "../images/cake_white_lace.png",
         images: [
-            "https://images.unsplash.com/photo-1522760883748-aa2c07936653?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "../images/cake_white_lace.png",
             "../images/wedding_cat.png",
             "../images/gallery_3.png",
             "../images/gallery_2.png"
@@ -270,6 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Initialize Core Functionalities
     initThemeSwitcher();
+    initRtlToggle();
     initMobileMenu();
     initDashboardSidebar();
     initScrollEffects();
@@ -368,11 +369,17 @@ function injectNavigation(isRoot, basePath, rootPath) {
                 <ul class="nav-links" id="mobile-nav">
                     <li><a href="${rootPath}index.html">Home</a></li>
                     <li><a href="${basePath}home2.html">Home 2</a></li>
-                    <li><a href="${basePath}shop.html">Shop</a></li>
                     <li><a href="${basePath}about.html">About</a></li>
+                    <li><a href="${basePath}shop.html">Shop</a></li>
                     <li><a href="${basePath}gallery.html">Gallery</a></li>
                     <li><a href="${basePath}blog.html">Blog</a></li>
                     <li><a href="${basePath}contact.html">Contact</a></li>
+                    <li class="mobile-cart-link">
+                        <a href="${basePath}cart.html" class="mobile-cart-btn">
+                            <span class="mobile-cart-label"><i class="fa-solid fa-bag-shopping"></i> Cart</span>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
                 </ul>
 
                 <div class="nav-actions">
@@ -392,7 +399,10 @@ function injectNavigation(isRoot, basePath, rootPath) {
                         <i class="fa-solid fa-bag-shopping"></i>
                         <span class="cart-count">0</span>
                     </a>
-                    <button class="theme-toggle" id="theme-toggle" title="Toggle Dark/Light Mode">
+                    <button class="theme-toggle rtl-toggle" id="rtl-toggle" title="Toggle RTL mode" aria-label="Toggle RTL mode">
+                        <i class="fa-solid fa-right-left"></i>
+                    </button>
+                    <button class="theme-toggle" id="theme-toggle" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode">
                         <i class="fa-solid fa-moon"></i>
                     </button>
                     <div class="mobile-menu-btn" id="hamburger-btn" title="Menu">
@@ -503,26 +513,33 @@ function injectFooter(isRoot, basePath, rootPath) {
  * Theme Switcher Logic
  */
 function initThemeSwitcher() {
-    const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
 
     function applyTheme(theme, isInitial = false) {
-        if (theme === 'dark') {
+        const isDark = theme === 'dark';
+        // Update all theme-toggle buttons on the page (main nav + admin header)
+        const toggles = document.querySelectorAll('#theme-toggle, [data-theme-toggle]');
+
+        if (isDark) {
             body.classList.add('dark-mode');
-            if (themeToggle) {
-                const icon = themeToggle.querySelector('i');
+            toggles.forEach(btn => {
+                const icon = btn.querySelector('i');
                 if (icon) icon.className = 'fa-solid fa-sun';
-            }
+                btn.setAttribute('aria-label', 'Switch to light mode');
+                btn.setAttribute('title', 'Switch to light mode');
+            });
             localStorage.setItem('theme', 'dark');
         } else {
             body.classList.remove('dark-mode');
-            if (themeToggle) {
-                const icon = themeToggle.querySelector('i');
+            toggles.forEach(btn => {
+                const icon = btn.querySelector('i');
                 if (icon) icon.className = 'fa-solid fa-moon';
-            }
+                btn.setAttribute('aria-label', 'Switch to dark mode');
+                btn.setAttribute('title', 'Switch to dark mode');
+            });
             localStorage.setItem('theme', 'light');
         }
-        
+
         if (isInitial) {
             body.style.transition = 'none';
             setTimeout(() => { body.style.transition = ''; }, 100);
@@ -536,12 +553,59 @@ function initThemeSwitcher() {
     // Apply theme regardless of toggle presence
     applyTheme(activeTheme, true);
 
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
+    // Attach click listener to ALL #theme-toggle buttons on the page
+    document.querySelectorAll('#theme-toggle, [data-theme-toggle]').forEach(btn => {
+        btn.addEventListener('click', () => {
             const isDark = body.classList.contains('dark-mode');
             applyTheme(isDark ? 'light' : 'dark');
         });
+    });
+}
+
+/**
+ * RTL Toggle Logic
+ */
+function initRtlToggle() {
+    const html = document.documentElement;
+
+    function applyRtl(direction) {
+        const isRtl = direction === 'rtl';
+        if (isRtl) {
+            html.setAttribute('dir', 'rtl');
+        } else {
+            html.removeAttribute('dir');
+        }
+
+        // Update all RTL toggle buttons on page
+        document.querySelectorAll('#rtl-toggle, [data-rtl-toggle]').forEach(btn => {
+            const icon = btn.querySelector('i');
+            // Always use a clean right-left directional icon
+            if (icon) icon.className = 'fa-solid fa-right-left';
+            btn.setAttribute('aria-label', isRtl ? 'Switch to left-to-right layout' : 'Switch to right-to-left layout');
+            btn.setAttribute('title', isRtl ? 'Switch to LTR layout' : 'Switch to RTL layout');
+            // Visual active indicator: gold border when RTL is active
+            if (isRtl) {
+                btn.style.borderColor = 'rgba(212, 175, 55, 0.8)';
+                btn.style.boxShadow = '0 0 0 2px rgba(212, 175, 55, 0.25)';
+            } else {
+                btn.style.borderColor = '';
+                btn.style.boxShadow = '';
+            }
+        });
+
+        localStorage.setItem('rtl', isRtl ? 'rtl' : 'ltr');
     }
+
+    const savedDirection = localStorage.getItem('rtl') || 'ltr';
+    applyRtl(savedDirection);
+
+    // Attach click listener to ALL #rtl-toggle buttons on the page
+    document.querySelectorAll('#rtl-toggle, [data-rtl-toggle]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const currentDir = html.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl';
+            applyRtl(currentDir);
+        });
+    });
 }
 
 /**
