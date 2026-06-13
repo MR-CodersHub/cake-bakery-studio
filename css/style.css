@@ -383,8 +383,33 @@ nav { display: flex; justify-content: space-between; align-items: center; width:
 .testimonial-card .testimonial-meta { margin-top: auto; padding-top: 8px; }
 .category-card { position: relative; display: flex; flex-direction: column; border-radius: var(--radius-md); overflow: hidden; height: 400px; min-height: 400px; box-shadow: var(--shadow-soft); transition: var(--transition-smooth); align-items: stretch; }
 .category-card img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-smooth); }
-.category-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px 30px; background: linear-gradient(to top, rgba(78, 52, 46, 0.8), transparent); color: white; }
-.category-overlay h3 { color: white; margin-bottom: 10px; font-size: 1.8rem; }
+.category-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 40px 30px;
+    background: linear-gradient(to top, rgba(78, 52, 46, 0.95) 0%, rgba(78, 52, 46, 0.45) 60%, transparent 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+.category-overlay h3 {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+.category-overlay p {
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 20px;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
 .category-card:hover img { transform: scale(1.1); }
 
 .why-us {
@@ -627,7 +652,7 @@ footer {
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
     .container { padding-left: 24px !important; padding-right: 24px !important; }
     .footer-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -663,7 +688,7 @@ footer {
    PREMIUM MOBILE RESPONSIVENESS OVERHAUL (CONSOLIDATED)
    ============================================================== */
 
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
     header { 
         top: 0 !important; 
         left: 0 !important; 
@@ -694,7 +719,22 @@ footer {
     
     .cart-count { width: 18px !important; height: 18px !important; font-size: 0.6rem !important; top: -5px !important; right: -5px !important; }
     .account-dropdown { position: fixed !important; top: 80px !important; right: 15px !important; left: 15px !important; width: auto !important; transform-origin: top !important; }
+}
 
+@media (max-width: 1100px) {
+    .features-grid,
+    .premium-features-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+    .grid-3-col {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+@media (max-width: 992px) {
     .hero { padding-top: 100px !important; text-align: center !important; }
     .hero-container { flex-direction: column !important; gap: 40px !important; }
     .hero-content { flex: none !important; width: 100% !important; }
@@ -909,7 +949,7 @@ footer {
     .cart-count { width: 16px !important; height: 16px !important; font-size: 0.6rem !important; }
 }
 /* --- Refined Mobile Menu --- */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
     .nav-links {
         display: flex !important; /* Force flex for JS toggle */
         flex-direction: column !important;
@@ -1118,7 +1158,7 @@ footer {
     transform: translateY(-2px) scale(1.05);
     box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
 }
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
     .user-account {
         display: flex !important; /* Restore visibility */
     }
@@ -1139,7 +1179,7 @@ footer {
     }
 }
 /* --- Hyper-Premium Mobile Navigation Redesign --- */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
     /* 1. The Hamburger Button (Trigger) */
     .mobile-menu-btn {
         width: 48px !important;
@@ -1199,7 +1239,7 @@ footer {
     }
 }
 /* --- Hyper-Premium Floating Rounded Navbar --- */
-@media (min-width: 993px) {
+@media (min-width: 1025px) {
     header {
         position: fixed;
         top: 30px;
@@ -1263,7 +1303,14 @@ footer {
         color: var(--accent-gold) !important;
     }
 }
-@media (min-width: 993px) {
+
+@media (min-width: 1025px) and (max-width: 1100px) {
+    .nav-links a {
+        padding: 10px 12px !important;
+        font-size: 0.92rem !important;
+    }
+}
+@media (min-width: 1025px) {
     .mobile-menu-btn {
         display: none !important;
     }
@@ -1273,7 +1320,7 @@ footer {
     }
 }
 /* --- Final Mobile Navigation Stabilization --- */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
     /* 1. Header Layout Fix */
     header {
         position: fixed !important;
@@ -1369,7 +1416,7 @@ footer {
     /* 5. Force Hide User Icon from Mobile completely to fix overlap */
     
 }
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
     .nav-actions {
         justify-content: flex-end !important;
         flex-wrap: nowrap !important;

@@ -237,45 +237,107 @@
             text-align: center;
         }
         .experience-section h2, .experience-section h3 {
-            color: #FFFFFF !important;
+            color: var(--text-primary) !important;
         }
         .experience-section .hero-subtitle {
             color: var(--accent-gold) !important;
         }
         .experience-section {
             padding: 120px 0;
-            background: var(--studio-dark);
-            color: white;
+            background: var(--bg-surface);
+            color: var(--text-secondary);
             border-radius: var(--radius-lg);
             margin: 0 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
         }
 
         .exp-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             margin-top: 80px;
         }
 
         .exp-item {
+            background: var(--bg-main);
+            padding: 55px 30px 45px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.01);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
         }
 
-        .exp-icon {
-            font-size: 2.5rem;
+        .exp-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-premium);
+            border-color: var(--accent-gold);
+        }
+
+        .exp-step {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: rgba(212, 175, 55, 0.25);
+            letter-spacing: 1px;
+            transition: var(--transition-smooth);
+        }
+
+        .exp-item:hover .exp-step {
             color: var(--accent-gold);
-            margin-bottom: 25px;
-            display: block;
+            transform: scale(1.1);
+        }
+
+        .exp-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.06);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            transition: var(--transition-smooth);
+        }
+
+        .exp-icon-wrapper i {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            transition: var(--transition-smooth);
+        }
+
+        .exp-item:hover .exp-icon-wrapper {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .exp-item:hover .exp-icon-wrapper i {
+            color: var(--bg-surface) !important;
+            transform: rotateY(180deg);
         }
 
         .exp-item h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+            font-size: 1.35rem;
+            margin-bottom: 18px;
+            line-height: 1.3;
+            font-weight: 600;
         }
 
         .exp-item p {
-            color: rgba(255,255,255,0.7);
-            font-size: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
 
         /* ============================================================
@@ -285,38 +347,96 @@
 
         /* Tablet / small desktop ≤1024px */
         @media (max-width: 1024px) {
+            .editorial-hero {
+                height: 100vh !important;
+                min-height: 600px !important;
+                display: flex !important;
+                align-items: center !important;
+                padding-top: 80px !important;
+                padding-bottom: 0 !important;
+            }
             .hero-split {
-                grid-template-columns: 1fr;
-                height: auto;
+                grid-template-columns: 1.1fr 0.9fr;
+                height: 100%;
+                align-items: center;
             }
             .hero-image-side {
                 display: flex;
-                height: auto;
-                min-height: 380px;
-                padding: 0 5% 30px;
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                padding: 0 5% 0 0;
                 order: 2;
+                min-height: 0;
             }
             .hero-image-side img {
                 width: 100%;
                 max-width: 420px;
-                max-height: none;
+                max-height: 70vh;
             }
             .hero-text-side {
-                padding: 120px 5% 40px;
-                text-align: center;
-                align-items: center;
+                padding: 0 4% 0 6%;
+                text-align: left;
+                align-items: flex-start;
                 order: 1;
             }
-            .hero-title { font-size: 3rem !important; }
+            .hero-btns {
+                justify-content: flex-start;
+            }
+            .hero-title { font-size: 3.6rem !important; line-height: 0.95 !important; }
             .craft-container { grid-template-columns: 1fr; gap: 50px; }
+            .founder-img {
+                max-width: 500px !important;
+                margin: 0 auto !important;
+            }
             .craft-content h2,
             .experience-section h2,
             .section-padding h2 { font-size: 2.2rem !important; }
             .exp-grid { gap: 30px !important; }
+            .premium-features-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
 
         /* Mobile / large phones ≤768px */
         @media (max-width: 768px) {
+            .editorial-hero {
+                height: auto !important;
+                min-height: 0 !important;
+                padding-top: 100px !important;
+                padding-bottom: 40px !important;
+            }
+            .hero-split {
+                grid-template-columns: 1fr !important;
+                height: auto !important;
+            }
+            .hero-text-side {
+                padding: 40px 24px 20px !important;
+                text-align: center !important;
+                align-items: center !important;
+                order: 1 !important;
+            }
+            .hero-title {
+                font-size: 2.8rem !important;
+                line-height: 1.05 !important;
+                margin-bottom: 16px !important;
+            }
+            .hero-desc {
+                font-size: 1rem !important;
+                margin-bottom: 24px !important;
+            }
+            .hero-image-side {
+                display: flex !important;
+                height: auto !important;
+                min-height: 0 !important;
+                padding: 0 24px 30px !important;
+                justify-content: center !important;
+                order: 2 !important;
+            }
+            .hero-image-side img {
+                width: 100% !important;
+                max-width: 320px !important;
+                max-height: 320px !important;
+                object-fit: contain !important;
+            }
             .experience-section {
                 margin: 0 !important;
                 border-radius: 0 !important;
@@ -747,7 +867,7 @@
                     </p>
                 </div>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                <div class="grid-3-col" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
                     <!-- Promise 1 -->
                     <div class="reveal" style="background: var(--bg-main); padding: 40px; border-radius: var(--radius-lg); border: 1px solid rgba(212, 175, 55, 0.15); box-shadow: var(--shadow-soft);">
                         <i class="fas fa-certificate" style="font-size: 2rem; color: var(--accent-gold); margin-bottom: 20px; display: block;"></i>
@@ -781,7 +901,7 @@
                     <p class="reveal" style="color: var(--text-secondary); max-width: 600px; margin: 20px auto 0;">Explore a brief showcase of our sculptural confectionery portfolios.</p>
                 </div>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+                <div class="grid-3-col" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
                     <div class="category-card reveal">
                         <img src="../images/gallery_2.png" alt="Wedding Exhibition">
                         <div class="category-overlay">
@@ -821,7 +941,7 @@
                     </p>
                 </div>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                <div class="grid-3-col" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
                     <!-- Gallery Item 1 -->
                     <div class="reveal" style="position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-soft); border: 1px solid rgba(212, 175, 55, 0.15);">
                         <img src="../images/gallery_1.png" alt="Grand Ballroom Wedding Cake" style="width: 100%; height: 350px; object-fit: cover; transition: var(--transition-smooth);">
@@ -860,19 +980,28 @@
                     <h2 style="font-size: 3.5rem; margin-top: 10px;">The Atelier Process</h2>
                 </div>
                 
-                <div class="exp-grid">
+                <div class="exp-grid grid-3-col">
                     <div class="exp-item reveal">
-                        <span class="exp-icon"><i class="fas fa-pencil-ruler"></i></span>
+                        <span class="exp-step">01</span>
+                        <div class="exp-icon-wrapper">
+                            <i class="fas fa-pencil-ruler"></i>
+                        </div>
                         <h3>Custom Cake Design &amp; Consultation</h3>
                         <p>Partner directly with our designers in an exclusive session to map your venue style and aesthetic theme into a bespoke, hand-sketched conceptual masterpiece.</p>
                     </div>
                     <div class="exp-item reveal" style="transition-delay: 0.1s;">
-                        <span class="exp-icon"><i class="fas fa-wine-glass"></i></span>
+                        <span class="exp-step">02</span>
+                        <div class="exp-icon-wrapper">
+                            <i class="fas fa-wine-glass"></i>
+                        </div>
                         <h3>Gourmet Flavor Architecture</h3>
                         <p>Embark on a private tasting journey to curate a tailored flavor profile, pairing light organic sponges with house-made premium coulis and delicate velvet creams.</p>
                     </div>
                     <div class="exp-item reveal" style="transition-delay: 0.2s;">
-                        <span class="exp-icon"><i class="fas fa-gem"></i></span>
+                        <span class="exp-step">03</span>
+                        <div class="exp-icon-wrapper">
+                            <i class="fas fa-gem"></i>
+                        </div>
                         <h3>Artisanal Luxury Detailing</h3>
                         <p>Elevate your event with final flourishes of edible 24K gold leaf, micro-sculpted sugar floristry, and hand-painted textures crafted by our master pastry artists.</p>
                     </div>

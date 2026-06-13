@@ -328,7 +328,7 @@ function initDashboardSidebar() {
             overlay.classList.toggle('active');
             
             // Prevent scrolling when sidebar is open on mobile
-            if (window.innerWidth <= 992) {
+            if (window.innerWidth <= 1024) {
                 document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
             }
         };
@@ -338,7 +338,7 @@ function initDashboardSidebar() {
 
         closeLinks.forEach(link => {
             link.addEventListener('click', () => {
-                if (window.innerWidth <= 992) {
+                if (window.innerWidth <= 1024) {
                     sidebar.classList.remove('active');
                     overlay.classList.remove('active');
                     document.body.style.overflow = '';
@@ -629,7 +629,7 @@ function initMobileMenu() {
     if (accountTrigger && accountDropdown) {
         accountTrigger.addEventListener('click', (e) => {
             e.stopPropagation();
-            const isMobile = window.innerWidth <= 992;
+            const isMobile = window.innerWidth <= 1024;
             accountDropdown.classList.toggle('active');
             
             if (!isMobile && navLinks) {
@@ -660,7 +660,7 @@ function initMobileMenu() {
 
     // Close on Resize (if going to desktop)
     window.addEventListener('resize', () => {
-        if (window.innerWidth > 992) {
+        if (window.innerWidth > 1024) {
             if (navLinks) navLinks.classList.remove('active');
             if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
         }
