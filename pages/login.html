@@ -47,7 +47,8 @@
         .auth-container {
             width: 100%;
             max-width: 1050px;
-            height: 680px;
+            min-height: 680px;
+            height: auto;
             background: var(--bg-surface);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-premium);
@@ -160,12 +161,12 @@
             align-items: center;
             justify-content: center;
             background: var(--bg-surface);
-            overflow-y: auto;
+            overflow: visible;
         }
 
         .auth-form-box {
             width: 100%;
-            max-width: 400px;
+            max-width: 440px;
         }
 
         .mobile-logo-header {
@@ -174,6 +175,18 @@
 
         .auth-header {
             margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* Grid layout for signup form fields */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .full-width {
+            grid-column: span 2;
         }
 
         .auth-header h2 {
@@ -469,7 +482,8 @@
         /* Responsive Overrides */
         @media (max-width: 992px) {
             .auth-container {
-                max-width: 460px;
+                max-width: 480px;
+                min-height: auto;
                 height: auto;
                 flex-direction: column;
             }
@@ -500,6 +514,15 @@
             
             .auth-header h2 {
                 font-size: 1.8rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .form-grid .form-group {
+                grid-column: span 1;
             }
         }
 
@@ -724,63 +747,133 @@
                         </a>
                     </div>
 
-                    <div class="auth-header">
-                        <h2>Welcome Back</h2>
-                        <p>Please enter your credentials to sign in</p>
-                    </div>
-
                     <!-- Slide toggle selector -->
                     <div class="auth-toggle">
-                        <a href="login.html" class="auth-tab active">Sign In</a>
-                        <a href="register.html" class="auth-tab">Sign Up</a>
+                        <a href="#" class="auth-tab active" id="tab-signin">Sign In</a>
+                        <a href="#" class="auth-tab" id="tab-signup">Sign Up</a>
                     </div>
 
-                    <!-- Social Sign Ins -->
-                    <div class="social-login">
-                        <a href="#" class="social-btn"><i class="fa-brands fa-google"></i><span>Google</span></a>
-                        <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i><span>Facebook</span></a>
-                        <a href="#" class="social-btn"><i class="fa-brands fa-apple"></i><span>Apple</span></a>
-                    </div>
+                    <!-- Sign In Content -->
+                    <div id="signin-section">
+                        <div class="auth-header">
+                            <h2>Welcome Back</h2>
+                            <p>Please enter your credentials to sign in</p>
+                        </div>
 
-                    <div class="auth-divider">
-                        <span>or use email address</span>
-                    </div>
-
-                    <!-- Form -->
-                    <form action="dashboard.html">
-                        <div class="form-group">
-                            <label class="form-label" for="email">Email Address</label>
-                            <div class="input-wrapper">
-                                <i class="fa-regular fa-envelope input-icon"></i>
-                                <input type="email" id="email" class="form-input" placeholder="example@mail.com" required>
+                        <!-- Form -->
+                        <form action="dashboard.html">
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email Address</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-regular fa-envelope input-icon"></i>
+                                    <input type="email" id="email" class="form-input" placeholder="example@mail.com" required>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="password-field">Password</label>
-                            <div class="input-wrapper">
-                                <i class="fa-regular fa-lock input-icon"></i>
-                                <input type="password" id="password-field" class="form-input has-toggle" placeholder="••••••••" required>
-                                <i class="fa-regular fa-eye toggle-password" id="toggle-password"></i>
+                            <div class="form-group">
+                                <label class="form-label" for="password-field">Password</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-regular fa-lock input-icon"></i>
+                                    <input type="password" id="password-field" class="form-input has-toggle" placeholder="••••••••" required>
+                                    <i class="fa-regular fa-eye toggle-password" id="toggle-password"></i>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="form-options">
-                            <label class="checkbox-container">
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                                Remember me
-                            </label>
-                            <a href="#" id="forgot-password" class="forgot-link">Forgot Password?</a>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">
-                            <span>Sign In</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                    </form>
+                            
+                            <div class="form-options">
+                                <label class="checkbox-container">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    Remember me
+                                </label>
+                                <a href="#" id="forgot-password" class="forgot-link">Forgot Password?</a>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">
+                                <span>Sign In</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </form>
+                    </div>
 
-                    <div class="auth-footer">
-                        <p>Don't have an account? <a href="register.html">Create Account</a></p>
+                    <!-- Sign Up Content -->
+                    <div id="signup-section" style="display: none;">
+                        <div class="auth-header">
+                            <h2>Join the Family</h2>
+                            <p>Create an account to start your sweet journey</p>
+                        </div>
+
+                        <!-- Form -->
+                        <form class="auth-form" action="dashboard.html">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label class="form-label" for="first-name">First Name</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-regular fa-user input-icon"></i>
+                                        <input type="text" id="first-name" class="form-input" placeholder="John" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="last-name">Last Name</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-regular fa-user input-icon"></i>
+                                        <input type="text" id="last-name" class="form-input" placeholder="Doe" required>
+                                    </div>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label class="form-label" for="reg-email">Email Address</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-regular fa-envelope input-icon"></i>
+                                        <input type="email" id="reg-email" class="form-input" placeholder="example@mail.com" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="reg-password">Password</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-regular fa-lock input-icon"></i>
+                                        <input type="password" id="reg-password" class="form-input has-toggle" placeholder="••••••••" required>
+                                        <i class="fa-regular fa-eye toggle-password" id="toggle-reg-password"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="confirm-password">Confirm Password</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-regular fa-lock input-icon"></i>
+                                        <input type="password" id="confirm-password" class="form-input has-toggle" placeholder="••••••••" required>
+                                        <i class="fa-regular fa-eye toggle-password" id="toggle-confirm-password"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="text-align: left; margin: 10px 0 20px;">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" required>
+                                    <span class="checkmark"></span>
+                                    I agree to the <a href="#" style="color: var(--accent-gold); font-weight: 500;">Terms &amp; Conditions</a>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">
+                                <span>Create Account</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Shared Options Section -->
+                    <div id="shared-options-section">
+                        <div class="auth-divider">
+                            <span>or use email address</span>
+                        </div>
+
+                        <!-- Social Sign Ins -->
+                        <div class="social-login">
+                            <a href="#" class="social-btn"><i class="fa-brands fa-google"></i><span>Google</span></a>
+                            <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i><span>Facebook</span></a>
+                            <a href="#" class="social-btn"><i class="fa-brands fa-apple"></i><span>Apple</span></a>
+                        </div>
+
+                        <div class="auth-footer" id="auth-footer-text">
+                            <p>Don't have an account? <a href="#" id="switch-to-signup">Create Account</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -797,28 +890,107 @@
     <script src="../js/main.js"></script>
 
     <script>
-        // Password Visibility Toggle
+        // Tab switching logic
+        const tabSignIn = document.getElementById('tab-signin');
+        const tabSignUp = document.getElementById('tab-signup');
+        const signinSection = document.getElementById('signin-section');
+        const signupSection = document.getElementById('signup-section');
+        const sharedDividerText = document.querySelector('#shared-options-section .auth-divider span');
+        const footerText = document.getElementById('auth-footer-text');
+
+        function showSignIn(e) {
+            if (e) e.preventDefault();
+            tabSignIn.classList.add('active');
+            tabSignUp.classList.remove('active');
+            signinSection.style.display = 'block';
+            signupSection.style.display = 'none';
+            if (sharedDividerText) sharedDividerText.textContent = 'or use email address';
+            footerText.innerHTML = '<p>Don\'t have an account? <a href="#" id="switch-to-signup">Create Account</a></p>';
+            
+            document.getElementById('switch-to-signup').addEventListener('click', showSignUp);
+            
+            if (window.location.pathname.includes('register.html')) {
+                history.replaceState(null, null, 'login.html');
+            } else if (window.location.hash === '#signup') {
+                history.replaceState(null, null, 'login.html');
+            }
+        }
+
+        function showSignUp(e) {
+            if (e) e.preventDefault();
+            tabSignIn.classList.remove('active');
+            tabSignUp.classList.add('active');
+            signinSection.style.display = 'none';
+            signupSection.style.display = 'block';
+            if (sharedDividerText) sharedDividerText.textContent = 'OR';
+            footerText.innerHTML = '<p>Already have an account? <a href="#" id="switch-to-signin">Sign In</a></p>';
+            
+            document.getElementById('switch-to-signin').addEventListener('click', showSignIn);
+            
+            if (window.location.pathname.includes('login.html')) {
+                history.replaceState(null, null, 'register.html');
+            }
+        }
+
+        tabSignIn.addEventListener('click', showSignIn);
+        tabSignUp.addEventListener('click', showSignUp);
+
+        // Initial setup based on current file/hash
+        if (window.location.pathname.includes('register.html') || window.location.hash === '#signup') {
+            showSignUp();
+        } else {
+            showSignIn();
+        }
+
+        // Password Visibility Toggles
+        // 1. Sign In Password
         const togglePassword = document.querySelector('#toggle-password');
         const passwordField = document.querySelector('#password-field');
+        if (togglePassword && passwordField) {
+            togglePassword.addEventListener('click', function() {
+                const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordField.setAttribute('type', type);
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+        }
 
-        togglePassword.addEventListener('click', function() {
-            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordField.setAttribute('type', type);
-            this.classList.toggle('fa-eye');
-            this.classList.toggle('fa-eye-slash');
-        });
+        // 2. Sign Up Password
+        const toggleRegPassword = document.querySelector('#toggle-reg-password');
+        const regPasswordField = document.querySelector('#reg-password');
+        if (toggleRegPassword && regPasswordField) {
+            toggleRegPassword.addEventListener('click', function() {
+                const type = regPasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                regPasswordField.setAttribute('type', type);
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+        }
+
+        // 3. Confirm Password
+        const toggleConfirmPassword = document.querySelector('#toggle-confirm-password');
+        const confirmPasswordField = document.querySelector('#confirm-password');
+        if (toggleConfirmPassword && confirmPasswordField) {
+            toggleConfirmPassword.addEventListener('click', function() {
+                const type = confirmPasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                confirmPasswordField.setAttribute('type', type);
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+        }
 
         // Forgot Password Logic (Mock)
         const forgotPassword = document.querySelector('#forgot-password');
         const toast = document.querySelector('#auth-toast');
-
-        forgotPassword.addEventListener('click', function(e) {
-            e.preventDefault();
-            toast.style.transform = 'translateX(-50%) translateY(0)';
-            setTimeout(() => {
-                toast.style.transform = 'translateX(-50%) translateY(100px)';
-            }, 3000);
-        });
+        if (forgotPassword && toast) {
+            forgotPassword.addEventListener('click', function(e) {
+                e.preventDefault();
+                toast.style.transform = 'translateX(-50%) translateY(0)';
+                setTimeout(() => {
+                    toast.style.transform = 'translateX(-50%) translateY(100px)';
+                }, 3000);
+            });
+        }
     </script>
 </body>
 

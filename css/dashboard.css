@@ -1,5 +1,7 @@
 * { box-sizing: border-box; }
-.dash-container { overflow-x: hidden !important; width: 100% !important; }
+/* dash-container clips horizontal page overflow; dash-main must NOT clip so
+   the sticky header is never hidden at any viewport width. */
+.dash-container { overflow-x: hidden; width: 100%; }
 /* 
   Cakeology - Modern Dashboard Design System
   SaaS-inspired premium interface
@@ -43,6 +45,7 @@
     --dash-card-bg: rgba(38, 27, 25, 0.9);
     --dash-text-main: #FFFFFF;
     --dash-text-muted: #E8D5C0;
+    --dash-secondary: #E8D5C0;
     --dash-border: rgba(255, 215, 0, 0.15);
     --dash-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     --dash-primary: #FFD700;
@@ -50,6 +53,9 @@
 }
 
 /* Layout */
+body:has(.dash-container) {
+    padding-top: 0 !important;
+}
 .dash-container {
     display: flex;
     min-height: 100vh;
@@ -139,43 +145,65 @@
     box-shadow: 0 8px 20px rgba(212, 175, 55, 0.25);
 }
 
-/* Main Content */
+/* Main Content — must NOT have overflow-x:hidden; that would clip
+   the sticky header's children (search, buttons, profile) */
 .dash-main {
     flex: 1;
     margin-left: var(--dash-sidebar-width);
     display: flex;
     flex-direction: column;
     min-width: 0;
+    overflow: visible;
 }
 
 .dash-header {
+    /* Sizing & positioning */
     height: var(--dash-header-height);
-    width: calc(100% - var(--dash-sidebar-width));
-    background: var(--dash-sidebar-bg);
-    backdrop-filter: var(--dash-glass);
-    border-bottom: 1px solid var(--dash-border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 32px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 28px;
     position: sticky;
     top: 0;
     z-index: 900;
-    transition: all 0.3s ease;
-    margin-left: auto;
-    box-sizing: border-box;
+    /* Layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    /* Appearance */
+    background: var(--dash-sidebar-bg);
+    backdrop-filter: var(--dash-glass);
+    -webkit-backdrop-filter: var(--dash-glass);
+    border-bottom: 1px solid var(--dash-border);
+    box-shadow: 0 4px 20px rgba(78, 52, 46, 0.04);
+    transition: background 0.3s ease, border-color 0.3s ease;
+    /* CRITICAL: never clip children — the old overflow-x:hidden was
+       hiding the right-side action buttons on narrow viewports */
+    overflow: visible;
 }
 
-.dash-header-left,
+/* Left group: hamburger + greeting — can shrink but never disappear */
+.dash-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    margin-right: auto; /* Push search and actions to the right */
+}
+
+/* Right group: search + icons + profile — must never be clipped */
 .dash-header-actions {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    gap: 12px;
+    gap: 10px;
+    flex: 0 0 auto;        /* never shrink the actions area */
     flex-wrap: nowrap;
+    min-width: 0;
+    overflow: visible;
 }
-
-.dash-header-left { min-width: 0; }
 
 .dash-greeting {
     display: flex;
@@ -256,7 +284,9 @@
 
 .dash-content {
     padding: 32px 32px 40px;
+    width: 100%;
     max-width: 1600px;
+    box-sizing: border-box;
 }
 
 .dash-welcome-wrap {
@@ -471,6 +501,21 @@
     box-shadow: var(--dash-shadow-lg);
     transform: translateY(-5px);
     border-color: var(--dash-primary);
+}
+
+/* Two-column layout: main content + right panel (Best Sellers / Profile) */
+.dash-grid-layout {
+    display: grid;
+    grid-template-columns: 1.65fr 1fr;
+    gap: 30px;
+    align-items: start;    /* cards top-align, not stretch */
+    margin-bottom: 40px;
+}
+
+/* Ensure both grid columns start at exactly the same top edge */
+.dash-grid-layout > * {
+    margin-top: 0 !important;
+    align-self: start;
 }
 
 .dash-stat-grid {
@@ -729,12 +774,16 @@
    RESPONSIVE OVERFLOW & ALIGNMENT CORRECTIONS
    ============================================================== */
 
-/* Prevent horizontal page overflow on dashboard views */
+/* Prevent horizontal page overflow on dashboard views.
+   NOTE: dash-main is intentionally excluded — it must stay overflow:visible
+   so the sticky header is never clipped on any viewport width. */
 .dash-container,
-.dash-main,
 .dash-content {
-    max-width: 100% !important;
-    overflow-x: hidden !important;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+.dash-main {
+    overflow: visible; /* sticky header children must not be clipped */
 }
 
 /* Restrict tables to self-scroll horizontally, keeping the page layout stable */
@@ -784,22 +833,12 @@
     }
 }
 
-/* ==============================================================
-   PREMIUM REDESIGNED HEADER STYLES
-   ============================================================== */
-
-/* Center items and prevent wrapping */
-.dash-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 4px 20px rgba(78, 52, 46, 0.04);
-}
-
-/* Redesigned Search Input */
+/* ── Search: compact search bar grouped on the right ── */
 .dash-search {
     position: relative;
-    width: 280px;
+    flex: 0 1 240px;    /* compact size, shrinks if viewport narrows */
+    width: 240px;
+    min-width: 160px;
 }
 .dash-search i {
     position: absolute;
@@ -829,11 +868,29 @@
     outline: none;
     box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
 }
+.dark-mode .dash-search {
+    /* ensure the icon is visible in dark mode */
+}
+.dark-mode .dash-search i {
+    color: rgba(255, 215, 0, 0.6);
+}
 .dark-mode .dash-search input {
-    background: rgba(38, 27, 25, 0.6);
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 215, 0, 0.25);
+    color: #FFFFFF;
+    box-shadow: none;
+}
+.dark-mode .dash-search input::placeholder {
+    color: rgba(255, 255, 255, 0.35);
 }
 .dark-mode .dash-search input:focus {
-    background: rgba(38, 27, 25, 0.9);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--dash-primary);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.12);
+}
+.dark-mode .dash-search input:focus + i,
+.dark-mode .dash-search:focus-within i {
+    color: var(--dash-primary);
 }
 
 /* User Profile Section */
@@ -866,6 +923,8 @@
     flex-direction: column;
     text-align: right;
     line-height: 1.25;
+    white-space: nowrap; /* prevent name/role from wrapping */
+    min-width: 0;
 }
 .dash-user-profile .user-name {
     font-weight: 600;
@@ -910,15 +969,7 @@
     border-color: var(--dash-card-bg);
 }
 
-/* ================================================================
-   Dashboard Header Action Buttons (theme-toggle, rtl-toggle)
-   ================================================================ */
-.dash-header-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: nowrap;
-}
+/* (dash-header-actions fully defined above — no duplicate needed) */
 
 /* Base button shape — shared by theme-toggle & rtl-toggle in dash */
 .dash-header-actions .theme-toggle,
@@ -991,13 +1042,15 @@
 }
 
 /* ==============================================================
-   RTL LAYOUT SUPPORT
+   RTL LAYOUT SUPPORT — Comprehensive Fix
    ============================================================== */
 
+/* Root direction */
 [dir="rtl"] {
     text-align: right;
 }
 
+/* ── Sidebar: move to right edge ── */
 [dir="rtl"] .dash-sidebar {
     left: auto;
     right: 0;
@@ -1005,33 +1058,60 @@
     border-left: 1px solid var(--dash-border);
 }
 
+/* ── Main: offset from right instead of left ── */
 [dir="rtl"] .dash-main {
     margin-left: 0 !important;
     margin-right: var(--dash-sidebar-width) !important;
 }
 
+/* ── Header: full-width within main (auto-inherits from flex parent) ── */
 [dir="rtl"] .dash-header {
     margin-left: 0 !important;
-    margin-right: auto !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    /* Reverse left/right flex children */
+    flex-direction: row-reverse;
 }
 
-@media (max-width: 992px) {
-    [dir="rtl"] .dash-sidebar {
-        transform: translateX(100%);
-    }
-    [dir="rtl"] .dash-sidebar.active {
-        transform: translateX(0);
-    }
-    [dir="rtl"] .dash-main {
-        margin-right: 0 !important;
-    }
+/* ── Header actions: flex-shrink:0 ensures RTL toggle never gets hidden ── */
+[dir="rtl"] .dash-header-actions {
+    flex-direction: row-reverse;
+    flex-shrink: 0;
+    overflow: visible !important;
+    min-width: fit-content;
 }
 
-[dir="rtl"] .dash-nav-link i {
-    margin-left: 0;
-    margin-right: 0;
+/* ── Header left group: mirrors to right side ── */
+[dir="rtl"] .dash-header-left {
+    flex-direction: row-reverse;
+    margin-right: 0 !important;
+    margin-left: auto !important;
 }
 
+/* ── Greeting: margin mirrors ── */
+[dir="rtl"] .dash-greeting {
+    margin-left: 0 !important;
+    margin-right: 10px !important;
+    text-align: right;
+}
+
+/* ── Nav link: icon on the right in RTL, hover indent flips ── */
+[dir="rtl"] .dash-nav-link {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .dash-nav-link:hover {
+    padding-left: 18px;
+    padding-right: 22px;
+}
+
+[dir="rtl"] .dash-nav-label {
+    margin: 30px 15px 15px;
+    text-align: right;
+}
+
+/* ── Search bar: icon to left (RTL), text padding flips ── */
 [dir="rtl"] .dash-search i {
     left: auto;
     right: 16px;
@@ -1040,17 +1120,105 @@
 [dir="rtl"] .dash-search input {
     padding-left: 16px;
     padding-right: 42px;
+    text-align: right;
+}
+
+/* ── Table: align text to right ── */
+[dir="rtl"] .dash-table th,
+[dir="rtl"] .dash-table td {
+    text-align: right;
+}
+
+/* ── Stat cards: icon on the right side ── */
+[dir="rtl"] .stat-card {
+    flex-direction: row-reverse;
+}
+
+/* ── Profile section ── */
+[dir="rtl"] .dash-profile-head {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .dash-profile-copy {
+    text-align: right;
+}
+
+[dir="rtl"] .dash-profile-status {
+    right: auto;
+    left: -2px;
+}
+
+[dir="rtl"] .dash-profile-detail-item {
+    text-align: right;
+}
+
+[dir="rtl"] .dash-account-status-item {
+    flex-direction: row-reverse;
+}
+
+/* ── User profile card in admin header ── */
+[dir="rtl"] .dash-user-profile {
+    flex-direction: row-reverse;
 }
 
 [dir="rtl"] .dash-user-profile .user-details {
-    text-align: left;
+    text-align: right;
 }
 
-[dir="rtl"] .dash-greeting {
-    margin-left: 0 !important;
-    margin-right: 10px !important;
+[dir="rtl"] .dash-user-profile .status-indicator {
+    right: auto;
+    left: -1px;
 }
 
-[dir="rtl"] .dash-header-actions {
-    justify-content: flex-start;
+/* ── Notification badge position fix in RTL ── */
+[dir="rtl"] #notification-toggle span {
+    right: auto;
+    left: -3px;
 }
+
+/* ── Cart badge ── */
+[dir="rtl"] .dash-cart-badge span {
+    right: auto;
+    left: -5px;
+}
+
+/* ── Mobile RTL: sidebar slides in from right ── */
+@media (max-width: 992px) {
+    [dir="rtl"] .dash-sidebar {
+        transform: translateX(100%);
+        left: auto;
+        right: 0;
+    }
+    [dir="rtl"] .dash-sidebar.active {
+        transform: translateX(0);
+    }
+    [dir="rtl"] .dash-main {
+        margin-right: 0 !important;
+    }
+    /* In mobile RTL, header goes back to row (full-width, hamburger on right) */
+    [dir="rtl"] .dash-header {
+        flex-direction: row-reverse;
+    }
+}
+
+/* ── Very small screens: ensure RTL toggle never gets hidden ── */
+@media (max-width: 480px) {
+    [dir="rtl"] .dash-header-actions {
+        gap: 8px !important;
+        flex-shrink: 0 !important;
+    }
+}
+
+/* ── Wide screen alignment: keep header content within 1600px max-width content container ── */
+@media (min-width: 1880px) {
+    .dash-header {
+        padding-right: calc(100% - 1600px + 28px) !important;
+        padding-left: 28px !important;
+    }
+    [dir="rtl"] .dash-header {
+        padding-left: calc(100% - 1600px + 28px) !important;
+        padding-right: 28px !important;
+    }
+}
+
+/* End of dashboard.css */

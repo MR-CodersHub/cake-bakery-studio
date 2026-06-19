@@ -148,7 +148,7 @@ img { max-width: 100%; height: auto; display: block; object-fit: cover; border-r
 a { text-decoration: none; color: inherit; transition: var(--transition-smooth); }
 ul { list-style: none; }
 .container { width: 100%; max-width: 1300px; margin: 0 auto; padding-left: 30px; padding-right: 30px; }
-section { position: relative; width: 100%; overflow: hidden; }
+section { position: relative; width: 100%; }
 h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; color: var(--text-primary); line-height: 1.2; font-weight: 600; }
 .section-padding { padding: 100px 0; }
 
@@ -184,9 +184,9 @@ input:focus, textarea:focus { border-color: var(--accent-gold); box-shadow: 0 0 
 .dropdown-item:hover { background: rgba(212, 175, 55, 0.08); color: var(--accent-gold); padding-left: 25px; }
 
 /* --- Navigation Desktop --- */
-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 25px 0; transition: var(--transition-smooth); }
-header.scrolled { background: rgba(255, 253, 245, 0.85); backdrop-filter: blur(20px); padding: 10px 0; box-shadow: var(--shadow-soft); }
-.dark-mode header.scrolled { background: rgba(28, 20, 18, 0.85); }
+header:not(.dash-header) { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 25px 0; transition: var(--transition-smooth); }
+header:not(.dash-header).scrolled { background: rgba(255, 253, 245, 0.85); backdrop-filter: blur(20px); padding: 10px 0; box-shadow: var(--shadow-soft); }
+.dark-mode header:not(.dash-header).scrolled { background: rgba(28, 20, 18, 0.85); }
 
 nav { display: flex; justify-content: space-between; align-items: center; width: 100%; }
 .logo-wrapper { 
@@ -583,7 +583,7 @@ footer {
 }
 
 @media (max-width: 1100px) {
-    header {
+    header:not(.dash-header) {
         padding: 14px 16px !important;
     }
 
@@ -689,7 +689,7 @@ footer {
    ============================================================== */
 
 @media (max-width: 1024px) {
-    header { 
+    header:not(.dash-header) { 
         top: 0 !important; 
         left: 0 !important; 
         transform: none !important; 
@@ -704,8 +704,8 @@ footer {
     .nav-links.active { right: 0 !important; }
     .nav-links a { font-size: 1.15rem; display: block; padding: 18px 0; text-align: center; }    
     body { padding-top: 70px !important; }
-    header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 1000 !important; padding: 0 !important; background: rgba(255, 253, 245, 0.96) !important; backdrop-filter: blur(20px) !important; height: 70px !important; display: flex !important; align-items: center !important; visibility: visible !important; opacity: 1 !important; }
-    .dark-mode header { background: rgba(15, 9, 8, 0.96) !important; }
+    header:not(.dash-header) { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 1000 !important; padding: 0 !important; background: rgba(255, 253, 245, 0.96) !important; backdrop-filter: blur(20px) !important; height: 70px !important; display: flex !important; align-items: center !important; visibility: visible !important; opacity: 1 !important; }
+    .dark-mode header:not(.dash-header) { background: rgba(15, 9, 8, 0.96) !important; }
 
     nav { flex-direction: row !important; justify-content: space-between !important; align-items: center !important; padding: 0 15px !important; width: 100% !important; }
     .logo { font-size: 1.45rem !important; margin: 0 !important; flex: 1 !important; text-align: left !important; }
@@ -1240,7 +1240,7 @@ footer {
 }
 /* --- Hyper-Premium Floating Rounded Navbar --- */
 @media (min-width: 1025px) {
-    header {
+    header:not(.dash-header) {
         position: fixed;
         top: 30px;
         left: 50%;
@@ -1257,19 +1257,19 @@ footer {
         transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .dark-mode header {
+    .dark-mode header:not(.dash-header) {
         background: rgba(28, 20, 18, 0.92);
         border-color: rgba(255, 215, 0, 0.15);
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
     }
 
-    header.scrolled {
+    header:not(.dash-header).scrolled {
         top: 15px;
         padding: 8px 30px !important;
         background: rgba(255, 255, 255, 0.95);
     }
 
-    .dark-mode header.scrolled {
+    .dark-mode header:not(.dash-header).scrolled {
         background: #1C1412;
     }
 
@@ -1322,7 +1322,7 @@ footer {
 /* --- Final Mobile Navigation Stabilization --- */
 @media (max-width: 1024px) {
     /* 1. Header Layout Fix */
-    header {
+    header:not(.dash-header) {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
@@ -1340,7 +1340,7 @@ footer {
         box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
     }
 
-    .dark-mode header {
+    .dark-mode header:not(.dash-header) {
         background: #0F0908 !important;
         border-bottom: 1px solid rgba(255, 215, 0, 0.1) !important;
     }

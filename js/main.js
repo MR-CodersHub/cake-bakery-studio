@@ -235,6 +235,78 @@ const BAKERY_PRODUCTS = {
         ingredients: "Wild Berries, Vegan Shortcrust, Coconut Sugar, Lemon Juice, Cornstarch.",
         rating: 4.9,
         reviewsCount: 15
+    },
+    "cake-salted-caramel": {
+        id: "cake-salted-caramel",
+        name: "Salted Caramel Drip Cake",
+        category: "Birthday Cakes",
+        price: 48.00,
+        image: "../images/salted_caramel_cake.png",
+        images: [
+            "../images/salted_caramel_cake.png",
+            "../images/gallery_1.png",
+            "../images/gallery_2.png",
+            "../images/gallery_3.png"
+        ],
+        badge: "Chef Special",
+        description: "A premium, gourmet double-chocolate birthday cake layered with salted caramel buttercream, finished with a beautiful caramel drip and roasted hazelnuts.",
+        ingredients: "Valrhona Chocolate, Organic Caramel, Heavy Cream, Sea Salt, Roasted Hazelnuts, Belgian Butter.",
+        rating: 4.9,
+        reviewsCount: 38
+    },
+    "pastry-strawberry-eclair": {
+        id: "pastry-strawberry-eclair",
+        name: "Strawberry Crème Éclair",
+        category: "Pastries",
+        price: 12.00,
+        image: "../images/strawberry_eclair.png",
+        images: [
+            "../images/strawberry_eclair.png",
+            "../images/gallery_2.png",
+            "../images/gallery_3.png",
+            "../images/gallery_1.png"
+        ],
+        badge: "Artisanal",
+        description: "Artisanal French choux pastry filled to the brim with luxurious vanilla bean pastry cream and topped with glazed fresh strawberries.",
+        ingredients: "Choux Pastry, Vanilla Custard, Fresh Strawberries, Glaze, Powdered Sugar.",
+        rating: 4.8,
+        reviewsCount: 42
+    },
+    "cupcakes-lavender-honey": {
+        id: "cupcakes-lavender-honey",
+        name: "Lavender Honey Cupcakes",
+        category: "Cupcakes",
+        price: 38.00,
+        image: "../images/lavender_cupcakes.png",
+        images: [
+            "../images/lavender_cupcakes.png",
+            "../images/gallery_1.png",
+            "../images/gallery_2.png",
+            "../images/gallery_3.png"
+        ],
+        badge: "Trending",
+        description: "Delicate honey-infused cupcakes topped with a velvety lavender flower buttercream frosting, a drizzle of local organic honey, and organic edible lavender buds.",
+        ingredients: "Organic Flour, Lavender Oil, Honey, Cream Butter, Cane Sugar, Eggs.",
+        rating: 4.9,
+        reviewsCount: 29
+    },
+    "pastry-raspberry-croissant": {
+        id: "pastry-raspberry-croissant",
+        name: "Raspberry Almond Croissant",
+        category: "Pastries",
+        price: 14.00,
+        image: "../images/raspberry_croissant.png",
+        images: [
+            "../images/raspberry_croissant.png",
+            "../images/gallery_2.png",
+            "../images/gallery_3.png",
+            "../images/gallery_1.png"
+        ],
+        badge: "Fresh Baked",
+        description: "Rich, multi-layered French croissant filled with sweet raspberry coulis and frangipane almond cream, topped with toasted sliced almonds.",
+        ingredients: "French Butter, Yeast, Flour, Raspberry Compote, Almond Paste, Flaked Almonds, Powdered Sugar.",
+        rating: 4.8,
+        reviewsCount: 35
     }
 };
 

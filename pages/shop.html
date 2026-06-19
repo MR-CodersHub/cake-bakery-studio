@@ -51,9 +51,10 @@
 
         .filter-btn.active,
         .filter-btn:hover {
-            background: var(--primary-pink);
-            color: var(--text-chocolate);
-            box-shadow: var(--shadow-soft);
+            background: var(--accent-gold);
+            color: var(--white);
+            border-color: var(--accent-gold);
+            box-shadow: var(--shadow-premium);
         }
 
         .product-grid {
@@ -205,7 +206,26 @@
             background: var(--primary-pink);
             color: var(--text-chocolate);
         }
+
+        /* Disabled state for prev/next arrows */
+        .page-link.disabled {
+            opacity: 0.35;
+            pointer-events: none;
+            cursor: default;
+        }
+
+        /* RTL: swap chevron directions visually */
+        [dir="rtl"] #page-prev i { transform: scaleX(-1); }
+        [dir="rtl"] #page-next i { transform: scaleX(-1); }
     
+        /* Product grid page-switch fade */
+        .product-grid {
+            transition: opacity 0.28s ease;
+        }
+        .product-grid.fading {
+            opacity: 0;
+        }
+
         .shop-header h1, .shop-header p {
             text-shadow: 0 2px 8px rgba(255, 253, 245, 0.75) !important;
         }
@@ -248,238 +268,15 @@
                 <button class="filter-btn">Vegan Options</button>
             </div>
 
-            <div class="product-grid">
-                <!-- Product 1: Wedding -->
-                <div class="product-card reveal" data-id="cake-velvet-dream" data-category="Wedding Cakes">
-                    <a href="product-detail.html?id=cake-velvet-dream">
-                        <div class="product-img">
-                            <img src="../images/hero.png" alt="Velvet Dream Cake">
-                            <div class="product-badge">Best Seller</div>
-                        </div>
-                    </a>
-                    <div class="product-info">
-                        <span class="product-category">Wedding Cakes</span>
-                        <h3 class="product-title">Velvet Dream Cake</h3>
-                        <div class="product-price">
-                            <span>$45.00</span>
-                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 2: Wedding -->
-                <div class="product-card reveal" data-id="cake-midnight-orchid" data-category="Wedding Cakes">
-                    <a href="product-detail.html?id=cake-midnight-orchid">
-                        <div class="product-img">
-                            <img src="../images/wedding_cat.png" alt="Midnight Orchid">
-                            <div class="product-badge">Premium</div>
-                        </div>
-                    </a>
-                    <div class="product-info">
-                        <span class="product-category">Wedding Cakes</span>
-                        <h3 class="product-title">Midnight Orchid Cake</h3>
-                        <div class="product-price">
-                            <span>$85.00</span>
-                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 3: Birthday -->
-                <div class="product-card reveal" data-id="cake-choc-truffle" data-category="Birthday Cakes">
-                    <a href="product-detail.html?id=cake-choc-truffle">
-                        <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                                alt="Chocolate Truffle">
-                            <div class="product-badge">Popular</div>
-                        </div>
-                    </a>
-                    <div class="product-info">
-                        <span class="product-category">Birthday Cakes</span>
-                        <h3 class="product-title">Chocolate Truffle Indulgence</h3>
-                        <div class="product-price">
-                            <span>$55.00</span>
-                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 4: Cupcakes -->
-                <div class="product-card reveal" data-id="cupcakes-pastel-party" data-category="Cupcakes">
-                    <a href="product-detail.html?id=cupcakes-pastel-party">
-                        <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1519340333755-56e9c1d04579?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                                alt="Pastel Cupcakes">
-                            <div class="product-badge">Set of 12</div>
-                        </div>
-                    </a>
-                    <div class="product-info">
-                        <span class="product-category">Cupcakes</span>
-                        <h3 class="product-title">Pastel Party Set</h3>
-                        <div class="product-price">
-                            <span>$32.00</span>
-                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 5: Macarons -->
-                <div class="product-card reveal" data-id="macarons-parisian-gold" data-category="Macarons">
-                    <a href="product-detail.html?id=macarons-parisian-gold">
-                        <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                                alt="Golden Macarons">
-                            <div class="product-badge">New</div>
-                        </div>
-                    </a>
-                    <div class="product-info">
-                        <span class="product-category">Macarons</span>
-                        <h3 class="product-title">Parisian Gold Macarons</h3>
-                        <div class="product-price">
-                            <span>$24.00</span>
-                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 6: Pastries -->
-                <div class="product-card reveal" data-id="pastry-berry-bliss" data-category="Pastries">
-                    <a href="product-detail.html?id=pastry-berry-bliss">
-                        <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                                alt="Berry Bliss">
-                            <div class="product-badge">Fresh</div>
-                        </div>
-                    </a>
-                    <div class="product-info">
-                        <span class="product-category">Pastries</span>
-                        <h3 class="product-title">Berry Bliss Tart</h3>
-                        <div class="product-price">
-                            <span>$18.00</span>
-                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 7: Vegan -->
-                <div class="product-card reveal" data-id="cake-vegan-matcha" data-category="Vegan Options">
-                    <a href="product-detail.html?id=cake-vegan-matcha">
-                        <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                                alt="Vegan Matcha">
-                            <div class="product-badge">Healthy</div>
-                        </div>
-                    </a>
-                    <div class="product-info">
-                        <span class="product-category">Vegan Options</span>
-                        <h3 class="product-title">Zen Matcha Vegan Cake</h3>
-                        <div class="product-price">
-                            <span>$52.00</span>
-                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 8: Cupcakes -->
-                <div class="product-card reveal" data-id="cupcakes-velvet-duet" data-category="Cupcakes">
-                    <a href="product-detail.html?id=cupcakes-velvet-duet">
-                        <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1599785209707-a456fc1337bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                                alt="Velvet Duet">
-                            <div class="product-badge">Romantic</div>
-                        </div>
-                    </a>
-                    <div class="product-info">
-                        <span class="product-category">Cupcakes</span>
-                        <h3 class="product-title">Red Velvet Duet</h3>
-                        <div class="product-price">
-                            <span>$36.00</span>
-                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 9: Macarons -->
-                <div class="product-card reveal" data-id="macarons-rose-garden" data-category="Macarons">
-                    <a href="product-detail.html?id=macarons-rose-garden">
-                        <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1558326567-98ae2405596b?q=80&w=1080&auto=format&fit=crop"
-                                alt="Rose Garden">
-                            <div class="product-badge">Handcrafted</div>
-                        </div>
-                    </a>
-                    <div class="product-info">
-                        <span class="product-category">Macarons</span>
-                        <h3 class="product-title">Rose Garden Macarons</h3>
-                        <div class="product-price">
-                            <span>$28.00</span>
-                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 10: Pastries -->
-                <div class="product-card reveal" data-id="pastry-lemon-meringue" data-category="Pastries">
-                    <a href="product-detail.html?id=pastry-lemon-meringue">
-                        <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                                alt="Lemon Tart">
-                            <div class="product-badge">Zesty</div>
-                        </div>
-                    </a>
-                    <div class="product-info">
-                        <span class="product-category">Pastries</span>
-                        <h3 class="product-title">Cloud Nine Lemon Tart</h3>
-                        <div class="product-price">
-                            <span>$15.00</span>
-                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 11: Vegan -->
-                <div class="product-card reveal" data-id="cake-vegan-berry" data-category="Vegan Options">
-                    <a href="product-detail.html?id=cake-vegan-berry">
-                        <div class="product-img">
-                            <img src="../images/celebration_cat.png" alt="Vegan Galette">
-                            <div class="product-badge">Plant Based</div>
-                        </div>
-                    </a>
-                    <div class="product-info">
-                        <span class="product-category">Vegan Options</span>
-                        <h3 class="product-title">Wild Berry Vegan Galette</h3>
-                        <div class="product-price">
-                            <span>$48.00</span>
-                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 12: Wedding -->
-                <div class="product-card reveal" data-id="cake-white-lace" data-category="Wedding Cakes">
-                    <a href="product-detail.html?id=cake-white-lace">
-                        <div class="product-img">
-                            <img src="../images/cake_white_lace.png"
-                                alt="White Lace & Pearls">
-                            <div class="product-badge">Classic</div>
-                        </div>
-                    </a>
-                    <div class="product-info">
-                        <span class="product-category">Wedding Cakes</span>
-                        <h3 class="product-title">White Lace & Pearls</h3>
-                        <div class="product-price">
-                            <span>$120.00</span>
-                            <div class="add-to-cart"><i class="fas fa-plus"></i></div>
-                        </div>
-                    </div>
-                </div>
+            <div class="product-grid" id="product-grid">
+                <!-- Products rendered by JS -->
             </div>
 
             <div class="pagination">
-                <a href="#" class="page-link active">1</a>
-                <a href="#" class="page-link">2</a>
-                <a href="#" class="page-link">3</a>
-                <a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a>
+                <a href="#" class="page-link" id="page-prev" aria-label="Previous page"><i class="fas fa-chevron-left"></i></a>
+                <a href="#" class="page-link active" id="page-btn-1" data-page="1">1</a>
+                <a href="#" class="page-link" id="page-btn-2" data-page="2">2</a>
+                <a href="#" class="page-link" id="page-next" aria-label="Next page"><i class="fas fa-chevron-right"></i></a>
             </div>
         </div>
     </section>
@@ -561,6 +358,224 @@
     </footer>
 
     <script src="../js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        /* ── Product catalogue split across 2 pages ── */
+        var PAGES = [
+            /* Page 1 — products 1–6 */
+            [
+                {
+                    id: 'cake-velvet-dream', category: 'Wedding Cakes',
+                    img: '../images/hero.png', alt: 'Velvet Dream Cake',
+                    badge: 'Best Seller', title: 'Velvet Dream Cake', price: '$45.00'
+                },
+                {
+                    id: 'cake-midnight-orchid', category: 'Wedding Cakes',
+                    img: '../images/wedding_cat.png', alt: 'Midnight Orchid',
+                    badge: 'Premium', title: 'Midnight Orchid Cake', price: '$85.00'
+                },
+                {
+                    id: 'cake-choc-truffle', category: 'Birthday Cakes',
+                    img: 'https://images.unsplash.com/photo-1535141192574-5d4897c12636?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                    alt: 'Chocolate Truffle',
+                    badge: 'Popular', title: 'Chocolate Truffle Indulgence', price: '$55.00'
+                },
+                {
+                    id: 'cupcakes-pastel-party', category: 'Cupcakes',
+                    img: 'https://images.unsplash.com/photo-1519340333755-56e9c1d04579?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                    alt: 'Pastel Cupcakes',
+                    badge: 'Set of 12', title: 'Pastel Party Set', price: '$32.00'
+                },
+                {
+                    id: 'macarons-parisian-gold', category: 'Macarons',
+                    img: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                    alt: 'Golden Macarons',
+                    badge: 'New', title: 'Parisian Gold Macarons', price: '$24.00'
+                },
+                {
+                    id: 'pastry-berry-bliss', category: 'Pastries',
+                    img: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                    alt: 'Berry Bliss',
+                    badge: 'Fresh', title: 'Berry Bliss Tart', price: '$18.00'
+                },
+                {
+                    id: 'cake-salted-caramel', category: 'Birthday Cakes',
+                    img: '../images/salted_caramel_cake.png', alt: 'Salted Caramel Drip Cake',
+                    badge: 'Chef Special', title: 'Salted Caramel Drip Cake', price: '$48.00'
+                },
+                {
+                    id: 'pastry-strawberry-eclair', category: 'Pastries',
+                    img: '../images/strawberry_eclair.png', alt: 'Strawberry Crème Éclair',
+                    badge: 'Artisanal', title: 'Strawberry Crème Éclair', price: '$12.00'
+                }
+            ],
+            /* Page 2 — products 7–12 */
+            [
+                {
+                    id: 'cake-vegan-matcha', category: 'Vegan Options',
+                    img: 'https://images.unsplash.com/photo-1621303837174-89787a7d4729?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                    alt: 'Vegan Matcha',
+                    badge: 'Healthy', title: 'Zen Matcha Vegan Cake', price: '$52.00'
+                },
+                {
+                    id: 'cupcakes-velvet-duet', category: 'Cupcakes',
+                    img: 'https://images.unsplash.com/photo-1599785209707-a456fc1337bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                    alt: 'Velvet Duet',
+                    badge: 'Romantic', title: 'Red Velvet Duet', price: '$36.00'
+                },
+                {
+                    id: 'macarons-rose-garden', category: 'Macarons',
+                    img: 'https://images.unsplash.com/photo-1558326567-98ae2405596b?q=80&w=1080&auto=format&fit=crop',
+                    alt: 'Rose Garden',
+                    badge: 'Handcrafted', title: 'Rose Garden Macarons', price: '$28.00'
+                },
+                {
+                    id: 'pastry-lemon-meringue', category: 'Pastries',
+                    img: 'https://images.unsplash.com/photo-1519915028121-7d3463d20b13?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                    alt: 'Lemon Tart',
+                    badge: 'Zesty', title: 'Cloud Nine Lemon Tart', price: '$15.00'
+                },
+                {
+                    id: 'cake-vegan-berry', category: 'Vegan Options',
+                    img: '../images/celebration_cat.png', alt: 'Vegan Galette',
+                    badge: 'Plant Based', title: 'Wild Berry Vegan Galette', price: '$48.00'
+                },
+                {
+                    id: 'cake-white-lace', category: 'Wedding Cakes',
+                    img: '../images/cake_white_lace.png', alt: 'White Lace & Pearls',
+                    badge: 'Classic', title: 'White Lace & Pearls', price: '$120.00'
+                },
+                {
+                    id: 'cupcakes-lavender-honey', category: 'Cupcakes',
+                    img: '../images/lavender_cupcakes.png', alt: 'Lavender Honey Cupcakes',
+                    badge: 'Trending', title: 'Lavender Honey Cupcakes', price: '$38.00'
+                },
+                {
+                    id: 'pastry-raspberry-croissant', category: 'Pastries',
+                    img: '../images/raspberry_croissant.png', alt: 'Raspberry Almond Croissant',
+                    badge: 'Fresh Baked', title: 'Raspberry Almond Croissant', price: '$14.00'
+                }
+            ]
+        ];
+
+        var currentPage = 1;
+        var grid     = document.getElementById('product-grid');
+        var prevBtn  = document.getElementById('page-prev');
+        var nextBtn  = document.getElementById('page-next');
+        var pageBtn1 = document.getElementById('page-btn-1');
+        var pageBtn2 = document.getElementById('page-btn-2');
+
+        if (!grid) return; /* safety guard */
+
+        /* Build a single product card's HTML */
+        function cardHTML(p) {
+            return '<div class="product-card reveal" data-id="' + p.id + '" data-category="' + p.category + '">'
+                 +   '<a href="product-detail.html?id=' + p.id + '">'
+                 +     '<div class="product-img">'
+                 +       '<img src="' + p.img + '" alt="' + p.alt + '" loading="lazy">'
+                 +       '<div class="product-badge">' + p.badge + '</div>'
+                 +     '</div>'
+                 +   '</a>'
+                 +   '<div class="product-info">'
+                 +     '<span class="product-category">' + p.category + '</span>'
+                 +     '<h3 class="product-title">' + p.title + '</h3>'
+                 +     '<div class="product-price">'
+                 +       '<span>' + p.price + '</span>'
+                 +       '<div class="add-to-cart"><i class="fas fa-plus"></i></div>'
+                 +     '</div>'
+                 +   '</div>'
+                 + '</div>';
+        }
+
+        /* Re-wire filter buttons to the freshly rendered cards */
+        function rewireFilters() {
+            var filterBtns = document.querySelectorAll('.filter-btn');
+            var cards = document.querySelectorAll('.product-card');
+            if (!filterBtns.length || !cards.length) return;
+
+            filterBtns.forEach(function (btn) {
+                /* Clone to remove old listeners before attaching fresh ones */
+                var fresh = btn.cloneNode(true);
+                btn.parentNode.replaceChild(fresh, btn);
+            });
+
+            /* Re-query after cloning */
+            document.querySelectorAll('.filter-btn').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    document.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    var category = btn.innerText.trim();
+                    document.querySelectorAll('.product-card').forEach(function (card) {
+                        var cat = card.dataset.category || '';
+                        card.style.display = (category === 'All Delights' || cat === category) ? '' : 'none';
+                    });
+                });
+            });
+        }
+
+        /* Inject cards directly (no opacity trick) */
+        function injectCards(page) {
+            currentPage = page;
+            grid.innerHTML = PAGES[page - 1].map(cardHTML).join('');
+
+            /* Update page-number active state */
+            if (pageBtn1) pageBtn1.classList.toggle('active', page === 1);
+            if (pageBtn2) pageBtn2.classList.toggle('active', page === 2);
+
+            /* Update prev / next disabled state */
+            if (prevBtn) prevBtn.classList.toggle('disabled', page === 1);
+            if (nextBtn) nextBtn.classList.toggle('disabled', page === PAGES.length);
+
+            /* Re-wire filters to the new cards */
+            rewireFilters();
+
+            /* Trigger reveal animations */
+            if (typeof initRevealAnimations === 'function') {
+                initRevealAnimations();
+            } else {
+                var revealEls = document.querySelectorAll('.product-grid .reveal');
+                for (var i = 0; i < revealEls.length; i++) {
+                    revealEls[i].classList.add('animate-fade-up');
+                }
+            }
+        }
+
+        /* Page switch WITH smooth fade (for user-triggered navigation only) */
+        function renderPage(page) {
+            if (page < 1 || page > PAGES.length) return;
+
+            grid.classList.add('fading');
+            setTimeout(function () {
+                injectCards(page);
+                grid.classList.remove('fading');
+                grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 220);
+        }
+
+        /* Wire page-number buttons */
+        pageBtn1.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (currentPage !== 1) renderPage(1);
+        });
+        pageBtn2.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (currentPage !== 2) renderPage(2);
+        });
+
+        /* Wire prev / next arrows */
+        prevBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (currentPage > 1) renderPage(currentPage - 1);
+        });
+        nextBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (currentPage < PAGES.length) renderPage(currentPage + 1);
+        });
+
+        /* Initial render — no fade, cards appear immediately */
+        injectCards(1);
+    });
+    </script>
 </body>
 
 </html>
