@@ -1046,16 +1046,21 @@ body:has(.dash-container) {
    ============================================================== */
 
 /* Root direction */
+html[dir="rtl"] {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
 [dir="rtl"] {
-    text-align: right;
+    text-align: right !important;
 }
 
 /* ── Sidebar: move to right edge ── */
 [dir="rtl"] .dash-sidebar {
-    left: auto;
-    right: 0;
-    border-right: none;
-    border-left: 1px solid var(--dash-border);
+    left: auto !important;
+    right: 0 !important;
+    border-right: none !important;
+    border-left: 1px solid var(--dash-border) !important;
 }
 
 /* ── Main: offset from right instead of left ── */
@@ -1071,20 +1076,20 @@ body:has(.dash-container) {
     width: 100% !important;
     box-sizing: border-box !important;
     /* Reverse left/right flex children */
-    flex-direction: row-reverse;
+    flex-direction: row !important;
 }
 
 /* ── Header actions: flex-shrink:0 ensures RTL toggle never gets hidden ── */
 [dir="rtl"] .dash-header-actions {
-    flex-direction: row-reverse;
-    flex-shrink: 0;
+    flex-direction: row !important;
+    flex-shrink: 0 !important;
     overflow: visible !important;
-    min-width: fit-content;
+    min-width: fit-content !important;
 }
 
 /* ── Header left group: mirrors to right side ── */
 [dir="rtl"] .dash-header-left {
-    flex-direction: row-reverse;
+    flex-direction: row !important;
     margin-right: 0 !important;
     margin-left: auto !important;
 }
@@ -1093,111 +1098,115 @@ body:has(.dash-container) {
 [dir="rtl"] .dash-greeting {
     margin-left: 0 !important;
     margin-right: 10px !important;
-    text-align: right;
+    text-align: right !important;
 }
 
 /* ── Nav link: icon on the right in RTL, hover indent flips ── */
 [dir="rtl"] .dash-nav-link {
-    flex-direction: row-reverse;
+    flex-direction: row-reverse !important;
+    text-align: right !important;
 }
 
 [dir="rtl"] .dash-nav-link:hover {
-    padding-left: 18px;
-    padding-right: 22px;
+    padding-left: 18px !important;
+    padding-right: 22px !important;
 }
 
 [dir="rtl"] .dash-nav-label {
-    margin: 30px 15px 15px;
-    text-align: right;
+    margin: 30px 15px 15px !important;
+    text-align: right !important;
 }
 
 /* ── Search bar: icon to left (RTL), text padding flips ── */
 [dir="rtl"] .dash-search i {
-    left: auto;
-    right: 16px;
+    left: auto !important;
+    right: 16px !important;
 }
 
 [dir="rtl"] .dash-search input {
-    padding-left: 16px;
-    padding-right: 42px;
-    text-align: right;
+    padding-left: 16px !important;
+    padding-right: 42px !important;
+    text-align: right !important;
 }
 
 /* ── Table: align text to right ── */
 [dir="rtl"] .dash-table th,
 [dir="rtl"] .dash-table td {
-    text-align: right;
+    text-align: right !important;
 }
 
 /* ── Stat cards: icon on the right side ── */
 [dir="rtl"] .stat-card {
-    flex-direction: row-reverse;
+    flex-direction: row-reverse !important;
 }
 
 /* ── Profile section ── */
 [dir="rtl"] .dash-profile-head {
-    flex-direction: row-reverse;
+    flex-direction: row-reverse !important;
 }
 
 [dir="rtl"] .dash-profile-copy {
-    text-align: right;
+    text-align: right !important;
 }
 
 [dir="rtl"] .dash-profile-status {
-    right: auto;
-    left: -2px;
+    right: auto !important;
+    left: -2px !important;
 }
 
 [dir="rtl"] .dash-profile-detail-item {
-    text-align: right;
+    text-align: right !important;
+    align-items: flex-end !important;
 }
 
 [dir="rtl"] .dash-account-status-item {
-    flex-direction: row-reverse;
+    flex-direction: row-reverse !important;
 }
 
 /* ── User profile card in admin header ── */
 [dir="rtl"] .dash-user-profile {
-    flex-direction: row-reverse;
+    flex-direction: row-reverse !important;
 }
 
 [dir="rtl"] .dash-user-profile .user-details {
-    text-align: right;
+    text-align: right !important;
 }
 
 [dir="rtl"] .dash-user-profile .status-indicator {
-    right: auto;
-    left: -1px;
+    right: auto !important;
+    left: -1px !important;
 }
 
 /* ── Notification badge position fix in RTL ── */
 [dir="rtl"] #notification-toggle span {
-    right: auto;
-    left: -3px;
+    right: auto !important;
+    left: -3px !important;
 }
 
 /* ── Cart badge ── */
 [dir="rtl"] .dash-cart-badge span {
-    right: auto;
-    left: -5px;
+    right: auto !important;
+    left: -5px !important;
 }
 
 /* ── Mobile RTL: sidebar slides in from right ── */
 @media (max-width: 992px) {
     [dir="rtl"] .dash-sidebar {
-        transform: translateX(100%);
-        left: auto;
-        right: 0;
+        transform: translateX(100%) !important;
+        left: auto !important;
+        right: 0 !important;
     }
     [dir="rtl"] .dash-sidebar.active {
-        transform: translateX(0);
+        transform: translateX(0) !important;
     }
     [dir="rtl"] .dash-main {
         margin-right: 0 !important;
+        margin-left: 0 !important;
+        width: 100% !important;
     }
     /* In mobile RTL, header goes back to row (full-width, hamburger on right) */
     [dir="rtl"] .dash-header {
-        flex-direction: row-reverse;
+        flex-direction: row !important;
     }
 }
 

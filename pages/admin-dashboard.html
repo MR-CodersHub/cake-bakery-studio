@@ -15,7 +15,7 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/dashboard.css?v=178186">
     
     <link rel="icon" type="image/png" href="../images/favicon.png">
     <meta name="theme-color" content="#D4AF37">
@@ -317,6 +317,23 @@
                 overlay.addEventListener('click', () => {
                     sidebar.classList.remove('active');
                     overlay.classList.remove('active');
+                });
+            }
+
+            // RTL diagnostics logging
+            const rtlToggle = document.getElementById('rtl-toggle');
+            if (rtlToggle) {
+                rtlToggle.addEventListener('click', () => {
+                    setTimeout(() => {
+                        const sb = document.getElementById('dash-sidebar');
+                        const mn = document.querySelector('.dash-main');
+                        const hd = document.querySelector('.dash-header');
+                        console.log('RTL DIAGNOSTICS:');
+                        console.log('html dir:', document.documentElement.getAttribute('dir'));
+                        console.log('sidebar style - left:', window.getComputedStyle(sb).left, 'right:', window.getComputedStyle(sb).right);
+                        console.log('main style - marginLeft:', window.getComputedStyle(mn).marginLeft, 'marginRight:', window.getComputedStyle(mn).marginRight);
+                        console.log('header style - paddingLeft:', window.getComputedStyle(hd).paddingLeft, 'paddingRight:', window.getComputedStyle(hd).paddingRight);
+                    }, 200);
                 });
             }
         });

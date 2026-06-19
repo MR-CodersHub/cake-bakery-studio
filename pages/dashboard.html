@@ -15,7 +15,7 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/dashboard.css?v=178186">
     
     <link rel="icon" type="image/png" href="../images/favicon.png">
     <meta name="theme-color" content="#D4AF37">
@@ -266,6 +266,8 @@
             if (greetingName) greetingName.textContent = savedUser;
             if (welcomeTitle) welcomeTitle.textContent = `${greeting}, ${savedUser}`;
             if (welcomeSummary) welcomeSummary.textContent = `You have 12 orders, 1 item in transit, and 8 favorites saved. ${savedUser}, your account is in excellent standing.`;
+
+
 
             // Hamburger / Sidebar (unique to this page)
             if (hamburger) {
